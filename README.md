@@ -1,4 +1,5 @@
 # :wave: 싸피물산
+![LOGO](./assets/mainlogo.jpg)
 
 ## :computer: 프로젝트 소개
 
