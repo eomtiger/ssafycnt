@@ -2,6 +2,8 @@ import logo from "./../../../../public/assets/logo.svg";
 import excel from "./../../../../public/assets/excel.svg";
 import pdf from "./../../../../public/assets/pdf.svg";
 import NationOrItem from "../../molecules/navBar/NationOrItem";
+import NationSelector from "../../molecules/navBar/NationSelector";
+
 function NavBar() {
   return (
     <>
@@ -10,7 +12,12 @@ function NavBar() {
         <div className="content-center">
           <NationOrItem />
         </div>
-        <p>교역지역/품목코드 선택</p>
+
+        <p>
+          교역지역/품목코드 선택
+          <NationSelector />
+        </p>
+
         <p>조회기준</p>
         <div className="">
           <img src={pdf} />
