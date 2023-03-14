@@ -3,6 +3,7 @@ import excel from "./../../../../public/assets/excel.svg";
 import pdf from "./../../../../public/assets/pdf.svg";
 import NationOrItem from "../../molecules/navBar/NationOrItem";
 import NationSelector from "../../molecules/navBar/NationSelector";
+import ViewPeriod from "../../molecules/navBar/ViewPeriod";
 
 function NavBar() {
   return (
@@ -13,11 +14,14 @@ function NavBar() {
           <NationOrItem />
         </div>
 
-        <p>
+        <div>
           <NationSelector />
-        </p>
+        </div>
 
-        <p>조회기준</p>
+        <div>
+          <ViewPeriod />
+        </div>
+
         <div className="">
           <img src={pdf} />
           <img src={excel} />
