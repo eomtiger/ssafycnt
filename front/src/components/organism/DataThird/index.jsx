@@ -41,11 +41,11 @@ function DataThird() {
   );
 
   return (
-    <div className=" text-gray-900">
-      <div className="mt-4">
-        <Table columns={columns} data={data} />
-      </div>
-    </div>
+    // <div className=" text-gray-900">
+    // <div className="mt-4">
+    <Table columns={columns} data={data} />
+    // </div>
+    // </div>
   );
 }
 
