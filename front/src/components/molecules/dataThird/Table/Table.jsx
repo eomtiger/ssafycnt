@@ -80,8 +80,7 @@ function Table({ columns, data }) {
 export default Table;
 
 export function AvatarCell({ value, column, row }) {
-  const imgSrc =
-    "./../../../../../public/assets/nationalFlags/" + value + ".gif";
+  const imgSrc = "./../../../../../assets/nationalFlags/" + value + ".gif";
   return (
     <div className="flex items-center justify-items-center">
       <div className="flex-shrink-0 h-10 w-10">
