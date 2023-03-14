@@ -1,6 +1,12 @@
-import NationSelector from "../NationSelector";
+import React, { useState } from "react";
 
 function NationOrItem() {
+  const [checked, setChecked] = useState(true);
+
+  const isChecked = () => {
+    setChecked(true);
+  };
+
   return (
     <>
       <fieldset>
@@ -10,7 +16,7 @@ function NationOrItem() {
             className="peer/nation"
             type="radio"
             name="status"
-            checked
+            defaultChecked
           />
           <label htmlFor="nation" className="peer-checked/nation:text-sky-500">
             국가
