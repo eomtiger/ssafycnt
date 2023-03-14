@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { faker } from "@faker-js/faker";
-import Table from "../../molecules/dataThird/Table/Table";
-import { AvatarCell } from "../../molecules/dataThird/Table/Table";
+import Table from "../../molecules/dataThird/Table";
+import { AvatarCell } from "../../molecules/dataThird/Table";
 
 faker.seed(100);
 faker.locale = "ko";
