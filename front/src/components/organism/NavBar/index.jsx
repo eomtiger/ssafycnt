@@ -14,7 +14,6 @@ function NavBar() {
         </div>
 
         <p>
-          교역지역/품목코드 선택
           <NationSelector />
         </p>
 
