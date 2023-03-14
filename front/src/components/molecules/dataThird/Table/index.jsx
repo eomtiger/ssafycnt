@@ -7,7 +7,7 @@ function Table({ columns, data }) {
 
   return (
     <>
-      <div className="mt-2 flex flex-col">
+      <div className="mt-2 flex flex-col m-10">
         <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -21,7 +21,7 @@ function Table({ columns, data }) {
                       {headerGroup.headers.map((column) => (
                         <th
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-center text-xs font-mun text-gray-500 uppercase tracking-wider"
                           {...column.getHeaderProps(
                             column.getSortByToggleProps()
                           )}
@@ -39,6 +39,7 @@ function Table({ columns, data }) {
                     </tr>
                   ))}
                 </thead>
+
                 <tbody
                   {...getTableBodyProps()}
                   className="bg-white divide-y divide-gray-200"
@@ -51,7 +52,7 @@ function Table({ columns, data }) {
                           return (
                             <td
                               {...cell.getCellProps()}
-                              className="px-6 py-4 whitespace-nowrap"
+                              className="px-6 py-4 whitespace-nowrap font-mun"
                               role="cell"
                             >
                               {cell.column.Cell.name === "defaultRenderer" ? (
@@ -84,10 +85,10 @@ export function AvatarCell({ value, column, row }) {
   return (
     <div className="flex items-center justify-items-center">
       <div className="flex-shrink-0 h-10 w-10">
-        <img className="h-10 w-10 rounded-full" src={imgSrc} alt="" />
+        <img className="mt-2 h-7 w-10 " src={imgSrc} alt="" />
       </div>
       <div className="ml-4">
-        <div className="text-sm font-medium text-gray-900">{value}</div>
+        <div className="text-sm font-mun text-gray-900">{value}</div>
       </div>
     </div>
   );
