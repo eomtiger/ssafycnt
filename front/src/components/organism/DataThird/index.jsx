@@ -3,12 +3,13 @@ import { faker } from "@faker-js/faker";
 import Table from "../../molecules/dataThird/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
 
-faker.seed(100);
-faker.locale = "ko";
+// faker.seed(100);
+// faker.locale = "ko";
 
 function DataThird() {
   const columns = useMemo(
     () => [
+      { accessor: "order", Header: "순위" },
       {
         accessor: "nation",
         Header: "국가코드",
@@ -26,9 +27,10 @@ function DataThird() {
 
   const data = useMemo(
     () =>
-      Array(100)
+      Array(10)
         .fill()
         .map(() => ({
+          order: faker.datatype.number({ min: 1, max: 10 }),
           nation: faker.address.countryCode(),
           date: "2022.3 - 2023.3",
           amount: faker.commerce.price(0, 100000000, 0, "$"),
@@ -40,13 +42,7 @@ function DataThird() {
     []
   );
 
-  return (
-    <div className=" text-gray-900">
-      <div className="mt-4">
-        <Table columns={columns} data={data} />
-      </div>
-    </div>
-  );
+  return <Table columns={columns} data={data} />;
 }
 
 export default DataThird;
