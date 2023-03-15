@@ -32,20 +32,53 @@ function ExportTop5() {
     values = values.map(function(x) {
         return x / 1000000
       });
+    
+    const horizontalBackgroundPlugin = {
+    id: 'horizontalBackgroundPlugin',
+    beforeDatasetsDraw(chart, args, plugins) {
+        const {
+        ctx,
+        data,
+        chartArea: { top, bottom, left, right, width, height },
+        scales: { x, y },
+        } = chart;
+    
+        const barPercentage = data.datasets[0].barPercentage || 0.9;
+        const categoryPercentage = data.datasets[0].categoryPercentage || 0.8;
+        const barThickness = height / data.labels.length * categoryPercentage;
+    
+        ctx.save();
+        data.datasets[0].data.forEach((value, index) => {
+        ctx.fillStyle = 'rgba(240, 240, 240, 0.2)'
+        ctx.fillRect(
+            left,
+            y.getPixelForValue(index) - barThickness / 2,
+            width * value / 100,
+            barThickness,
+        );
+        });
+        ctx.restore();
+    },
+    };
+    
+    ChartJS.register(horizontalBackgroundPlugin)
 
     const options = {
         indexAxis: 'y',
-        plugins: {
-            tooltip: {
-                enabled: false        // 그래프 호버시, 모달창 안나오게 하기
+        plugins: [
+            {
+                tooltip: {
+                    enabled: false        // 그래프 호버시, 모달창 안나오게 하기
+                },
+                legend: {               // 범례 스타일링
+                    display: false,
+                },
+                datalabels: {
+                    display: true,
+                },
             },
-            legend: {               // 범례 스타일링
-                display: false,
-            },
-            datalabels: {
-                display: true,
-            },
-        },
+            horizontalBackgroundPlugin
+        ],
         scales: {                   // x축 y축에 대한 설정
             x: {
                 axis: 'x',
@@ -76,7 +109,18 @@ function ExportTop5() {
 
         onClick: function (evt, element) {
             if (element.length > 0) {
+                console.log(element[0]['index'])
                 console.log(labels[element[0]['index']])
+                data.datasets[0].backgroundColor = [
+                    'rgba(240, 240, 240)',
+                    'rgba(240, 240, 240)',
+                    'rgba(240, 240, 240)',
+                    'rgba(240, 240, 240)',
+                    'rgba(240, 240, 240)'
+                ]
+                console.log(data.datasets[0].backgroundColor)
+                data.datasets[0].backgroundColor[element[0]['index']] = 'rgba(54, 162, 235)'
+                console.log(data.datasets[0].backgroundColor)
             }
         }
     }
@@ -87,7 +131,13 @@ function ExportTop5() {
           {
             axis: 'y',
             type: 'bar',
-            backgroundColor: 'rgba(240, 240, 240)',
+            backgroundColor: [
+                'rgba(240, 240, 240)',
+                'rgba(240, 240, 240)',
+                'rgba(240, 240, 240)',
+                'rgba(240, 240, 240)',
+                'rgba(240, 240, 240)'
+            ],
             data: values,
             datalabels: {
                 anchor:'end',
