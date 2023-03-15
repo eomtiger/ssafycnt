@@ -3,15 +3,15 @@ import Chart from "react-google-charts";
 
 function WorldMap() {
   const data = [
-    ["Country", "Popularity"],
-    ["Germany", 200],
-    ["United States", 300],
-    ["Brazil", 400],
-    ["Canada", 500],
-    ["France", 600],
-    ["RU", 700],
-    ["China", 500],
-    ["South Korea", 1000],
+    ["Country", "???", "수출입"],
+    ["Germany", 200, 100],
+    ["United States", 300, 200],
+    ["Brazil", 400, 300],
+    ["Canada", 500, 400],
+    ["France", 600, 500],
+    ["RU", 700, 600],
+    ["China", 500, 799],
+    ["South Korea", 1000, 1000],
   ];
   return (
     <>
