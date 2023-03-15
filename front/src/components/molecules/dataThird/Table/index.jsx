@@ -9,16 +9,13 @@ function Table({ columns, data }) {
     <>
       <table
         {...getTableProps()}
-        className="min-w-full divide-y divide-gray-200 m-4 h-10 overflow-y-auto"
+        className="min-w-full divide-y divide-blue-800 font-mun"
       >
-        <thead>
+        <thead className="bg-blue-300">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th
-                  scope="col"
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
                     {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : ""}
@@ -29,7 +26,7 @@ function Table({ columns, data }) {
           ))}
         </thead>
 
-        <tbody {...getTableBodyProps()}>
+        <tbody {...getTableBodyProps()} className="divide-y h-96">
           {rows.map((row, i) => {
             prepareRow(row);
             return (
@@ -37,11 +34,7 @@ function Table({ columns, data }) {
                 {row.cells.map((cell) => {
                   return (
                     <td {...cell.getCellProps()} role="cell">
-                      {cell.column.Cell.name === "defaultRenderer" ? (
-                        <div>{cell.render("Cell")}</div>
-                      ) : (
-                        cell.render("Cell")
-                      )}
+                      {cell.render("Cell")}
                     </td>
                   );
                 })}
@@ -56,7 +49,7 @@ function Table({ columns, data }) {
 
 export default Table;
 
-export function AvatarCell({ value, column, row }) {
+export function AvatarCell({ value }) {
   const imgSrc = "./../../../../../assets/nationalFlags/" + value + ".gif";
   return (
     <div className="flex items-center justify-items-center">
