@@ -26,23 +26,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         this.env = env;
     }
 
-    public WebSecurity(boolean disableDefaults, UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder, Environment env) {
-        super(disableDefaults);
-        this.userService = userService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.env = env;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-//        http.authorizeRequests().antMatchers("/users/**").permitAll();
-        http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("192.168.31.195") // IP 변경 (Wifi)
-                .and()
-                .addFilter(getAuthenticationFilter());
-
-        http.headers().frameOptions().disable();
+        http.authorizeRequests().antMatchers("/users/**").permitAll();
+//        http.authorizeRequests().antMatchers("/**")
+//                .hasIpAddress("192.168.31.195") // IP 변경 (Wifi)
+//                .and()
+//                .addFilter(getAuthenticationFilter());
+//
+//        http.headers().frameOptions().disable();
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception{

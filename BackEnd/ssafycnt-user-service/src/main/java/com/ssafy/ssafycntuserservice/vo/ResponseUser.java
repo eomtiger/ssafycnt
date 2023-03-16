@@ -2,7 +2,6 @@ package com.ssafy.ssafycntuserservice.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.List;
 

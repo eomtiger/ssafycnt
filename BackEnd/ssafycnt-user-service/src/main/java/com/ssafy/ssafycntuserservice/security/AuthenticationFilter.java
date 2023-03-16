@@ -32,9 +32,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        return super.attemptAuthentication(request, response);
-
     }
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
