@@ -17,6 +17,7 @@ function NationOrItem() {
             type="radio"
             name="status"
             defaultChecked
+            onClick={isChecked}
           />
           <label htmlFor="nation" className="peer-checked/nation:text-sky-500">
             국가
