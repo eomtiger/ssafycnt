@@ -1,5 +1,5 @@
 package newsservice.service;
 
-public class UserServiceImpl {
+public interface MiningService {
 
 }
