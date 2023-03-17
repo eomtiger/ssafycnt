@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';  // Uncaught Error: "category" is not a registered scale
 import { Bar } from 'react-chartjs-2'
+import { useState } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -22,7 +23,6 @@ ChartJS.register(
   );
 
 Chart.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
-
 function ExportTop5() {
     let pickNation = '전세계'
 
@@ -34,51 +34,50 @@ function ExportTop5() {
       });
     
     const horizontalBackgroundPlugin = {
-    id: 'horizontalBackgroundPlugin',
-    beforeDatasetsDraw(chart, args, plugins) {
-        const {
-        ctx,
-        data,
-        chartArea: { top, bottom, left, right, width, height },
-        scales: { x, y },
-        } = chart;
-    
-        const barPercentage = data.datasets[0].barPercentage || 0.9;
-        const categoryPercentage = data.datasets[0].categoryPercentage || 0.8;
-        const barThickness = height / data.labels.length * categoryPercentage;
-    
-        ctx.save();
-        data.datasets[0].data.forEach((value, index) => {
-        ctx.fillStyle = 'rgba(240, 240, 240, 0.2)'
-        ctx.fillRect(
-            left,
-            y.getPixelForValue(index) - barThickness / 2,
-            width * value / 100,
-            barThickness,
-        );
-        });
-        ctx.restore();
-    },
+        id: 'horizontalBackgroundPlugin',
+        beforeDatasetsDraw(chart, args, plugins) {
+            const {
+                ctx,
+                data,
+                chartArea: { top, bottom, left, right, width, height },
+                scales: { x, y },
+            } = chart;
+        
+            const barPercentage = data.datasets[0].barPercentage || 0.9;
+            const categoryPercentage = data.datasets[0].categoryPercentage || 0.8;
+            const barThickness = height / data.labels.length * categoryPercentage;
+        
+            ctx.save();
+            data.datasets[0].data.forEach((value, index) => {
+                ctx.fillStyle = 'rgba(240, 240, 240, 0.2)'
+                ctx.fillRect(
+                    left,
+                    y.getPixelForValue(index) - barThickness / 2,
+                    width * value / 100,
+                    barThickness,
+                );
+            });
+            ctx.restore();
+        },
     };
+
     
     ChartJS.register(horizontalBackgroundPlugin)
 
     const options = {
         indexAxis: 'y',
-        plugins: [
-            {
-                tooltip: {
-                    enabled: false        // 그래프 호버시, 모달창 안나오게 하기
+        plugins: {
+                    tooltip: {
+                        enabled: false        // 그래프 호버시, 모달창 안나오게 하기
+                    },
+                    legend: {               // 범례 스타일링
+                        display: false,
+                    },
+                    datalabels: {
+                        display: true,
+                    },
                 },
-                legend: {               // 범례 스타일링
-                    display: false,
-                },
-                datalabels: {
-                    display: true,
-                },
-            },
-            horizontalBackgroundPlugin
-        ],
+        
         scales: {                   // x축 y축에 대한 설정
             x: {
                 axis: 'x',
@@ -106,23 +105,28 @@ function ExportTop5() {
                 },
             },
         },
-
+        
         onClick: function (evt, element) {
             if (element.length > 0) {
-                console.log(element[0]['index'])
-                console.log(labels[element[0]['index']])
-                data.datasets[0].backgroundColor = [
-                    'rgba(240, 240, 240)',
-                    'rgba(240, 240, 240)',
-                    'rgba(240, 240, 240)',
-                    'rgba(240, 240, 240)',
-                    'rgba(240, 240, 240)'
-                ]
-                console.log(data.datasets[0].backgroundColor)
-                data.datasets[0].backgroundColor[element[0]['index']] = 'rgba(54, 162, 235)'
-                console.log(data.datasets[0].backgroundColor)
+                setColorsHandler(element[0]['index'])
             }
         }
+    }
+
+    const [colors, setColors] = useState(['rgba(240, 240, 240)',
+    'rgba(240, 240, 240)',
+    'rgba(240, 240, 240)',
+    'rgba(240, 240, 240)',
+    'rgba(240, 240, 240)'])
+
+    const setColorsHandler = (props) => { 
+        const newColors = ['rgba(240, 240, 240)',
+        'rgba(240, 240, 240)',
+        'rgba(240, 240, 240)',
+        'rgba(240, 240, 240)',
+        'rgba(240, 240, 240)']
+        newColors[props] = 'rgba(54, 162, 235)'
+        setColors(newColors)
     }
     
     const data = {
@@ -131,21 +135,17 @@ function ExportTop5() {
           {
             axis: 'y',
             type: 'bar',
-            backgroundColor: [
-                'rgba(240, 240, 240)',
-                'rgba(240, 240, 240)',
-                'rgba(240, 240, 240)',
-                'rgba(240, 240, 240)',
-                'rgba(240, 240, 240)'
-            ],
+            backgroundColor: colors,
+            borderRadius: 5,
+            borderSkipped: false,
             data: values,
             datalabels: {
                 anchor:'end',
-                align: 'right',
+                align: 'end',
                 color: 'black',
                 formatter: function(value) { return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
             },
-            },
+        },
       ],
     };
 
