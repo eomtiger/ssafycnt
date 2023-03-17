@@ -27,11 +27,15 @@ function DataThird() {
 
   const data = useMemo(
     () =>
-      Array(10)
+      Array(30)
         .fill()
         .map(() => ({
           order: faker.datatype.number({ min: 1, max: 10 }),
           nation: faker.address.countryCode(),
+          // imgSrc:
+          //   "./../../../../../assets/nationalFlags/" +
+          //   faker.address.countryCode() +
+          //   ".gif",
           date: "2022.3 - 2023.3",
           amount: faker.commerce.price(0, 100000000, 0, "$"),
           amountPortion: "11%",
