@@ -9,7 +9,7 @@ context = { 'price_dollars' : 5.00 }
 jinja_env = jinja2.Environment()
 jinja_env.filters['multiply_by'] = multiply_by
 doc.render(context,jinja_env)
-doc.save("generated_doc.docx")
+doc.save("isakggong.docx")
 
 # from docxtpl import *
 # from docx.shared import Mm, Inches, Pt
