@@ -1,12 +1,15 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { faker } from "@faker-js/faker";
 import Table from "../../molecules/dataThird/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
-
-// faker.seed(100);
-// faker.locale = "ko";
+import ExportImportToggle from "../../molecules/dataThird/ExportImportToggle";
 
 function DataThird() {
+  const [exportImportState, setExportImportState] = useState(true);
+
+  const exportImportStateHandler = () => {
+    setExportImportState(!exportImportState);
+  };
   const getData = () => {
     const data = [];
     return [...data, ...data, ...data];
@@ -53,11 +56,16 @@ function DataThird() {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="">
-          <h1 className="text-xl font-semibold">세부정보 ㄷㄷ</h1>
+        <div className="flex-start" onClick={exportImportStateHandler}>
+          <ExportImportToggle exportImportState={exportImportState} />
         </div>
+
         <div className="mt-4">
-          <Table columns={columns} data={data} />
+          <Table
+            columns={columns}
+            data={data}
+            exportImportState={exportImportState}
+          />
         </div>
       </main>
     </div>

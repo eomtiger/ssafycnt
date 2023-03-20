@@ -41,7 +41,11 @@ function PageButton({ children, className, ...rest }) {
   );
 }
 
-function Table({ columns, data }) {
+function Table({ columns, data, exportImportState }) {
+  function frameColor(exportImportState) {
+    return exportImportState ? "bg-red-300" : "bg-blue-300";
+  }
+
   // const headList = columns.map((value, key) => (
   //   <th className="px-6 py-3" key={key}>
   //     {value.Header}
@@ -132,13 +136,13 @@ function Table({ columns, data }) {
                 {...getTableProps()}
                 className="min-w-full divide-y divide-blue-800 font-mun"
               >
-                <thead className="bg-blue-300">
+                <thead className={frameColor(exportImportState)}>
                   {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                       {headerGroup.headers.map((column) => (
                         <th
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="px-6 py-3 text-center text-xs font-medium text-gray-900 uppercase tracking-wider"
                           {...column.getHeaderProps(
                             column.getSortByToggleProps()
                           )}
@@ -181,90 +185,95 @@ function Table({ columns, data }) {
                   })}
                 </tbody>
               </table>
-
-              <div className="py-3 flex items-center justify-between bg-blue-300">
-                <div className="flex-1 flex justify-between sm:hidden">
-                  <Button
-                    onClick={() => previousPage()}
-                    disabled={!canPreviousPage}
-                  >
-                    Previous
-                  </Button>
-                  <Button onClick={() => nextPage()} disabled={!canNextPage}>
-                    Next
-                  </Button>
-                </div>
-
-                <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
-                  <div className="flex gap-x-2 mr-10">
-                    <span className="text-sm text-gray-700">
-                      Page{" "}
-                      <span className="font-medium">{state.pageIndex + 1}</span>{" "}
-                      /{" "}
-                      <span className="font-medium">{pageOptions.length}</span>
-                    </span>
-                    <select
-                      className="rounded-md"
-                      value={state.pageSize}
-                      onChange={(e) => {
-                        setPageSize(Number(e.target.value));
-                      }}
+              <div className={frameColor(exportImportState)}>
+                <div className="py-3 flex items-center justify-between ">
+                  <div className="flex-1 flex justify-between sm:hidden">
+                    <Button
+                      onClick={() => previousPage()}
+                      disabled={!canPreviousPage}
                     >
-                      {[5, 10, 20].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                          Show {pageSize}
-                        </option>
-                      ))}
-                    </select>
+                      Previous
+                    </Button>
+                    <Button onClick={() => nextPage()} disabled={!canNextPage}>
+                      Next
+                    </Button>
                   </div>
-                  <div>
-                    <nav
-                      className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
-                      aria-label="Pagination"
-                    >
-                      <PageButton
-                        className="rounded-l-md"
-                        onClick={() => gotoPage(0)}
-                        disabled={!canPreviousPage}
+
+                  <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
+                    <div className="flex gap-x-2 mr-10">
+                      <span className="text-sm text-gray-700">
+                        Page{" "}
+                        <span className="font-medium">
+                          {state.pageIndex + 1}
+                        </span>{" "}
+                        /{" "}
+                        <span className="font-medium">
+                          {pageOptions.length}
+                        </span>
+                      </span>
+                      <select
+                        className="rounded-md"
+                        value={state.pageSize}
+                        onChange={(e) => {
+                          setPageSize(Number(e.target.value));
+                        }}
                       >
-                        <span className="sr-only">First</span>
-                        <ChevronDoubleLeftIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </PageButton>
-                      <PageButton
-                        onClick={() => previousPage()}
-                        disabled={!canPreviousPage}
+                        {[5, 10, 20].map((pageSize) => (
+                          <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <nav
+                        className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                        aria-label="Pagination"
                       >
-                        <span className="sr-only">Previous</span>
-                        <ChevronLeftIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </PageButton>
-                      <PageButton
-                        onClick={() => nextPage()}
-                        disabled={!canNextPage}
-                      >
-                        <span className="sr-only">Next</span>
-                        <ChevronRightIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </PageButton>
-                      <PageButton
-                        className="rounded-r-md"
-                        onClick={() => gotoPage(pageCount - 1)}
-                        disabled={!canNextPage}
-                      >
-                        <span className="sr-only">Last</span>
-                        <ChevronDoubleRightIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </PageButton>
-                    </nav>
+                        <PageButton
+                          className="rounded-l-md"
+                          onClick={() => gotoPage(0)}
+                          disabled={!canPreviousPage}
+                        >
+                          <span className="sr-only">First</span>
+                          <ChevronDoubleLeftIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        </PageButton>
+                        <PageButton
+                          onClick={() => previousPage()}
+                          disabled={!canPreviousPage}
+                        >
+                          <span className="sr-only">Previous</span>
+                          <ChevronLeftIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        </PageButton>
+                        <PageButton
+                          onClick={() => nextPage()}
+                          disabled={!canNextPage}
+                        >
+                          <span className="sr-only">Next</span>
+                          <ChevronRightIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        </PageButton>
+                        <PageButton
+                          className="rounded-r-md"
+                          onClick={() => gotoPage(pageCount - 1)}
+                          disabled={!canNextPage}
+                        >
+                          <span className="sr-only">Last</span>
+                          <ChevronDoubleRightIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        </PageButton>
+                      </nav>
+                    </div>
                   </div>
                 </div>
               </div>
