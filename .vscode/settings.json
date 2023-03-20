@@ -1,3 +1,5 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+  // "css.lint.emptyRules": "ignore",
+"css.validate": false,
+"java.compile.nullAnalysis.mode": "automatic"
 }
