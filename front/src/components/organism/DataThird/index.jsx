@@ -7,6 +7,10 @@ import { AvatarCell } from "../../molecules/dataThird/Table";
 // faker.locale = "ko";
 
 function DataThird() {
+  const getData = () => {
+    const data = [];
+    return [...data, ...data, ...data];
+  };
   const columns = useMemo(
     () => [
       { accessor: "order", Header: "순위" },
@@ -20,7 +24,7 @@ function DataThird() {
       { accessor: "amountPortion", Header: "점유율(금액)" },
       { accessor: "weight", Header: "수입중량(kg)" },
       { accessor: "weightPortion", Header: "점유율(중량)" },
-      { accessor: "hsCode", Header: "품목코드HS코드" },
+      { accessor: "hsCode", Header: "품목코드(HS코드)" },
     ],
     []
   );
@@ -46,7 +50,18 @@ function DataThird() {
     []
   );
 
-  return <Table columns={columns} data={data} />;
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <main className="mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div className="">
+          <h1 className="text-xl font-semibold">세부정보 ㄷㄷ</h1>
+        </div>
+        <div className="mt-4">
+          <Table columns={columns} data={data} />
+        </div>
+      </main>
+    </div>
+  );
 }
 
 export default DataThird;
