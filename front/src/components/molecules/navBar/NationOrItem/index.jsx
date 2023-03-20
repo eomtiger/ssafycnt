@@ -1,34 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 
-function NationOrItem() {
-  const [checked, setChecked] = useState(true);
-
-  const isChecked = () => {
-    setChecked(true);
-  };
-
+function NationOrItem(props) {
   return (
     <>
-      <fieldset>
-        <div className="flex justify-between">
-          <input
-            id="nation"
-            className="peer/nation"
-            type="radio"
-            name="status"
-            defaultChecked
-            onClick={isChecked}
-          />
-          <label htmlFor="nation" className="peer-checked/nation:text-sky-500">
-            국가
-          </label>
+      <div className="flex justify-between">
+        <input
+          id="nation"
+          className="peer/nation"
+          type="radio"
+          name="status"
+          defaultChecked
+          onClick={() => {
+            props.stateHandler("Nation");
+          }}
+        />
+        <label htmlFor="nation" className="peer-checked/nation:text-sky-500">
+          국가
+        </label>
+      </div>
 
-          <input id="item" className="peer/item" type="radio" name="status" />
-          <label htmlFor="item" className="peer-checked/item:text-sky-500">
-            품목
-          </label>
-        </div>
-      </fieldset>
+      <div>
+        <input
+          id="item"
+          className="peer/item"
+          type="radio"
+          name="status"
+          onClick={() => {
+            props.stateHandler("Item");
+          }}
+        />
+        <label htmlFor="item" className="peer-checked/item:text-sky-500">
+          품목
+        </label>
+      </div>
     </>
   );
 }
