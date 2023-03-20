@@ -32,6 +32,10 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.batch:spring-batch-test")
 	testImplementation("org.springframework.security:spring-security-test")
+	// 크롤링
+	implementation("org.jsoup:jsoup:1.15.4")
+	// 단어 분석
+	implementation("com.github.shin285:KOMORAN:3.3.4")
 }
 
 dependencyManagement {
