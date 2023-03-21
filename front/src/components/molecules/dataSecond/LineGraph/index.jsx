@@ -27,6 +27,7 @@ function TrendItems(props) {
     const imOrExport = props.anyItem[3]
     const pickItem = props.anyItem[2]
 
+
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
     const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May']    // Top5 품목
     let values = [272000000000, 268000000000, 302000000000, 120000000000, 100000000]    // Top5 품목 수출량
