@@ -40,10 +40,23 @@ function WorldMap() {
         }
       },
     },
+    {
+      eventName: "ready",
+      callback() {
+        console.log("123123123123");
+      },
+    },
   ];
   return (
     <>
-      <div className="mb-5">수출 수입</div>
+      <div className="flex mb-5 flex-start ml-10 mt-5">
+        <div className="w-5 h-5 rounded-full bg-red-300 mr-3"></div>
+        <div className="mr-5">수출</div>
+        <div className="w-5 h-5 rounded-full bg-blue-300 mr-3"></div>
+        <div className="mr-5">수입</div>
+        <div className="w-5 h-5 rounded-full bg-yellow-300 mr-3"></div>
+        <div className="mr-5">수출입</div>
+      </div>
       <Chart
         chartType="GeoChart"
         data={data}
