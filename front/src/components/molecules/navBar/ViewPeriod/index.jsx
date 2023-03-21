@@ -14,37 +14,37 @@ import Select from "react-select";
 //   },
 // };
 
-// 오늘 날짜
-const today = new Date();
-// 오늘 기준 년
-const todayYear = today.getFullYear();
-// 오늘 기준 일
-const todayMonth = today.getMonth() + 1;
-// 오늘 년 기준 10년전
-const yearList = [];
-for (let i = todayYear; i >= todayYear - 10; i--) {
-  {
-    yearList.push({ value: i, label: i });
-  }
-}
-// console.log(yearList[0].value);
+// // 오늘 날짜
+// const today = new Date();
+// // 오늘 기준 년
+// const todayYear = today.getFullYear();
+// // 오늘 기준 일
+// const todayMonth = today.getMonth() + 1;
+// // 오늘 년 기준 10년전
+// const yearList = [];
+// for (let i = todayYear; i >= todayYear - 10; i--) {
+//   {
+//     yearList.push({ value: i, label: i });
+//   }
+// }
+// // console.log(yearList[0].value);
 
-// 올해 년도 기준, 월 표시
-const todayYearMonthList = [];
-for (let i = 1; i <= todayMonth; i--) {
-  {
-    todayYearMonthList.push({ value: i, label: i });
-  }
-}
+// // 올해 년도 기준, 월 표시
+// const todayYearMonthList = [];
+// for (let i = 1; i <= todayMonth; i--) {
+//   {
+//     todayYearMonthList.push({ value: i, label: i });
+//   }
+// }
 
-// 1월 ~ 12월
-const monthList = [];
-for (let i = 1; i <= 12; i++) {
-  {
-    monthList.push({ value: i, label: i });
-  }
-}
-// console.log(monthList);
+// // 1월 ~ 12월
+// const monthList = [];
+// for (let i = 1; i <= 12; i++) {
+//   {
+//     monthList.push({ value: i, label: i });
+//   }
+// }
+// // console.log(monthList);
 
 // 함수 시작
 function ViewPeriod() {
@@ -66,17 +66,17 @@ function ViewPeriod() {
     setIsOpen(false);
   };
 
-  //
-  const [selectedYear, setSelectedYear] = useState();
-  const yearHandler = (event) => {
-    setSelectedYear(event.value);
-    // console.log(event.value);
-  };
+  // //
+  // const [selectedYear, setSelectedYear] = useState();
+  // const yearHandler = (event) => {
+  //   setSelectedYear(event.value);
+  //   // console.log(event.value);
+  // };
 
-  const yearData = {
-    year: selectedYear,
-  };
-  console.log(yearData.year);
+  // const yearData = {
+  //   year: selectedYear,
+  // };
+  // console.log(yearData.year);
 
   return (
     <div>
@@ -89,7 +89,7 @@ function ViewPeriod() {
         contentLabel="Example Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <div>
+        {/* <div>
           <h2>시작 년/월</h2>
           <h3>시작 년도</h3>
           <Select options={yearList} onChange={yearHandler} />
@@ -99,7 +99,7 @@ function ViewPeriod() {
           ) : (
             <Select options={monthList} />
           )}
-        </div>
+        </div> */}
 
         <button onClick={closeModal}>close</button>
 
