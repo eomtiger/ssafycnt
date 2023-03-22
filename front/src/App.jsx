@@ -1,17 +1,25 @@
+import { useState } from "react";
+
 import "./App.css";
-import NavBar from "./components/organism/NavBar";
-import DataFirst from "./components/organism/DataFirst";
-import DataSecond from "./components/organism/DataSecond";
-import DataThird from "./components/organism/DataThird/index";
-import WorldMap from "./components/organism/WorldMap";
+
+import Item from "./components/pages/Item";
+import Nation from "./components/pages/Nation";
 function App() {
+  const [nationOrItem, setNationOrItem] = useState("nation");
+
+  const setNationOrItemHandler = (e) => {
+    setNationOrItem(e);
+  };
+
   return (
     <>
-      <NavBar />
-      <WorldMap />
-      <DataFirst />
-      <DataSecond />
-      <DataThird />
+      {nationOrItem === "nation" ? (
+        <>
+          <Nation setNationOrItemHandler={setNationOrItemHandler} />
+        </>
+      ) : (
+        <Item setNationOrItemHandler={setNationOrItemHandler} />
+      )}
     </>
   );
 }
