@@ -7,18 +7,11 @@ import DataSecond from "../../organism/DataSecond";
 import DataThird from "../../organism/DataThird/index";
 import WorldMap from "../../organism/WorldMap";
 
-function Nation({ setNationOrItemHandler }) {
+function Nation() {
   return (
     <>
       <NavBar />
-      <button
-        className="bg-indigo-500 mt-10"
-        onClick={() => {
-          setNationOrItemHandler("item");
-        }}
-      >
-        누르면 품목 페이지 렌더링
-      </button>
+
       <WorldMap />
       <DataFirst />
       <DataSecond />

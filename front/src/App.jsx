@@ -1,3 +1,4 @@
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./App.css";
@@ -13,13 +14,19 @@ function App() {
 
   return (
     <>
-      {nationOrItem === "nation" ? (
+      <Routes>
+        <Route path="/" element={<Navigate to="/nation/all/2203-2302" />} />
+        <Route path="/nation/:nationName/:duration" element={<Nation />} />
+        <Route path="/item/:hsCode/:duration" element={<Item />} />
+      </Routes>
+
+      {/* {nationOrItem === "nation" ? (
         <>
           <Nation setNationOrItemHandler={setNationOrItemHandler} />
         </>
       ) : (
         <Item setNationOrItemHandler={setNationOrItemHandler} />
-      )}
+      )} */}
     </>
   );
 }
