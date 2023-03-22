@@ -7,6 +7,7 @@ import excel from "./../../../assets/excel.svg";
 // import pdf from "./../../../../public/assets/pdf.svg";
 import NationOrItem from "../../molecules/navBar/NationOrItem";
 import NationSelector from "../../molecules/navBar/NationSelector";
+import ItemSelector from "../../molecules/navBar/ItemSelector";
 import ViewPeriod from "../../molecules/navBar/ViewPeriod";
 
 function NavBar() {
@@ -16,7 +17,7 @@ function NavBar() {
   // stateHandler라는 함수를 사용하여 state를 이용
   const stateHandler = (event) => {
     setState(event);
-    console.log(event);
+    // console.log(event);
   };
 
   // ViewPeriod
@@ -37,7 +38,7 @@ function NavBar() {
         </div>
 
         {state === "Nation" ? <NationSelector /> : null}
-        {state === "Item" ? <div>항목</div> : null}
+        {state === "Item" ? <ItemSelector /> : null}
 
         <div>
           <ViewPeriod />

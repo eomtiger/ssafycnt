@@ -2,17 +2,6 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Select from "react-select";
 
-// const customStyles = {
-//   content: {
-//     top: "50%",
-//     left: "50%",
-//     right: "auto",
-//     bottom: "auto",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -50%)",
-//   },
-// };
-
 // 오늘 날짜
 const today = new Date();
 // // 오늘 기준 년
@@ -34,7 +23,12 @@ for (let i = todayYear; i >= todayYear - 10; i = i - 1) {
     yearList.push({ value: i, label: i });
   }
 }
-// console.log(yearList[0].value);
+
+// const endYearList = [];
+// for (let i = yearList[10].value; i < startYM.startY; i++) {
+//   endYearList.push({ value: i, label: i });
+// }
+// console.log(endYearList);
 
 // 올해 년도 기준, 월 표시
 // const todayYearMonthList = [
@@ -75,16 +69,16 @@ for (let i = 1; i <= 12; i = i + 1) {
 
 // 함수 시작
 function ViewPeriod() {
-  const [IsOpen, setIsOpen] = React.useState(false);
+  const [IsOpen, setIsOpen] = useState(false);
 
   // Modal을 Open하는 함수
   const openModal = () => {
     setIsOpen(true);
   };
 
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-  };
+  // const afterOpenModal = () => {
+  //   // references are now sync'd and can be accessed.
+  // };
 
   // Modal을 Close하는 함수
   const closeModal = () => {
@@ -109,9 +103,11 @@ function ViewPeriod() {
     startY: startYear,
     startM: startMonth,
   };
+  console.log(startYM);
 
   const searchStart = startYM.startY + "." + startYM.startM;
-  console;
+  const searchStartNum = startYM.startY * 100 + startYM.startM;
+  // console.log("searchStartNum", searchStartNum);
 
   // 종료 연도 선택 함수
   const [endYear, setEndYear] = useState();
@@ -130,29 +126,65 @@ function ViewPeriod() {
     endY: endYear,
     endM: endMonth,
   };
+  // console.log(endYM);
 
+  // 조회 기간 표현
   const searchEnd = endYM.endY + "." + endYM.endM;
+  const searchEndNum = endYM.endY * 100 + endYM.endM;
+  // console.log("searchEndNum", searchEndNum);
 
-  console.log(endYM);
+  // 종료 연도 리스트(시작년도 이후로 부터)
+  const endYearList = [];
+  for (let i = todayYear; i >= startYM.startY; i--) {
+    endYearList.push({ value: i, label: i });
+  }
+  // console.log(endYearList);
+
+  // 종료 월 리스트
+  const endMonthList = [];
+  // 시작 연도와 올해가 동일하면,
+  if (startYM.startY === todayYear) {
+    for (let i = startYM.startM; i <= todayMonth; i++) {
+      endMonthList.push({ value: i, label: i });
+    }
+  } else if (startYM.startY < todayYear && startYM.startY === endYM.endY) {
+    for (let i = startYM.startM; i <= 12; i++) {
+      endMonthList.push({ value: i, label: i });
+    }
+  } else if (startYM.startY < todayYear && endYM.endY === todayYear) {
+    for (let i = 1; i <= todayMonth; i++) {
+      endMonthList.push({ value: i, label: i });
+    }
+  } else if (startYM.startY < todayYear && startYM.startY < endYM.endY) {
+    for (let i = 1; i <= 12; i++) {
+      endMonthList.push({ value: i, label: i });
+    }
+  }
+
+  // 최종제출시 에러 검토
+  const durationHandler = () => {
+    if (searchStartNum > searchEndNum) {
+      alert("조회시작기간이 조회종료기간보다 빠릅니다.");
+    }
+  };
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>조회 기간 설정</button>
       <Modal
+        ariaHideApp={false}
         isOpen={IsOpen}
-        onAfterOpen={afterOpenModal}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         // style={customStyles}
         contentLabel="Example Modal"
       >
         <button onClick={closeModal}>close</button>
-        {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
         <div>
           <h2>시작 년/월</h2>
           <br />
           <h3>시작 년도</h3>
           <Select options={yearList} onChange={startYearHandler} />
-          {/* <Select options={yearList} /> */}
           <h3>시작 월</h3>
           {startYM.startY === todayYear ? (
             <Select options={todayYearMonthList} onChange={startMonthHandler} />
@@ -167,13 +199,12 @@ function ViewPeriod() {
           <h2>종료 년/월</h2>
           <br />
           <h3>종료 년도</h3>
-          <Select options={yearList} onChange={endYearHandler} />
-          {/* <Select options={yearList} /> */}
+          <Select options={endYearList} onChange={endYearHandler} />
           <h3>종료 월</h3>
           {endYM.endY === todayYear ? (
-            <Select options={todayYearMonthList} onChange={endMonthHandler} />
+            <Select options={endMonthList} onChange={endMonthHandler} />
           ) : (
-            <Select options={monthList} onChange={endMonthHandler} />
+            <Select options={endMonthList} onChange={endMonthHandler} />
           )}
         </div>
 
@@ -187,10 +218,7 @@ function ViewPeriod() {
           </h2>
         </div>
 
-        <form>
-          <input />
-          <button>적용하기</button>
-        </form>
+        <button onClick={durationHandler}>적용하기</button>
       </Modal>
     </div>
   );
