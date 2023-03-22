@@ -10,10 +10,10 @@ function DataThird() {
   const exportImportStateHandler = () => {
     setExportImportState(!exportImportState);
   };
-  const getData = () => {
-    const data = [];
-    return [...data, ...data, ...data];
-  };
+  // const getData = () => {
+  //   const data = [];
+  //   return [...data, ...data, ...data];
+  // };
   const columns = useMemo(
     () => [
       { accessor: "order", Header: "순위" },
@@ -23,9 +23,9 @@ function DataThird() {
         Cell: AvatarCell,
       },
       { accessor: "date", Header: "조회기준" },
-      { accessor: "amount", Header: "수입금액($)" },
+      { accessor: "amount", Header: "금액($)" },
       { accessor: "amountPortion", Header: "점유율(금액)" },
-      { accessor: "weight", Header: "수입중량(kg)" },
+      { accessor: "weight", Header: "중량(kg)" },
       { accessor: "weightPortion", Header: "점유율(중량)" },
       { accessor: "hsCode", Header: "품목코드(HS코드)" },
     ],
