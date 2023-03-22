@@ -1,5 +1,7 @@
 package com.ssafy.ssafycntnewsservice.service;
 
-public interface NewsService {
+import java.util.Map;
 
+public interface NewsService {
+    Map<String, Object> getNewsData();
 }
