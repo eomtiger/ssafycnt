@@ -34,7 +34,7 @@ function DataThird() {
 
   const data = useMemo(
     () =>
-      Array(30)
+      Array(100)
         .fill()
         .map(() => ({
           order: faker.datatype.number({ min: 1, max: 10 }),
