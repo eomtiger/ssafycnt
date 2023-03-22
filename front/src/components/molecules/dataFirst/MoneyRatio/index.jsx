@@ -8,8 +8,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 ChartJS.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
 function NationRatio() {
+    const nation = '전세계'
     const labels = ['수출', '수입']
-    const values = [50, 25]
+    const values = [750000, 250000]
     const sumValues = values[0] + values[1]
 
     const data = {
@@ -32,7 +33,7 @@ function NationRatio() {
             }
         ],
     }
-
+    
     const options = {
         responsive: false, //크기 변경을 위함
         plugins: {
@@ -42,28 +43,46 @@ function NationRatio() {
                     boxWidth: 12,
                 },
             },
-            datalabels: {
-                color: '#ffffff', 
-                font: {
-                    weight: 'bold',
-                    size: 24,
+            tooltip: {
+                callbacks: {
+                    label: ((tooltipItem, data) => {
+                        return tooltipItem.formattedValue + ' 원'
+                    })
                 }
-            }
+            },
+            datalabels: {
+                display: true,
+                color: 'white', 
+                backgroundColor: '#404040',
+                borderRadius: 3,
+            },
+        },
+    }
+
+    const textCenter = {
+        id: 'textCenter',
+        beforeDatasetsDraw(chart, args, pluginOptions) {
+            const { ctx, data } = chart
+            
+            ctx.save()
+            ctx.font = 'bolder 20px Arial'
+            ctx.fillStyle = 'red'
+            ctx.textAlign = 'center'
+            ctx.textBaseline = 'middle'
+            ctx.fillText('금액기준', chart.getDatasetMeta(0).data[0].x, chart.getDatasetMeta(0).data[0].y)
         }
     }
     
     return (
-        <div>
+        <div className='mb-5'>
             <div className='flex justify-between items-center ml-2 text-left'>
                 <div>
-                    <div className='mt-1 font-bold text-xl font-mun'>수출입 비중</div>
-                </div>
-                <div className='flex w-40 h-8 justify-center items-center bg-[#f3f4f6] font-bold text-xs'>
-                    <p className='text-[#4b5563] font-mun'>수출금액</p>
-                    <p className='ml-4 font-mun'>단위: 백만달러</p>
+                    <div className='w-96 mt-1 mb-3 font-bold text-xl font-mun'>수출입 비중 ( 한국 ⇆ { nation } )</div>
+                    <hr className='mb-10'/>
                 </div>
             </div>
-            <Doughnut options={options} data={data} width={400} height={300} />
+           
+            <Doughnut options={options} data={data} width={400} height={300} plugins={[textCenter]} />
         </div>
     )
   }
