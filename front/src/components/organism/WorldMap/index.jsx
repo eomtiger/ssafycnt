@@ -20,9 +20,7 @@ function WorldMap() {
   };
 
   useEffect(() => {
-    return () => {
-      console.log("a:", a);
-    };
+    return () => {};
   }, [a]);
 
   const options = {
@@ -61,6 +59,7 @@ function WorldMap() {
         <div className="mr-5">수입</div>
         <div className="w-5 h-5 rounded-full bg-yellow-300 mr-3"></div>
         <div className="mr-5">수출입</div>
+        <div className="ml-20">{a}</div>
       </div>
       <Chart
         chartType="GeoChart"
