@@ -30,9 +30,6 @@ dependencies {
 	testImplementation("org.springframework.batch:spring-batch-test")
 	// 크롤링
 	implementation("org.jsoup:jsoup:1.15.4")
-	// 단어 분석
-	// jsoup HTML parser library
-	implementation("org.jsoup:jsoup:1.15.4")
 	// KOMORAN
 	implementation("com.github.shin285:KOMORAN:3.3.4")
 	// JPA Hibernate
