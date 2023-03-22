@@ -4,6 +4,11 @@ import LineChartTrend from './../../molecules/dataSecond/LineGraph/index'
 import {useState} from 'react' 
 
 function DataSecond() {
+
+  // 서버로 부터 받아온 데이터
+  // 자동차, 가전제품, 반도체, 김치, 합성수지 (수출)
+  // 원유, 자동차부품, 의료용 기기, 향신료, 타코 (수입)
+
   const [currentState, chagneState] = useState([0, 0, '모든 품목', '수출']) // [Export, Import] clicked???
 
   const onChangeExportClick = (item) => {
