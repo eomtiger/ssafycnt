@@ -95,9 +95,9 @@ function ViewPeriod() {
     // console.log(event.value);
   };
 
-  // const yearData = {
-  //   year: selectedYear,
-  // };
+  const yearData = {
+    year: selectedYear,
+  };
   // console.log(yearData.year);
 
   return (
@@ -123,7 +123,6 @@ function ViewPeriod() {
             <Select options={monthList} />
           )}
         </div>{" "}
-        */}
         <button onClick={closeModal}>close</button>
         <form>
           <input />
