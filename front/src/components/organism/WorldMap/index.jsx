@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 
 function WorldMap() {
-  const [a, setA] = useState(-1);
+  const [a, setA] = useState("world");
   const data = [
     ["Country", "수출입", "수출"],
     ["Germany", 2, 100],
@@ -15,9 +15,19 @@ function WorldMap() {
     ["South Korea", 2, 100],
     ["Japan", 1, 100],
   ];
+  const setAHandler = (e) => {
+    setA(data[e][0]);
+  };
+
+  useEffect(() => {
+    return () => {
+      console.log("a:", a);
+    };
+  }, [a]);
+
   const options = {
     // backgroundColor: "",
-    colorAxis: { colors: ["red", "yellow", "blue"] },
+    colorAxis: { colors: ["FCA5A5", "FDE047", "93C5FD"] },
     // datalessRegionColor: "black",
     // forceIFrame: 20,
     geochartVersion: 11,
@@ -34,16 +44,11 @@ function WorldMap() {
       callback({ chartWrapper }) {
         const selectedId = chartWrapper.getChart().getSelection();
         if (selectedId.length) {
-          console.log("selected Id", selectedId);
-          setA(selectedId[0]["row"]);
-          console.log(data[a + 1][0]);
+          // console.log("selected Id", selectedId);
+          // setA(selectedId[0]["row"]);
+          // console.log(data[a + 1][0]);
+          setAHandler(selectedId[0]["row"] + 1);
         }
-      },
-    },
-    {
-      eventName: "ready",
-      callback() {
-        console.log("123123123123");
       },
     },
   ];

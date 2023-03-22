@@ -218,7 +218,7 @@ function Table({ columns, data, exportImportState }) {
                           setPageSize(Number(e.target.value));
                         }}
                       >
-                        {[5, 10, 20].map((pageSize) => (
+                        {[5, 10, 50].map((pageSize) => (
                           <option key={pageSize} value={pageSize}>
                             Show {pageSize}
                           </option>
