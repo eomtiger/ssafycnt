@@ -21,7 +21,9 @@ ChartJS.register(
     Legend
   );
 
-Chart.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
+ChartJS.defaults.font.family = "munchebu"             // Chart 이내 글자체 통일
+ChartJS.defaults.font.size = 10             // Chart 이내 글자체 통일
+ChartJS.defaults.color = "black";
 
 function TrendItems(props) {
     const imOrExport = props.anyItem[3]
@@ -29,17 +31,31 @@ function TrendItems(props) {
 
 
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
-    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May']    // Top5 품목
-    let values = [272000000000, 268000000000, 302000000000, 120000000000, 100000000]    // Top5 품목 수출량
+    //const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May']    // Top5 품목
+    const labels = Object.keys(props.anyItem[4])
+    //let values = [272000000000, 268000000000, 302000000000, 120000000000, 100000000]    // Top5 품목 수출량
+    let values = Object.values(props.anyItem[4])    // Top5 품목 수출량
     values = values.map(function(x) {
         return x / 1000000
-      });
+    });
 
+    let changeRate = [-1, 3, 2, -5]
+    
     const options = {
         indexAxis: 'x',
         plugins: {
                     tooltip: {
-                        enabled: true        // 그래프 호버시, 모달창 안나오게 하기
+                        enabled: true,        // 그래프 호버시, 모달창 안나오게 하기
+                        callbacks: {
+                                label: function(tooltipItem, data) {
+                                    return '금액 : ' + tooltipItem.dataset.data[tooltipItem.dataIndex] + ' 백만달러'
+                                },
+                                afterLabel: function (tooltipItem, data) {
+                                    return '증감율 : ' + tooltipItem.dataset.data1[tooltipItem.dataIndex] + ' %'
+                                },
+                        },
+                        displayColors: false,
+                        // bodyColor: '#0066ff',
                     },
                     legend: {               // 범례 스타일링
                         display: false,
@@ -60,19 +76,20 @@ function TrendItems(props) {
     }
     
     const data = {
-      labels,
-      datasets: [
+        labels,
+        datasets: [
           {
             type: 'line',
             borderRadius: 5,
             data: values,
+            data1: changeRate
         },
       ],
     };
 
     return (
         <div>
-            <div className='flex justify-between items-center ml-2 text-left'>
+            <div className='flex justify-between items-center ml-2 text-left mb-3'>
                 <div>
                     <div className='mt-1 font-bold text-base text-gray-12'>{ pickItem }</div>                {/* 동적값으로 할당 해야함 */}               
                     <div className='mt-1 font-bold text-xl font-mun'>{imOrExport} 추세</div>

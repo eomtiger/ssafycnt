@@ -22,7 +22,9 @@ ChartJS.register(
     Legend
   );
 
-Chart.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
+ChartJS.defaults.font.family = "munchebu"             // Chart 이내 글자체 통일
+ChartJS.defaults.font.size = 10             // Chart 이내 글자체 통일
+ChartJS.defaults.color = "black";
 function ImportTop5(props) {
     let pickNation = '전세계'
 
