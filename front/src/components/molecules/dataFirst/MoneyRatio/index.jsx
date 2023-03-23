@@ -7,7 +7,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 
 ChartJS.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
-function NationRatio() {
+function NationRatio(props) {
+
+    console.log(props)
     const nation = '전세계'
     const labels = ['수출', '수입']
     const values = [750000, 250000]
