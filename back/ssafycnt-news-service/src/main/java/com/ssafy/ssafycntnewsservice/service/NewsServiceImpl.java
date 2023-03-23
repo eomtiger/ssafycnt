@@ -1,6 +1,7 @@
 package com.ssafy.ssafycntnewsservice.service;
 
 import com.ssafy.ssafycntnewsservice.dto.NewsDto;
+import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class NewsServiceImpl implements NewsService{
     @Override
     public List<NewsDto> getNewsData() {

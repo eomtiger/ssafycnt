@@ -13,19 +13,14 @@ spring:
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
-#    username: isak
-#    password: 1234
     username: sa
   jpa:
-    # JPA? ???? SQL? ? ? ??.
     show-sql: true
     hibernate:
-      ddl-auto: create
-  # ?? ?? ? ?? always
+      ddl-auto: create  #always
   output:
     ansi:
-      enabled: always
-# ???? ??? ?? trace
+      enabled: always   # trace
 logging:
   level:
     org.hibernate.type: trace
