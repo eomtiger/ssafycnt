@@ -27,7 +27,7 @@ function Nation() {
     <>
       <NavBar />
       <WorldMap data1={data} />
-      <DataFirst />
+      <DataFirst data1={data} />
       <DataSecond />
       <DataThird />
     </>
