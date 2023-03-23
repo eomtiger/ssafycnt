@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Chart from "react-google-charts";
 
-function WorldMap() {
-  const [a, setA] = useState("world");
+function WorldMap({ data1 }) {
+  const [a, setA] = useState("all");
+  const navigate = useNavigate();
+
   const data = [
     ["Country", "수출입", "수출"],
     ["Germany", 2, 100],
-    ["United States", 3, 100],
+    ["US", 3, 100],
     ["Brazil", 2, 100],
     ["Canada", 3, 100],
     ["France", 1, 100],
@@ -20,7 +23,7 @@ function WorldMap() {
   };
 
   useEffect(() => {
-    return () => {};
+    navigate("/nation/" + a + "/2203-2302");
   }, [a]);
 
   const options = {
@@ -42,14 +45,12 @@ function WorldMap() {
       callback({ chartWrapper }) {
         const selectedId = chartWrapper.getChart().getSelection();
         if (selectedId.length) {
-          // console.log("selected Id", selectedId);
-          // setA(selectedId[0]["row"]);
-          // console.log(data[a + 1][0]);
           setAHandler(selectedId[0]["row"] + 1);
         }
       },
     },
   ];
+
   return (
     <>
       <div className="flex mb-5 flex-start ml-10 mt-5">
@@ -60,6 +61,7 @@ function WorldMap() {
         <div className="w-5 h-5 rounded-full bg-yellow-300 mr-3"></div>
         <div className="mr-5">수출입</div>
         <div className="ml-20">{a}</div>
+        <div className="ml-20">balance :{data1.balpayments}</div>
       </div>
       <Chart
         chartType="GeoChart"
