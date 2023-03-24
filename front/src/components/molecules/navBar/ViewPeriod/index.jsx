@@ -24,12 +24,6 @@ for (let i = todayYear; i >= todayYear - 10; i = i - 1) {
   }
 }
 
-// const endYearList = [];
-// for (let i = yearList[10].value; i < startYM.startY; i++) {
-//   endYearList.push({ value: i, label: i });
-// }
-// console.log(endYearList);
-
 // 올해 년도 기준, 월 표시
 // const todayYearMonthList = [
 //   { value: 1, label: 1 },
@@ -103,7 +97,7 @@ function ViewPeriod() {
     startY: startYear,
     startM: startMonth,
   };
-  console.log(startYM);
+  // console.log(startYM);
 
   const searchStart = startYM.startY + "." + startYM.startM;
   const searchStartNum = startYM.startY * 100 + startYM.startM;
