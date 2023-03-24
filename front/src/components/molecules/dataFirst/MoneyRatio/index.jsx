@@ -2,14 +2,15 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useParams } from 'react-router-dom';
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 
 ChartJS.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
 function NationRatio({data1}) {
-
-    const nation = '전세계'
+    // let { nationName, duration } = useParams();
+    const nation = data1.nation
     const labels = ['수출', '수입']
     const values = [data1.expdlr, data1.impdlr]
     const sumValues = values[0] + values[1]
