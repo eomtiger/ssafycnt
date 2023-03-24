@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 
 // 오늘 날짜
@@ -63,6 +64,8 @@ for (let i = 1; i <= 12; i = i + 1) {
 
 // 함수 시작
 function ViewPeriod() {
+  const params = useParams();
+  const navigate = useNavigate();
   const [IsOpen, setIsOpen] = useState(false);
 
   // Modal을 Open하는 함수
@@ -101,7 +104,7 @@ function ViewPeriod() {
 
   const searchStart = startYM.startY + "." + startYM.startM;
   const searchStartNum = startYM.startY * 100 + startYM.startM;
-  // console.log("searchStartNum", searchStartNum);
+  console.log("searchStartNum", searchStartNum);
 
   // 종료 연도 선택 함수
   const [endYear, setEndYear] = useState();
@@ -125,7 +128,7 @@ function ViewPeriod() {
   // 조회 기간 표현
   const searchEnd = endYM.endY + "." + endYM.endM;
   const searchEndNum = endYM.endY * 100 + endYM.endM;
-  // console.log("searchEndNum", searchEndNum);
+  console.log("searchEndNum", searchEndNum);
 
   // 종료 연도 리스트(시작년도 이후로 부터)
   const endYearList = [];
@@ -155,10 +158,23 @@ function ViewPeriod() {
     }
   }
 
+  const duration =
+    (startYear * 100 + startMonth - 200000).toString() +
+    "-" +
+    (endYear * 100 + endMonth - 200000).toString();
+  // console.log(duration);
+  // useEffect(() => {
+  //   navigate("/nation/" + params.nationCode + "/" + duration);
+  // }, []);
+
   // 최종제출시 에러 검토
   const durationHandler = () => {
     if (searchStartNum > searchEndNum) {
       alert("조회시작기간이 조회종료기간보다 빠릅니다.");
+    } else {
+      useEffect(() => {
+        navigate("/nation/" + params.nationCode + "/" + duration);
+      }, [duration]);
     }
   };
 
@@ -212,7 +228,9 @@ function ViewPeriod() {
           </h2>
         </div>
 
-        <button onClick={durationHandler}>적용하기</button>
+        <form>
+          <button onClick={durationHandler}>적용하기</button>
+        </form>
       </Modal>
     </div>
   );

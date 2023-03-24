@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 import Code from "../../../../assets/Code.json";
+import unImg from "./../../../../../assets/nationalFlags/UN.png";
 
-const nationCode = [];
-for (let i = 3; i < Code.국가코드.length; i++) {
-  nationCode.push();
-}
-
-const imgSrc = "./../../../../../assets/nationalFlags/" + "AL" + ".gif";
+// const onErrorImg = (e) => {
+//   e.target.src = unImg;
+// };
 
 const nationOptions = [];
 for (let i = 3; i < Code.국가코드.length; i++) {
@@ -15,16 +14,18 @@ for (let i = 3; i < Code.국가코드.length; i++) {
     "./../../../../../assets/nationalFlags/" +
     Code.국가코드[i].Column1 +
     ".gif";
-  const altImgSrc = "./../../../../../assets/nationalFlags/UN.png";
+  const onErrorImg = (e) => {
+    e.target.src = unImg;
+  };
+  // const altImgSrc = "./../../../../../assets/nationalFlags/UN.png";
   nationOptions.push({
-    value: Code.국가코드[i].Column1,
+    value: Code.국가코드[i].Column1 + " / " + Code.국가코드[i].Column2,
     label: (
-      <div>
-        <img
-          src={imgSrc}
-          onerror="this.src='./../../../../../assets/nationalFlags/UN.png';"
-        />
-        {Code.국가코드[i].Column2}
+      <div className="flex flex-inline ">
+        <div className="w-10 h-10">
+          <img src={imgSrc} onError={onErrorImg} alt="" />
+        </div>
+        <div className="">{Code.국가코드[i].Column2}</div>
       </div>
     ),
     // label: Code.국가코드[i].Column2,
@@ -32,14 +33,37 @@ for (let i = 3; i < Code.국가코드.length; i++) {
     // value: Code.국가코드[i]["Column1"]
   });
 }
-// console.log(nationOptions);
-
-// const imgSrc = "./../../../../../assets/nationalFlags/" + AL + ".gif";
+// console.log(nationOptions[0].value);
 
 function NationSelector() {
+  const params = useParams();
+  const [nationSelect, setNationSelect] = useState(params.nationCode);
+  const navigate = useNavigate();
+
+  const nationSelectHandler = (event) => {
+    setNationSelect(event.value);
+  };
+  console.log(nationSelect);
+
+  const nationState = {
+    nationCode: nationSelect.split(" / ")[0],
+    nationName: nationSelect.split(" / ")[1],
+  };
+
+  console.log(nationState);
+
+  useEffect(() => {
+    navigate("/nation/" + nationState.nationCode + "/" + params.duration);
+  }, [nationSelect]);
+
   return (
     <div>
-      <Select options={nationOptions} placeholder="전세계" />
+      <Select
+        options={nationOptions}
+        placeholder="국가를 검색해주세요."
+        defaultValue={nationOptions[0]}
+        onChange={nationSelectHandler}
+      />
     </div>
   );
 }

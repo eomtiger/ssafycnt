@@ -16,7 +16,7 @@ function Nation() {
     axios
       .get(
         "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/nation/" +
-          params.nationName +
+          params.nationCode +
           "/" +
           params.duration
       )
