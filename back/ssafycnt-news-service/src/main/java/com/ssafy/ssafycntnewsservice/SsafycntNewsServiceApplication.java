@@ -1,16 +1,13 @@
 package com.ssafy.ssafycntnewsservice;
 
-import com.ssafy.ssafycntnewsservice.configuration.NewsJobConfiguration;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-//@EnableBatchProcessing
-//@EnableDiscoveryClient
 @SpringBootApplication
+@EnableDiscoveryClient
 public class SsafycntNewsServiceApplication {
 
 	public static void main(String[] args) {
@@ -18,6 +15,10 @@ public class SsafycntNewsServiceApplication {
 
 //		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(NewsJobConfiguration.class);
 //		Job simpleJob = applicationContext.getBean("Job", Job.class);
+	}
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
 	}
 
 }

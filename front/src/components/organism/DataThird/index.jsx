@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 import Table from "../../molecules/dataThird/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
@@ -7,13 +8,17 @@ import ExportImportToggle from "../../molecules/dataThird/ExportImportToggle";
 function DataThird() {
   const [exportImportState, setExportImportState] = useState(true);
 
+  const params = useParams();
+
+  ///////여기에서 axios 쓴다
+  useEffect(() => {
+    console.log("세부정보", params);
+  }, [params]);
+
   const exportImportStateHandler = () => {
     setExportImportState(!exportImportState);
   };
-  // const getData = () => {
-  //   const data = [];
-  //   return [...data, ...data, ...data];
-  // };
+
   const columns = useMemo(
     () => [
       { accessor: "order", Header: "순위" },
@@ -57,7 +62,10 @@ function DataThird() {
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="flex-start" onClick={exportImportStateHandler}>
-          <ExportImportToggle exportImportState={exportImportState} />
+          <ExportImportToggle
+            exportImportState={exportImportState}
+            params={params}
+          />
         </div>
 
         <div className="mt-4">
