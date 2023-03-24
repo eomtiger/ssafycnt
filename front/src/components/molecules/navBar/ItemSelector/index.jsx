@@ -83,7 +83,7 @@ function ItemSelector() {
     setIsOpen(false);
   };
 
-  const [codeCoulmn, setCodeColumn] = useState("");
+  const [codeCoulmn, setCodeColumn] = useState(itemOptions[0].value);
   const codeColumnHandler = (event) => {
     setCodeColumn(event.value);
   };
@@ -94,7 +94,7 @@ function ItemSelector() {
     tenDigit: codeCoulmn.split(" / ")[2],
   };
 
-  // console.log(allCodeColumn);
+  console.log(allCodeColumn);
   return (
     <div>
       <button onClick={openModal}>품목 설정</button>
@@ -108,6 +108,7 @@ function ItemSelector() {
       >
         <AsyncSelect
           cacheOptions
+          defaultValue={itemOptions[0]}
           defaultOptions={false}
           loadOptions={promiseOptions}
           filterOption={null}
