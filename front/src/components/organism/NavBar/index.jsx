@@ -20,13 +20,6 @@ function NavBar() {
     // console.log(event);
   };
 
-  // ViewPeriod
-  // const [selectedYear, setSelectedYear] = useState();
-  // const YearHandler = (event) => {
-  //   console.log(event);
-  //   setSelectedYear(event);
-  // };
-
   return (
     <>
       <nav className="flex justify-between space-x-5 sticky top-0 border-8 border-rose-400">
