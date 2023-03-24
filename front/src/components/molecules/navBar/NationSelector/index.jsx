@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 import Code from "../../../../assets/Code.json";
 import unImg from "./../../../../../assets/nationalFlags/UN.png";
@@ -35,17 +36,25 @@ for (let i = 3; i < Code.국가코드.length; i++) {
 // console.log(nationOptions[0].value);
 
 function NationSelector() {
-  const [nationSelect, setNationSelect] = useState(nationOptions[0].value);
+  const params = useParams();
+  const [nationSelect, setNationSelect] = useState(params.nationCode);
+  const navigate = useNavigate();
+
   const nationSelectHandler = (event) => {
     setNationSelect(event.value);
   };
-  // console.log(nationSelect);
+  console.log(nationSelect);
 
   const nationState = {
     nationCode: nationSelect.split(" / ")[0],
     nationName: nationSelect.split(" / ")[1],
   };
-  // console.log(nationState);
+
+  console.log(nationState);
+
+  useEffect(() => {
+    navigate("/nation/" + nationState.nationCode + "/" + params.duration);
+  }, [nationSelect]);
 
   return (
     <div>
