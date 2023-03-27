@@ -29,13 +29,14 @@ function TextMining() {
   useEffect(() => {
     axios.get(url).then((response) => setTextData(response.data));
   }, []);
-  console.log("textData", textData);
+  // console.log("textData", textData.length);
 
   const textDataKeys = Object.keys(textData);
-  // // console.log(textDataKeys);
+  console.log(textDataKeys.length);
 
-  const textDataInfo = [];
-  for (let i = 0; i < textData.length - 500; i++) {
+  let textDataInfo = [];
+  for (let i = 0; i < textDataKeys.length; i++) {
+    // console.log(i);
     let wordString = textDataKeys[i];
     // console.log(wordString);
     textDataInfo.push({
@@ -44,16 +45,19 @@ function TextMining() {
     });
   }
   // console.log(textDataInfo);
+  let sorted = Object.entries(textDataInfo).sort((a, b) => a[1] - b[1]);
+
+  console.log("sorted", sorted);
 
   return (
     <>
-      <div>1</div>
-      {/* <WordCloud
-        data={textInfo}
+      {/* <div>1</div> */}
+      <WordCloud
+        data={textDataInfo}
         onWordClick={(event, d) => {
           console.log(`onWordClick: ${d.text}`);
         }}
-      /> */}
+      />
     </>
   );
 }
