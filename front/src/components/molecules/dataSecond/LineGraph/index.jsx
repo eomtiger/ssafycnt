@@ -29,12 +29,16 @@ function TrendItems(props) {
     const imOrExport = props.anyItem[3]
     const pickItem = props.anyItem[2]
 
+    // let firstExportData = {
+    //   "2023.01": 9013124124,
+    //   "2023.02": 9232412131
+    // }
+
 
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
-    //const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May']    // Top5 품목
-    const labels = Object.keys(props.anyItem[4])
-    //let values = [272000000000, 268000000000, 302000000000, 120000000000, 100000000]    // Top5 품목 수출량
+    let labels = Object.keys(props.anyItem[4])    // Top5 품목
     let values = Object.values(props.anyItem[4])    // Top5 품목 수출량
+
     values = values.map(function(x) {
         return x / 1000000
     });
