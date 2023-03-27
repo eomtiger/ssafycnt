@@ -37,7 +37,6 @@ for (let i = 1; i <= todayMonth; i = i + 1) {
     todayYearMonthList.push({ value: i, label: i });
   }
 }
-// console.log(todayYearMonthList);
 
 // 1월 ~ 12월
 // const monthList = [
@@ -60,7 +59,6 @@ for (let i = 1; i <= 12; i = i + 1) {
     monthList.push({ value: i, label: i });
   }
 }
-// console.log(monthList);
 
 // 함수 시작
 function ViewPeriod() {
@@ -86,7 +84,6 @@ function ViewPeriod() {
   const [startYear, setStartYear] = useState();
   const startYearHandler = (event) => {
     setStartYear(event.value);
-    // console.log(event.value);
   };
 
   // 시작 월 선택 함수
@@ -100,11 +97,9 @@ function ViewPeriod() {
     startY: startYear,
     startM: startMonth,
   };
-  // console.log(startYM);
 
   const searchStart = startYM.startY + "." + startYM.startM;
   const searchStartNum = startYM.startY * 100 + startYM.startM;
-  console.log("searchStartNum", searchStartNum);
 
   // 종료 연도 선택 함수
   const [endYear, setEndYear] = useState();
@@ -128,14 +123,12 @@ function ViewPeriod() {
   // 조회 기간 표현
   const searchEnd = endYM.endY + "." + endYM.endM;
   const searchEndNum = endYM.endY * 100 + endYM.endM;
-  console.log("searchEndNum", searchEndNum);
 
   // 종료 연도 리스트(시작년도 이후로 부터)
   const endYearList = [];
   for (let i = todayYear; i >= startYM.startY; i--) {
     endYearList.push({ value: i, label: i });
   }
-  // console.log(endYearList);
 
   // 종료 월 리스트
   const endMonthList = [];
@@ -159,23 +152,21 @@ function ViewPeriod() {
   }
 
   const duration =
-    (startYear * 100 + startMonth - 200000).toString() +
+    (startYear * 100 + startMonth).toString() +
     "-" +
-    (endYear * 100 + endMonth - 200000).toString();
-  // console.log(duration);
-  // useEffect(() => {
-  //   navigate("/nation/" + params.nationCode + "/" + duration);
-  // }, []);
+    (endYear * 100 + endMonth).toString();
+  console.log("duratinon", duration);
 
   // 최종제출시 에러 검토
   const durationHandler = () => {
     if (searchStartNum > searchEndNum) {
       alert("조회시작기간이 조회종료기간보다 빠릅니다.");
-    } else {
-      useEffect(() => {
-        navigate("/nation/" + params.nationCode + "/" + duration);
-      }, [duration]);
     }
+    // } else {
+    //   useEffect(() => {
+    //     navigate("/nation/" + params.nationCode + "/" + duration);
+    //   }, [duration]);
+    // }
   };
 
   return (
