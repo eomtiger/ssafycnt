@@ -4,10 +4,6 @@ import Select from "react-select";
 import Code from "../../../../assets/Code.json";
 import unImg from "./../../../../../assets/nationalFlags/UN.png";
 
-// const onErrorImg = (e) => {
-//   e.target.src = unImg;
-// };
-
 const nationOptions = [];
 for (let i = 3; i < Code.국가코드.length; i++) {
   let imgSrc =
@@ -17,7 +13,7 @@ for (let i = 3; i < Code.국가코드.length; i++) {
   const onErrorImg = (e) => {
     e.target.src = unImg;
   };
-  // const altImgSrc = "./../../../../../assets/nationalFlags/UN.png";
+
   nationOptions.push({
     value: Code.국가코드[i].Column1 + " / " + Code.국가코드[i].Column2,
     label: (
@@ -33,7 +29,6 @@ for (let i = 3; i < Code.국가코드.length; i++) {
     // value: Code.국가코드[i]["Column1"]
   });
 }
-// console.log(nationOptions[0].value);
 
 function NationSelector() {
   const params = useParams();
@@ -43,14 +38,11 @@ function NationSelector() {
   const nationSelectHandler = (event) => {
     setNationSelect(event.value);
   };
-  console.log(nationSelect);
 
   const nationState = {
     nationCode: nationSelect.split(" / ")[0],
     nationName: nationSelect.split(" / ")[1],
   };
-
-  console.log(nationState);
 
   useEffect(() => {
     navigate("/nation/" + nationState.nationCode + "/" + params.duration);
@@ -60,7 +52,7 @@ function NationSelector() {
     <div>
       <Select
         options={nationOptions}
-        placeholder="국가를 검색해주세요."
+        // placeholder="국가를 검색해주세요."
         defaultValue={nationOptions[0]}
         onChange={nationSelectHandler}
       />
