@@ -54,7 +54,7 @@ import axios from "axios";
 
 function DataSecond() {
   const params = useParams();
-  const [currentState, changeState] = useState([0, 0, '모든 품목', '수출', [], {}]); // initialize the state with an empty array
+  const [currentState, changeState] = useState([0, 0, '모든 품목', '수출', [], {}, '전세계', {}]); // initialize the state with an empty array
 
   useEffect(() => {
     axios
@@ -67,10 +67,8 @@ function DataSecond() {
       .then((response) => {
         const firstExportData = response.data.expdlrChange;
         const Top5Data = { '수출': response.data.exportTop, '수입': response.data.importTop };
-        // console.log(response)
-        
-        // update the state inside the .then() block
-        changeState([0, 0, '모든 품목', '수출', firstExportData, Top5Data]);
+        const nation = response.data.nationName
+        changeState([0, 0, '모든 품목', '수출', firstExportData, Top5Data, nation, firstExportData]);
       })
       .catch((error) => {
         console.log(error);
@@ -78,13 +76,11 @@ function DataSecond() {
   }, [params]);
 
   const onChangeExportClick = (item) => {
-    changeState([1, 0, item, '수출', currentState[4], Top5Data]); // use currentState[4] to keep the existing firstExportData array
-    console.log(currentState[4])
-  };
-
+    console.log('====='+currentState[7])
+    changeState([1, 0, item, '수출', currentState[4], currentState[5], currentState[6], currentState[5]['수출'][item]['exportChange']]);
+  }
   const onChangeImportClick = (item) => {
-    changeState([0, 1, item, '수입', currentState[4], Top5Data]); // use currentState[4] to keep the existing firstExportData array
-    console.log(currentState[4])
+    changeState([0, 1, item, '수입', currentState[4], currentState[5], currentState[6], currentState[5]['수입'][item]['importChange']]);
   };
 
   return (
