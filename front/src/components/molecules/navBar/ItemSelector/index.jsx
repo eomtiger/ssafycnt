@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import AsyncSelect from "react-select/async";
 import Modal from "react-modal";
 import Code from "../../../../assets/Code.json";
@@ -67,6 +68,10 @@ const promiseOptions = (inputValue) =>
   });
 
 function ItemSelector() {
+  const params = useParams();
+  const [itemSelect, setItemSelect] = useState(params.nationCode);
+  const navigate = useNavigate();
+
   const [IsOpen, setIsOpen] = useState(false);
 
   // Modal을 Open하는 함수
@@ -83,21 +88,26 @@ function ItemSelector() {
     setIsOpen(false);
   };
 
+  const itemSelectHandler = (event) => {
+    setItemSelect(event.value);
+  };
+
   const [codeCoulmn, setCodeColumn] = useState(itemOptions[0].value);
   const codeColumnHandler = (event) => {
     setCodeColumn(event.value);
   };
-
+  console.log(codeCoulmn.slice(0, 10));
   const allCodeColumn = {
     hsCode: codeCoulmn.split(" / ")[0],
     fourDigit: codeCoulmn.split(" / ")[1],
     tenDigit: codeCoulmn.split(" / ")[2],
   };
 
-  console.log(allCodeColumn);
   return (
     <div>
-      <button onClick={openModal}>품목 설정</button>
+      <button onClick={openModal} className="rounded-full bg-blue-300">
+        품목 설정
+      </button>
       <Modal
         ariaHideApp={false}
         isOpen={IsOpen}
@@ -129,6 +139,25 @@ function ItemSelector() {
         <br />
         <h2>세번 10단위품명</h2>
         <div>{allCodeColumn.tenDigit}</div>
+        <div className="mt-5 left-20px">
+          <button
+            onClick={() => {
+              closeModal();
+              navigate(
+                "/item/" + codeCoulmn.slice(0, 10) + "/" + params.duration
+              );
+            }}
+            className="rounded hover:rounded-lg bg-blue-300 mr-3"
+          >
+            확인
+          </button>
+          <button
+            onClick={closeModal}
+            className="rounded hover:rounded-lg bg-red-300 mr-3"
+          >
+            취소
+          </button>
+        </div>
       </Modal>
       <div></div>
     </div>

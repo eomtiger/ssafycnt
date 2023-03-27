@@ -61,7 +61,7 @@ for (let i = 1; i <= 12; i = i + 1) {
 }
 
 // 함수 시작
-function ViewPeriod() {
+function ViewPeriodI() {
   const params = useParams();
   const navigate = useNavigate();
   const [IsOpen, setIsOpen] = useState(false);
@@ -151,7 +151,7 @@ function ViewPeriod() {
     }
   }
 
-  const [duration, setDuratinon] = useState("");
+  const [duration, setDuratinon] = useState(params.duration);
 
   const setDurationHandler = () => {
     setDuratinon(
@@ -171,7 +171,7 @@ function ViewPeriod() {
   };
 
   useEffect(() => {
-    navigate("/nation/" + params.nationCode + "/" + duration);
+    navigate("/item/" + params.hsCode + "/" + duration);
   }, [duration]);
 
   return (
@@ -235,4 +235,4 @@ function ViewPeriod() {
   );
 }
 
-export default ViewPeriod;
+export default ViewPeriodI;
