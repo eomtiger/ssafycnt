@@ -5,11 +5,6 @@ import com.ssafy.ssafycntuserservice.jpa.UserEntity;
 import com.ssafy.ssafycntuserservice.service.UserService;
 import com.ssafy.ssafycntuserservice.vo.RequestUser;
 import com.ssafy.ssafycntuserservice.vo.ResponseUser;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.ResponseUtil;
@@ -25,9 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/api")
+@RequestMapping("/")
 public class UserController {
     private Environment env;
     private UserService userService;
@@ -40,14 +34,14 @@ public class UserController {
     /*
     서비스가 살아있는지 확인하기 위한 테스트 요청
      */
-    @Operation(summary = "서비스 헬스 체크", description = "서비스가 살아있는지 확인합니다.", tags = {"User Controller"})
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(schema = @Schema(implementation = String.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+//    @Operation(summary = "서비스 헬스 체크", description = "서비스가 살아있는지 확인합니다.", tags = {"User Controller"})
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", description = "OK",
+//                    content = @Content(schema = @Schema(implementation = String.class))),
+//            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+//            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+//            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+//    })
     @GetMapping("/health_check")
     public String status() {
 
@@ -60,14 +54,14 @@ public class UserController {
     ResponseEntity 객체에 ResponseUser 개체를 보내줌으로 Modelmappp을 통해서
     UserDto에서 ResponseUser 개체의 mapping되는 컬럼만을 받는다.
      */
-    @Operation(summary = "회원 가입 요청", description = "회원 정보를 등록합니다.", tags = {"User Controller"})
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(schema = @Schema(implementation = UserDto.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+//    @Operation(summary = "회원 가입 요청", description = "회원 정보를 등록합니다.", tags = {"User Controller"})
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", description = "OK",
+//                    content = @Content(schema = @Schema(implementation = UserDto.class))),
+//            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+//            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+//            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+//    })
     @PostMapping("/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user){
         ModelMapper mapper = new ModelMapper();
@@ -84,14 +78,14 @@ public class UserController {
     }
 
 
-    @Operation(summary = "회원 정보 조회", description = "모든 회원 정보 조회합니다.", tags = { "User Controller" })
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(schema = @Schema(implementation = ResponseUser.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+//    @Operation(summary = "회원 정보 조회", description = "모든 회원 정보 조회합니다.", tags = { "User Controller" })
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", description = "OK",
+//                    content = @Content(schema = @Schema(implementation = ResponseUser.class))),
+//            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+//            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+//            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+//    })
     @GetMapping("/users")
     public ResponseEntity<List<ResponseUser>> getUsers() {
         Iterable<UserEntity> userList = userService.getUserByAll();
@@ -103,14 +97,14 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
-    @Operation(summary = "회원 정보 조회", description = "회원 ID를 통해 특정 회원의 정보 조회합니다.", tags = { "User Controller" })
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK",
-                    content = @Content(schema = @Schema(implementation = ResponseUser.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
-    })
+//    @Operation(summary = "회원 정보 조회", description = "회원 ID를 통해 특정 회원의 정보 조회합니다.", tags = { "User Controller" })
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", description = "OK",
+//                    content = @Content(schema = @Schema(implementation = ResponseUser.class))),
+//            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
+//            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
+//            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+//    })
     @GetMapping("/users/{userId}")
     public ResponseEntity<ResponseUser> getUsers(@PathVariable("userId") String userId) {
         UserDto userDto = userService.getUserByUserId(userId);
