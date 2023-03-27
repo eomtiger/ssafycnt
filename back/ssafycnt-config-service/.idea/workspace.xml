@@ -4,7 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6adec5f1-d396-44d2-931a-7369d3432f6c" name="Changes" comment="" />
+    <list default="true" id="6adec5f1-d396-44d2-931a-7369d3432f6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/swagger/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/SsafycntApigatewayServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/SsafycntApigatewayServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/config/FilterConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/filter/CustomFilter$Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/filter/CustomFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/filter/GlobalFilter$Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/classes/java/main/com/ssafy/ssafycntapigatewayservice/filter/GlobalFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/SsafycntApigatewayServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/SsafycntApigatewayServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/config/FilterConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/filter/CustomFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/java/com/ssafy/ssafycntapigatewayservice/filter/GlobalFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-apigateway-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/build/classes/java/main/com/ssafy/ssafycntdiscoveryservice/SsafycntDiscoveryServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/build/classes/java/main/com/ssafy/ssafycntdiscoveryservice/SsafycntDiscoveryServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.idea/modules/ssafycnt-news-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/vo/Greeting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/resources/application.yml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +74,18 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -36,19 +108,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Sub_1/github/S08P22B308/back/ssafycnt-config-service/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Sub_1/github/S08P22B308/back/ssafycnt-user-service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Sub_1\github\S08P22B308\back\ssafycnt-config-service\src\main\resources" />
@@ -72,6 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679462548199</updated>
       <workItem from="1679462549652" duration="6224000" />
+      <workItem from="1679831847152" duration="6848000" />
     </task>
     <servers />
   </component>
