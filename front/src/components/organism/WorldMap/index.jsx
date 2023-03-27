@@ -24,7 +24,7 @@ function WorldMap({ data1 }) {
   };
 
   useEffect(() => {
-    navigate("/nation/" + a + "/2203-2302");
+    navigate("/nation/" + a + "/" + params.duration);
   }, [a]);
 
   const options = {
