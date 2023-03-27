@@ -3,6 +3,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 import Code from "../../../../assets/Code.json";
 import unImg from "./../../../../../assets/nationalFlags/UN.png";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    height: "50%",
+    width: "30%",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const nationOptions = [];
 for (let i = 3; i < Code.국가코드.length; i++) {
@@ -34,6 +48,17 @@ function NationSelector() {
   const params = useParams();
   const [nationSelect, setNationSelect] = useState(params.nationCode);
   const navigate = useNavigate();
+  const [IsOpen, setIsOpen] = useState(false);
+
+  // Modal을 Open하는 함수
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  // Modal을 Close하는 함수
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const nationSelectHandler = (event) => {
     setNationSelect(event.value);
@@ -44,18 +69,50 @@ function NationSelector() {
     nationName: nationSelect.split(" / ")[1],
   };
 
-  useEffect(() => {
-    navigate("/nation/" + nationState.nationCode + "/" + params.duration);
-  }, [nationSelect]);
+  // useEffect(() => {
+  //   navigate("/nation/" + nationState.nationCode + "/" + params.duration);
+  // }, [nationSelect]);
 
   return (
     <div>
-      <Select
-        options={nationOptions}
-        // placeholder="국가를 검색해주세요."
-        defaultValue={nationOptions[0]}
-        onChange={nationSelectHandler}
-      />
+      <button onClick={openModal} className="rounded-full bg-blue-300">
+        국가 선택
+      </button>
+      <Modal
+        ariaHideApp={false}
+        isOpen={IsOpen}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <Select
+          options={nationOptions}
+          placeholder="국가를 검색해주세요."
+          // defaultInputValue="국가를 검색해주세요."
+          onChange={nationSelectHandler}
+        />
+
+        <div className="mt-5 left-20px">
+          <button
+            onClick={() => {
+              closeModal();
+              navigate(
+                "/nation/" + nationState.nationCode + "/" + params.duration
+              );
+            }}
+            className="rounded hover:rounded-lg bg-blue-300 mr-3"
+          >
+            확인
+          </button>
+          <button
+            onClick={closeModal}
+            className="rounded hover:rounded-lg bg-red-300 mr-3"
+          >
+            취소
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

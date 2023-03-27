@@ -11,7 +11,10 @@ pipeline {
             parallel{
                 stage('spring build'){
                     when{
-                        branch 'main'
+                        anyOf{
+                            branch 'main';
+                            branch 'back_build'
+                        }
                     }
                     steps{
                         updateGitlabCommitStatus name: 'spring build', state: 'running'
@@ -133,7 +136,10 @@ pipeline {
             parallel{
                 stage('spring deploy'){
                     when{
-                        branch 'main'
+                        anyOf{
+                            branch 'main';
+                            branch 'back_build'
+                        }
                     }
                     steps{
                         updateGitlabCommitStatus name: 'spring deploy', state: 'running'

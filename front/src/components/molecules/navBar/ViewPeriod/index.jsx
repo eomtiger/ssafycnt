@@ -151,27 +151,35 @@ function ViewPeriod() {
     }
   }
 
-  const duration =
-    (startYear * 100 + startMonth).toString() +
-    "-" +
-    (endYear * 100 + endMonth).toString();
-  console.log("duratinon", duration);
+  const [duration, setDuratinon] = useState("");
 
-  // 최종제출시 에러 검토
+  const setDurationHandler = () => {
+    setDuratinon(
+      (startYear * 100 + startMonth).toString() +
+        "-" +
+        (endYear * 100 + endMonth).toString()
+    );
+  };
+
+  // 최종제출시 에러 검토 후 duration 변경
   const durationHandler = () => {
     if (searchStartNum > searchEndNum) {
       alert("조회시작기간이 조회종료기간보다 빠릅니다.");
+    } else {
+      setDurationHandler();
     }
-    // } else {
-    //   useEffect(() => {
-    //     navigate("/nation/" + params.nationCode + "/" + duration);
-    //   }, [duration]);
-    // }
   };
+
+  useEffect(() => {
+    navigate("/nation/" + params.nationCode + "/" + duration);
+  }, [duration]);
 
   return (
     <div>
-      <button onClick={openModal}>조회 기간 설정</button>
+      <div>{params.duration}</div>
+      <button onClick={openModal} className="rounded-full bg-blue-300">
+        기간 설정
+      </button>
       <Modal
         ariaHideApp={false}
         isOpen={IsOpen}
