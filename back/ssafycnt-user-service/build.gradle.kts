@@ -48,9 +48,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
     implementation("org.modelmapper:modelmapper:3.1.1")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.15")
+//    implementation("org.springdoc:springdoc-openapi-ui:1.6.15")
     // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
+//    implementation("io.springfox:springfox-boot-starter:3.0.0")
     // https://mvnrepository.com/artifact/com.h2database/h2
     implementation("com.h2database:h2:2.1.214")
 
