@@ -5,7 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6adec5f1-d396-44d2-931a-7369d3432f6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/SsafycntTradeServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/controller/TradeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/TradeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/jpa/TradeEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/jpa/TradeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/TradeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/TradeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/test/java/com/ssafy/ssafycnttradeservice/SsafycntTradeServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/SsafycntNewsServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/SsafycntNewsServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/controller/NewsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/controller/NewsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/dto/NewsDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/dto/NewsDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/jpa/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/jpa/News.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/jpa/NewsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/jpa/NewsRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/MiningService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/MiningService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/MiningServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/MiningServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/NewsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/NewsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/NewsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/classes/java/main/com/ssafy/ssafycntnewsservice/service/NewsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
