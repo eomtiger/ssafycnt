@@ -6,7 +6,8 @@ import DataFirst from "../../organism/DataFirst";
 import DataSecond from "../../organism/DataSecond";
 import DataThird from "../../organism/DataThird/index";
 import WorldMap from "../../organism/WorldMap";
-import TestText from "../../TextTest";
+import News from "../../organism/News";
+import TextMining from "../../organism/TextMining";
 
 function Nation() {
   const params = useParams();
@@ -31,7 +32,8 @@ function Nation() {
       <DataFirst data1={data} />
       <DataSecond />
       <DataThird />
-      <TestText />
+      <TextMining />
+      <News />
     </>
   );
 }
