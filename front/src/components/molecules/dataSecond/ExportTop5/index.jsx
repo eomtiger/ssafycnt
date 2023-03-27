@@ -29,9 +29,20 @@ ChartJS.defaults.color = "black";
 
 function ExportTop5(props) {
     let pickNation = '전세계'
-
+    // console.log(typeof(props.alreadyClicked[5]['수출']))
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
-    const labels = ['자동차', '가전제품', '반도체', '김치', '합성수지']    // Top5 품목
+    
+    let labels    // Top5 품목
+
+    if (typeof props.alreadyClicked[5]['수출'] !== 'undefined' && props.alreadyClicked[5]['수출'] !== null) {
+        // Call the keys() method on myObject
+        labels = Object.keys(props.alreadyClicked[5]['수출'])
+    } else {
+        labels = ['', '', '', '', '']
+    }
+    
+    //let values = Object.values(props.alreadyClicked[5]['수출'])    // Top5 품목 수출량
+    // const labels = ['자동차', '가전제품', '반도체', '김치', '합성수지']    // Top5 품목
     let values = [807000000000, 700000000000, 600000000000, 432000000000, 234000000000]    // Top5 품목 수출량
     values = values.map(function(x) {
         return x / 1000000
