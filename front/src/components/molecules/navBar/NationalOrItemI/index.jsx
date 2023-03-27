@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function NationOrItem(props) {
+function NationOrItemI(props) {
   const navigate = useNavigate();
   const params = useParams();
   return (
@@ -12,9 +12,9 @@ function NationOrItem(props) {
           className="peer/nation"
           type="radio"
           name="status"
-          defaultChecked
           onClick={() => {
             props.stateHandler("Nation");
+            navigate("/nation/all/" + params.duration);
           }}
         />
         <label htmlFor="nation" className="peer-checked/nation:text-sky-500">
@@ -28,9 +28,9 @@ function NationOrItem(props) {
           className="peer/item"
           type="radio"
           name="status"
+          defaultChecked
           onClick={() => {
             props.stateHandler("Item");
-            navigate("/item/all/" + params.duration);
           }}
         />
         <label htmlFor="item" className="peer-checked/item:text-sky-500">
@@ -40,4 +40,4 @@ function NationOrItem(props) {
     </>
   );
 }
-export default NationOrItem;
+export default NationOrItemI;
