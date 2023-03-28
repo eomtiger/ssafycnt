@@ -176,10 +176,10 @@ function ViewPeriodI() {
 
   return (
     <div>
-      <div>{params.duration}</div>
       <button onClick={openModal} className="rounded-full bg-blue-300">
         기간 설정
       </button>
+      <div>{params.duration}</div>
       <Modal
         ariaHideApp={false}
         isOpen={IsOpen}
