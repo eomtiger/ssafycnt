@@ -69,7 +69,7 @@ const promiseOptions = (inputValue) =>
 
 function ItemSelector() {
   const params = useParams();
-  const [itemSelect, setItemSelect] = useState(params.nationCode);
+  // const [itemSelect, setItemSelect] = useState(params.nationCode);
   const navigate = useNavigate();
 
   const [IsOpen, setIsOpen] = useState(false);
@@ -79,17 +79,9 @@ function ItemSelector() {
     setIsOpen(true);
   };
 
-  // const afterOpenModal = () => {
-  //   // references are now sync'd and can be accessed.
-  // };
-
   // Modal을 Close하는 함수
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const itemSelectHandler = (event) => {
-    setItemSelect(event.value);
   };
 
   const [codeCoulmn, setCodeColumn] = useState(itemOptions[0].value);
@@ -163,13 +155,5 @@ function ItemSelector() {
     </div>
   );
 }
-
-// const ItemSelector = React.memo(() => {
-//   return (
-//     <div>
-//       <AsyncSelect cacheOptions defaultOptions loadOptions={promiseOptions} />
-//     </div>
-//   );
-// });
 
 export default ItemSelector;
