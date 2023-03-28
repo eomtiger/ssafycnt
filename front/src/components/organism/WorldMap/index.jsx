@@ -72,6 +72,7 @@ function WorldMap() {
     // forceIFrame: 20,
     geochartVersion: 11,
     height: 550,
+    width: 1200,
     // legend: "none",
     // tooltip: { textStyle: { color: "black" }, showColorCode: true },
     tooltip: { trigger: "focus" },
@@ -103,7 +104,7 @@ function WorldMap() {
       {/* <div className="mr-5">수출입</div> */}
       {/* <div className="ml-20">{params.nationName}</div> */}
       {/* </div> */}
-      <div className="mt-5 static">
+      <div className="mt-2 static flex justify-center">
         <Chart
           chartType="GeoChart"
           data={data}
