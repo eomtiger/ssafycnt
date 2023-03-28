@@ -21,10 +21,6 @@
       <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-discovery-service/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -40,7 +36,6 @@
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/MiningServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/MiningServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/NewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/NewsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/NewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-news-service/src/main/java/com/ssafy/ssafycntnewsservice/service/NewsServiceImpl.java" afterDir="false" />
->>>>>>> 09c81fe45e341b048eff5f418a15c14889056275
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,37 +85,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Sub_1/github/S08P22B308/back/ssafycnt-apigateway-service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.38045976",
-    "spring.configuration.checksum": "bb79899f47f15214ae877aed1020bd66",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RunManager" selected="Spring Boot.SsafycntApigatewayServiceApplication (1)">
-    <configuration name="SsafycntApigatewayServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="com.ssafy.ssafycnt-apigateway-service.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ssafy.ssafycntapigatewayservice.SsafycntApigatewayServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -139,7 +103,6 @@
   }
 }</component>
   <component name="RunManager">
->>>>>>> 09c81fe45e341b048eff5f418a15c14889056275
     <configuration name="SsafycntApigatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ssafycnt-apigateway-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ssafy.ssafycntapigatewayservice.SsafycntApigatewayServiceApplication" />
@@ -158,12 +121,7 @@
       <updated>1679558261284</updated>
       <workItem from="1679558262731" duration="421000" />
       <workItem from="1679730326590" duration="1591000" />
-<<<<<<< HEAD
-      <workItem from="1679831842487" duration="8267000" />
-      <workItem from="1679876003966" duration="3346000" />
-=======
       <workItem from="1679735602883" duration="2469000" />
->>>>>>> 09c81fe45e341b048eff5f418a15c14889056275
     </task>
     <servers />
   </component>
