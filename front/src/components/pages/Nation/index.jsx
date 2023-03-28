@@ -25,9 +25,27 @@ function Nation() {
       .then((response) => setData(response.data))
   }, [params]);
 
+  // const [position, setPosition] = useState(window.pageYOffset);
+  // const [visible, setVisible] = useState(true);
+  
+  //   useEffect(() => {
+  //   const handleScroll = () => {
+  //     const moving = window.pageYOffset;
+  //     setVisible(position > moving);
+  //     setPosition(moving);
+  //     }
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [position]);
+
   return (
     <>
+     
+
       <NavBar />
+      
       <WorldMap data1={data} />
       <DataFirst data1={data} />
       <DataSecond />
