@@ -8,6 +8,7 @@ import DataThird from "../../organism/DataThird/index";
 import WorldMap from "../../organism/WorldMap";
 import News from "../../organism/News";
 import TextMining from "../../organism/TextMining";
+import NewsTextMining from "../../organism/NewsTextMining";
 
 function Nation() {
   const params = useParams();
@@ -18,11 +19,16 @@ function Nation() {
     axios
       .get(
         "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
-          "statcd=" + params.nationCode + "&" +
-          "startDate=" + params.duration.substr(0,6) + "&" +
-          "endDate=" + params.duration.substr(7,12)
+          "statcd=" +
+          params.nationCode +
+          "&" +
+          "startDate=" +
+          params.duration.substring(0, 6) +
+          "&" +
+          "endDate=" +
+          params.duration.substring(7, 12)
       )
-      .then((response) => setData(response.data))
+      .then((response) => setData(response.data));
   }, [params]);
 
   // const [position, setPosition] = useState(window.pageYOffset);
@@ -50,8 +56,9 @@ function Nation() {
       <DataFirst data1={data} />
       <DataSecond />
       <DataThird />
-      <TextMining />
-      <News />
+      {/* <TextMining />
+      <News /> */}
+      <NewsTextMining />
     </>
   );
 }
