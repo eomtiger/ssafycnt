@@ -80,7 +80,7 @@ function News(props) {
           ))}
         </div>
       )}
-      <div>
+      {/* <div>
         {newsData.map((news, index) => (
           <a
             // key={index}
@@ -104,7 +104,7 @@ function News(props) {
             </p>
           </a>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
