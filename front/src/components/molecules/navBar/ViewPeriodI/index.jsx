@@ -227,9 +227,7 @@ function ViewPeriodI() {
           </h2>
         </div>
 
-        <form>
-          <button onClick={durationHandler}>적용하기</button>
-        </form>
+        <button onClick={durationHandler}>적용하기</button>
       </Modal>
     </div>
   );

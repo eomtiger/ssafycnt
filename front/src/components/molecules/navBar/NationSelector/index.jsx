@@ -117,6 +117,7 @@ function NationSelector() {
           >
             확인
           </button>
+
           <button
             onClick={closeModal}
             className="rounded hover:rounded-lg bg-red-300 mr-3"
