@@ -10,7 +10,7 @@ ChartJS.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자
 function NationRatio({ data1 }) {
     let duration = data1.period
     const labels = ['수출', '수입']
-    const values = [data1.expwgt, data1.impwgt]
+    const values = [data1.expwgtSum, data1.impwgtSum]
     const sumValues = values[0] + values[1]
 
     const data = {
