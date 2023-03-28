@@ -9,7 +9,7 @@ function DataThirdI(props) {
 
   ///////여기에서 axios 쓴다
   useEffect(() => {
-    console.log("세부정보", params);
+    console.log("세부정보~~~~~~~~~~", params);
   }, [params]);
 
   const exportImportStateHandler = () => {

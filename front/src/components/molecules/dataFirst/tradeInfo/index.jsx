@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 
 function tradeInfo({ data1 }) {
-    let money = [data1.expdlr, data1.impdlr, data1.balpayments]        // 수출, 수입, 무역수지
-    let weight = [data1.expwgt, data1.impwgt, data1.expwgt - data1.impwgt]        // 수출, 수입, 무역수지
+    let money = [data1.expdlrSum, data1.impdlrSum, data1.balpaymentsLr]        // 수출, 수입, 무역수지
+    let weight = [data1.expwgtSum, data1.impwgtSum, data1.balpaymentsWgt]        // 수출, 수입, 무역수지
 
-    if (data1.expdlr) {
+    if (data1.expdlrSum) {
         money = money.map(item => item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' 원')
         weight = weight.map(item => item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' kg')
     }

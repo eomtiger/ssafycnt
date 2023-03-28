@@ -10,9 +10,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 ChartJS.defaults.font.family = "munchebu.ttf"             // Chart 이내 글자체 통일
 function NationRatio({data1}) {
     // let { nationName, duration } = useParams();
-    const nation = data1.nation
+    const nation = data1.nationName
     const labels = ['수출', '수입']
-    const values = [data1.expdlr, data1.impdlr]
+    const values = [data1.expdlrSum, data1.impdlrSum]
     const sumValues = values[0] + values[1]
 
     const data = {

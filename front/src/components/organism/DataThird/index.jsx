@@ -4,20 +4,12 @@ import { faker } from "@faker-js/faker";
 import Table from "../../molecules/dataThird/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
 import ExportImportToggle from "../../molecules/dataThird/ExportImportToggle";
+import axios from "axios";
 
 function DataThird() {
   const [exportImportState, setExportImportState] = useState(true);
 
   const params = useParams();
-
-  ///////여기에서 axios 쓴다
-  useEffect(() => {
-    // console.log("세부정보", params);
-  }, [params]);
-
-  const exportImportStateHandler = () => {
-    setExportImportState(!exportImportState);
-  };
 
   const columns = useMemo(
     () => [
@@ -36,6 +28,26 @@ function DataThird() {
     ],
     []
   );
+
+  ///////여기에서 axios 쓴다
+  useEffect(() => {
+    axios
+      .get(
+        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
+          "startDate=" + params.duration.substr(0,6) + "&" +
+          "endDate=" + params.duration.substr(7,12)
+      )
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params]);
+
+  const exportImportStateHandler = () => {
+    setExportImportState(!exportImportState);
+  };
 
   const data = useMemo(
     () =>
