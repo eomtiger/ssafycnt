@@ -24,14 +24,24 @@ function TextMining(props) {
 
   return (
     <>
-      <WordCloud
-        data={textDataInfo}
-        // onWordClick={(event, d) => {
-        //   console.log(`onWordClick: ${d.text}`);
-        // }}
-        onWordClick={props.wordClickHandler}
-      />
-      <button onClick={props.nothingHandler}>초기화</button>
+      <div className="mr-12">
+        <WordCloud
+          data={textDataInfo}
+          // onWordClick={(event, d) => {
+          //   console.log(`onWordClick: ${d.text}`);
+          // }}
+          onWordClick={props.wordClickHandler}
+          font="munchebu"
+          spiral="archimedean"
+          rotate={() => 0}
+        />
+        <button
+          onClick={props.nothingHandler}
+          className="bg-slate-400 w-24 h-12 rounded-full ml-96 font-mun font-bold mb-4"
+        >
+          뉴스 초기화
+        </button>
+      </div>
     </>
   );
 }
