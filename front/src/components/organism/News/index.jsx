@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import Code from "../../../assets/Code.json";
 // import NewsList from "../../../assets/NewsList.json";
 
 // console.log(NewsList[0].newsDate);
@@ -26,18 +28,45 @@ import axios from "axios";
 // ));
 
 function News() {
+  const params = useParams();
+
+  const paramsNationCode = params.nationCode;
+  const paramsNation = Code.국가코드;
+  const countryList = [];
+  for (let i = 3; i < paramsNation.length; i++) {
+    if (paramsNation[i].Column1 === params.nationCode) {
+      countryList.push(paramsNation[i].Column2);
+    }
+  }
+  const countryFullName = countryList[0];
+  const country = countryFullName.split(" ")[0];
+  // console.log(country);
+
+  // startDate와 endDate 연결
+  const paramsDuration = params.duration;
+
+  const startDate =
+    paramsDuration.substring(2, 4) + "." + paramsDuration.substring(4, 6);
+  const endDate =
+    paramsDuration.substring(9, 11) + "." + paramsDuration.substring(11, 13);
+  // console.log(startDate, endDate);
+
   const url =
     "http://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
     "country=" +
+    country +
     "&item=" +
     "&startDate=" +
-    "&endDate=";
+    startDate +
+    "&endDate=" +
+    endDate;
   // console.log(url);
+
   const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
     axios.get(url).then((response) => setNewsData(response.data));
-  }, []);
+  }, [params]);
   // console.log(newsData[0]);
 
   return (
