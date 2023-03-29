@@ -7,6 +7,7 @@ import NationOrItem from "../../molecules/navBar/NationOrItem";
 import NationSelector from "../../molecules/navBar/NationSelector";
 import ViewPeriod from "../../molecules/navBar/ViewPeriod";
 import unImg from "./../../../../assets/nationalFlags/UN.png";
+import Code from "../../../assets/Code.json"
 
 function NavBar() {
   // Nation, Item의 state에서 Default를 Nation으로 설정
@@ -24,6 +25,14 @@ function NavBar() {
     e.target.src = unImg;
   };
 
+  const nationNameList = []
+  for (let i = 3; i < Code.국가코드.length; i++) {
+    if (Code.국가코드[i].Column1 === params.nationCode) {
+      nationNameList.push(Code.국가코드[i].Column2)
+    }
+  }
+  console.log(nationNameList)
+
   return (
     <>
       <nav className="flex justify-between  sticky top-0 bg-slate-200 content-center font-mun">
@@ -39,7 +48,7 @@ function NavBar() {
           <NationSelector />
           <div className="flex flex-inline text-2xl ml-5">
             <img src={src} onError={onErrorImg} className="w-11 h-8 mr-3" />
-            {params.nationCode}
+            {nationNameList}
           </div>
         </div>
 
