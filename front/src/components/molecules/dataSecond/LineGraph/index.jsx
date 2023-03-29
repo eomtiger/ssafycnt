@@ -31,21 +31,30 @@ function TrendItems(props) {
 
     let labels
     let values
+    let changeRate
 
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
-    if (Object.keys(props.anyItem[7]).length === 2) {
-        labels = Object.keys(props.anyItem[7])    // Top5 품목
-        values = Object.values(props.anyItem[7])    // Top5 품목 수출량
+    if (Object.keys(props.anyItem[7]).length === 3) {
+        labels = Object.keys(props.anyItem[7]).map(v => {
+            if (v != 'changeRate') {
+                return v
+            }
+        }).filter(element => element)
+        values = Object.values(props.anyItem[7]).map(v => {
+            if (typeof(v) !== 'object') {
+                return v
+            }
+        }).filter(element => element)
+        changeRate = props.anyItem[7]['changeRate']
     } else {
         labels = Object.keys(props.anyItem[7])    // Top5 품목
         values = Object.values(props.anyItem[7])    // Top5 품목 수출량
+        console.log(props.anyItem[7])
     }
 
     values = values.map(function(x) {
         return x / 1000000
     });
-
-    let changeRate = [-1, 3, 2, -5]
     
     const options = {
         indexAxis: 'x',
@@ -94,10 +103,10 @@ function TrendItems(props) {
     };
 
     return (
-        <div>
+        <div className='mr-3'>
             <div className='flex justify-between items-center ml-2 text-left mb-3'>
                 <div>
-                    <div className='mt-1 font-bold text-base text-gray-12'>{ pickItem }</div>                {/* 동적값으로 할당 해야함 */}               
+                    <div className='mt-1 font-bold text-base text-gray-12'>{ pickItem }</div>               
                     <div className='mt-1 font-bold text-xl font-mun'>{imOrExport} 추세</div>
                 </div>
                 <div className='flex w-40 h-8 justify-center items-center bg-[#f3f4f6] font-bold text-xs'>
@@ -105,7 +114,7 @@ function TrendItems(props) {
                     <p className='ml-4 font-mun'>단위: 백만달러</p>
                 </div>
             </div>
-            <Line options={options} data={data} width={400} height={300} />
+            <Line options={options} data={data} width={350} height={280} />
         </div>
     )
   }
