@@ -24,9 +24,9 @@ function NewsTextMining() {
   const paramsDuration = params.duration;
 
   const startDate =
-    paramsDuration.substring(2, 4) + "." + paramsDuration.substring(4, 6);
+    paramsDuration.substring(0, 4) + "." + paramsDuration.substring(4, 6);
   const endDate =
-    paramsDuration.substring(9, 11) + "." + paramsDuration.substring(11, 13);
+    paramsDuration.substring(7, 11) + "." + paramsDuration.substring(11, 13);
   // console.log(startDate, endDate);
 
   // newsUrl 요청
@@ -71,22 +71,24 @@ function NewsTextMining() {
     // console.log(wordString);
     textDataInfo.push({
       text: wordString,
-      value: textData[wordString].length,
+      value: textData[wordString].length * 100,
     });
   }
+  // console.log(textDataInfo);
 
   const [selectedWord, setSelectedWord] = useState("");
   const wordClickHandler = (event, word) => {
     setSelectedWord(word.text);
     // console.log(word.text);
   };
-  // console.log(selectedWord);
+  console.log(selectedWord);
 
-  let selectedWordNewsData = [];
+  // console.log(textData[selectedWord]);
+  const selectedWordNewsData = [];
   if (selectedWord === "") {
-    console.log("default");
+    // console.log("default");
   } else {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
