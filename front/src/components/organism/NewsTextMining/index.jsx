@@ -16,8 +16,18 @@ function NewsTextMining() {
       countryList.push(paramsNation[i].Column2);
     }
   }
+  // console.log(countryList);
+
   const countryFullName = countryList[0];
-  const country = countryFullName.split(" ")[0];
+  // console.log(countryFullName);
+
+  // url 중 'country='에 국가이름이 입력. But, 전체국가 선택시 'county='가 되어야 하는데, 'country=전세계'가 되서 if문 사용하여 수정
+  const country = [];
+  if (countryFullName === "전세계") {
+    country.push();
+  } else {
+    country.push(countryFullName.split(" ")[0]);
+  }
   // console.log(country);
 
   // startDate와 endDate 연결
@@ -54,6 +64,7 @@ function NewsTextMining() {
 
   const [newsData, setNewsData] = useState([]);
   const [textData, setTextData] = useState([]);
+  // console.log(newsData);
   // console.log(textData);
 
   useEffect(() => {
@@ -71,19 +82,25 @@ function NewsTextMining() {
     // console.log(wordString);
     textDataInfo.push({
       text: wordString,
-      value: textData[wordString].length * 100,
+      value: textData[wordString].length * 1000,
     });
   }
-  // console.log(textDataInfo);
+  console.log(textDataInfo);
 
+  // TextMining 단어 클릭 시 해당 단어 저장
+  // But, 단어 클릭 시 TextMining 구조가 재배치
   const [selectedWord, setSelectedWord] = useState("");
   const wordClickHandler = (event, word) => {
     setSelectedWord(word.text);
     // console.log(word.text);
   };
+  // 선택 단어 초기화
+  const nothingHandler = (event) => {
+    setSelectedWord("");
+  };
   console.log(selectedWord);
-
   // console.log(textData[selectedWord]);
+
   const selectedWordNewsData = [];
   if (selectedWord === "") {
     // console.log("default");
@@ -92,20 +109,19 @@ function NewsTextMining() {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
-
-  // console.log(selectedWordNewsData);
+  console.log(selectedWordNewsData);
 
   return (
-    <div>
+    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
       <News
         newsData={newsData}
         selectedWord={selectedWord}
         selectedWordNewsData={selectedWordNewsData}
       />
-      {/* <News newsData={newsData} /> */}
       <TextMining
         textDataInfo={textDataInfo}
         wordClickHandler={wordClickHandler}
+        nothingHandler={nothingHandler}
       />
     </div>
   );
