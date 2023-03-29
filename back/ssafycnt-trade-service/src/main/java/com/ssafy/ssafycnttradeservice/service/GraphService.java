@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,9 @@ import java.util.List;
 public class GraphService {
     @PersistenceContext
     private EntityManager em;
-    public List<Graph> findDataByCountry(String statCd, String startDate, String endDate) {
+    public List<Graph> findOneLowData(String statCd, String startDate, String endDate) {
+        startDate = Change(startDate);
+        endDate = Change(endDate);
         String tableName = statCd+"_trading";
         String sql = "select * from " + tableName + " where year between " +
                 startDate + " and " + endDate;
@@ -26,5 +29,21 @@ public class GraphService {
             resultDtos.add(new Graph(list.get(i)));
         }
         return resultDtos;
+    }
+
+    private String Change(String startDate) {
+        String year = startDate.substring(0,4);
+        String month = startDate.substring(4,6);
+        String result = year+"."+month;
+        return result;
+    }
+
+    public Map<String, Object> findTwoLowData(String statCd, String startDate, String endDate) {
+        String tableName = statCd+"_trading";
+        String sql = "select year, sum(expdlr) from " + tableName + " where year between " +
+                startDate + " and " + endDate + " group by year";
+        List<Object[]> list = em.createNativeQuery(sql).getResultList();
+        System.out.println(list.get(0).toString());
+        return null;
     }
 }
