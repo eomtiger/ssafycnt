@@ -5,7 +5,7 @@ spring:
   application:
     name: ssafycnt-config-service
   rabbitmq:
-   host: 127.0.0.1
+   host: 172.26.2.118
    port: 5672
    username: guest
    password: guest
