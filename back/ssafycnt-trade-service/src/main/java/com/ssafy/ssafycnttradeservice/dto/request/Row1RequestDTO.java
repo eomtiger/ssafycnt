@@ -1,4 +1,4 @@
-package com.ssafy.ssafycnttradeservice.dto;
+package com.ssafy.ssafycnttradeservice.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ByCountryRequestDTO {
+public class Row1RequestDTO {
     private String statCd;
     private String startDate;
     private String endDate;
