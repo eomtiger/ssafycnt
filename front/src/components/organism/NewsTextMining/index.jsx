@@ -64,7 +64,6 @@ function NewsTextMining() {
 
   const [newsData, setNewsData] = useState([]);
   const [textData, setTextData] = useState([]);
-  // console.log(newsData);
   // console.log(textData);
 
   useEffect(() => {
@@ -85,7 +84,7 @@ function NewsTextMining() {
       value: textData[wordString].length * 1000,
     });
   }
-  console.log(textDataInfo);
+  // console.log(textDataInfo);
 
   // TextMining 단어 클릭 시 해당 단어 저장
   // But, 단어 클릭 시 TextMining 구조가 재배치
@@ -94,22 +93,30 @@ function NewsTextMining() {
     setSelectedWord(word.text);
     // console.log(word.text);
   };
+  useEffect(() => {
+    setSelectedWord("");
+  }, [params]);
+
   // 선택 단어 초기화
   const nothingHandler = (event) => {
     setSelectedWord("");
   };
   console.log(selectedWord);
+
   // console.log(textData[selectedWord]);
 
   const selectedWordNewsData = [];
   if (selectedWord === "") {
-    // console.log("default");
+    // for (let i = 0; i < newsData.length; i++) {
+    //   selectedWordNewsData.push(newsData[i]);
+    // }
+    // console.log(selectedWordNewsData);
   } else {
     for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
-  console.log(selectedWordNewsData);
+  // console.log(selectedWordNewsData);
 
   return (
     <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
