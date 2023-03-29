@@ -7,7 +7,7 @@ function NationOrItemI(props) {
   return (
     <>
       {/* <div className="flex justify-between font-mun"> */}
-      <div className="font-mun">
+      <div className="font-mun align-middle">
         <input
           id="nation"
           className="peer/nation"
@@ -18,12 +18,12 @@ function NationOrItemI(props) {
             navigate("/nation/all/" + params.duration);
           }}
         />
-        <label htmlFor="nation" className="peer-checked/nation:text-sky-500 ml-2">
-          국가
+        <label htmlFor="nation" className="peer-checked/nation:text-sky-500 ml-2 text-2xl font-bold">
+          국가별
         </label>
       </div>
 
-      <div>
+      <div className="font-mun ml-10">
         <input
           id="item"
           className="peer/item"
@@ -34,8 +34,8 @@ function NationOrItemI(props) {
             props.stateHandler("Item");
           }}
         />
-        <label htmlFor="item" className="peer-checked/item:text-sky-500 ml-2">
-          품목
+        <label htmlFor="item" className="peer-checked/item:text-sky-500 ml-2 text-2xl font-bold">
+          품목별
         </label>
       </div>
     </>
