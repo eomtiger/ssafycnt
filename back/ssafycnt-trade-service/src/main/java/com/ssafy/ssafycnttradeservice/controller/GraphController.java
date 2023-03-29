@@ -32,7 +32,7 @@ public class GraphController {
 //        ThreadLocalStorage.setStatCd(dto.getStatCd());
 //        List<Graph> resultDtos = graphRepository.findByPeriod(dto.getStartDate(), dto.getEndDate());
           String tableName = dto.getStatCd()+"_trading";
-          String sql = "select * from " + tableName + " where year between"
+          String sql = "select * from " + tableName + " where year between";
 //        return ResponseEntity.ok(resultDtos);
     }
 }
