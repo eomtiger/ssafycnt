@@ -33,7 +33,7 @@ function Nation() {
 
   // const [position, setPosition] = useState(window.pageYOffset);
   // const [visible, setVisible] = useState(true);
-  
+
   //   useEffect(() => {
   //   const handleScroll = () => {
   //     const moving = window.pageYOffset;
@@ -48,11 +48,13 @@ function Nation() {
 
   return (
     <>
-     
+      <div className="z-30 sticky top-0">
+        <NavBar />
+      </div>
 
-      <NavBar />
-      
-      <WorldMap data1={data} />
+      <div className="z-0">
+        <WorldMap data1={data} />
+      </div>
       <DataFirst data1={data} />
       <DataSecond />
       <DataThird />
