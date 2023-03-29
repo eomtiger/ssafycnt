@@ -9,7 +9,6 @@ import WorldMap from "../../organism/WorldMap";
 import News from "../../organism/News";
 import TextMining from "../../organism/TextMining";
 import NewsTextMining from "../../organism/NewsTextMining";
-import html2canvas from 'html2canvas';
 
 function Nation() {
   const params = useParams();
@@ -33,10 +32,6 @@ function Nation() {
       )
       .then((response) => setData(response.data));
   }, [params]);
-
-  html2canvas(document.body).then(canvas => {
-    document.body.appendChild(canvas);
-});
 
   // const [position, setPosition] = useState(window.pageYOffset);
   // const [visible, setVisible] = useState(true);
