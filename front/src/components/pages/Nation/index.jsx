@@ -18,7 +18,9 @@ function Nation() {
   useEffect(() => {
     axios
       .get(
+        // "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/onerow?" +
         "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
+          // "statCd=" +
           "statcd=" +
           params.nationCode +
           "&" +
@@ -26,7 +28,7 @@ function Nation() {
           params.duration.substring(0, 6) +
           "&" +
           "endDate=" +
-          params.duration.substring(7, 12)
+          params.duration.substring(7, 13)
       )
       .then((response) => setData(response.data));
   }, [params]);
