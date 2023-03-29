@@ -4,6 +4,7 @@ import Select from "react-select";
 import Code from "../../../../assets/Code.json";
 import unImg from "./../../../../../assets/nationalFlags/UN.png";
 import Modal from "react-modal";
+import magnifier1 from "../../../../assets/magnifier1.png";
 
 const customStyles = {
   content: {
@@ -31,11 +32,11 @@ for (let i = 3; i < Code.국가코드.length; i++) {
   nationOptions.push({
     value: Code.국가코드[i].Column1 + " / " + Code.국가코드[i].Column2,
     label: (
-      <div className="flex flex-inline ">
-        <div className="w-10 h-10">
+      <div className="flex flex-inline items-center">
+        <div className="w-10 h-10 flex items-center">
           <img src={imgSrc} onError={onErrorImg} alt="" />
         </div>
-        <div className="">{Code.국가코드[i].Column2}</div>
+        <div className="ml-3">{Code.국가코드[i].Column2}</div>
       </div>
     ),
     // label: Code.국가코드[i].Column2,
@@ -76,18 +77,19 @@ function NationSelector() {
   const styles = {
     control: base => ({
       ...base,
-      fontFamily: "munchebu"
+      fontFamily: "munchebu",
     }),
     menu: base => ({
       ...base,
-      fontFamily: "munchebu"
+      fontFamily: "munchebu",
     })
   };
 
   return (
     <div className="font-mun">
-      <button onClick={openModal} className="rounded-full bg-blue-300 text-2xl">
-        국가 선택
+      <button onClick={openModal} className="text-2xl inline-flex">
+        국가
+        <img src={magnifier1} className="w-8 h-8 ml-2" />
       </button>
       <Modal
         ariaHideApp={false}
@@ -105,7 +107,7 @@ function NationSelector() {
           styles={styles}
         />
 
-        <div className="mt-5 left-20px font-mun">
+        <div className="mt-5 left-20px font-mun flex justify-center">
           <button
             onClick={() => {
               closeModal();
@@ -113,14 +115,14 @@ function NationSelector() {
                 "/nation/" + nationState.nationCode + "/" + params.duration
               );
             }}
-            className="rounded hover:rounded-lg bg-blue-300 mr-3"
+            className="rounded hover:rounded-lg bg-blue-300 mr-3 pl-4 pr-4 pt-1 pb-1"
           >
             확인
           </button>
 
           <button
             onClick={closeModal}
-            className="rounded hover:rounded-lg bg-red-300 mr-3"
+            className="rounded hover:rounded-lg bg-red-300 mr-3 pl-4 pr-4 pt-1 pb-1"
           >
             취소
           </button>

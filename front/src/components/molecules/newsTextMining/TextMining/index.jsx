@@ -31,6 +31,7 @@ function TextMining(props) {
         // }}
         onWordClick={props.wordClickHandler}
       />
+      <button onClick={props.nothingHandler}>초기화</button>
     </>
   );
 }
