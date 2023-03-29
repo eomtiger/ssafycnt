@@ -19,17 +19,13 @@ public class NewsController {
     private final NewsService newsService;
     private final MiningService miningService;
     @GetMapping("/news")
-    public List<NewsDto> NewsController(@RequestParam String country, String item, String startDate, String endDate) {
+    public List<NewsDto> NewsCrawling(@RequestParam String country, String item, String startDate, String endDate) {
         return newsService.getNewsData(country, item, startDate, endDate);
     }
-//    @GetMapping("/news/mining")
-//    public Map<String, List<NewsDto>> TextMining(@RequestParam String country, String item, String startDate, String endDate) {
-//        List<NewsDto> newsdata = newsService.getNewsData(country, item, startDate, endDate);
-//        return miningService.getMiningData(newsdata);
-//    }
     @GetMapping("/news/mining")
-    public String TextMining(@RequestParam String country, String item, String startDate, String endDate) {
+    public Map<String, List<NewsDto>> TextMining(@RequestParam String country, String item, String startDate, String endDate) {
         List<NewsDto> newsdata = newsService.getNewsData(country, item, startDate, endDate);
-        return "장준호 바보";
+        return miningService.getMiningData(newsdata);
     }
+
 }
