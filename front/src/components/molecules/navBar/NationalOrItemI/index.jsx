@@ -15,10 +15,13 @@ function NationOrItemI(props) {
           name="status"
           onClick={() => {
             props.stateHandler("Nation");
-            navigate("/nation/all/" + params.duration);
+            navigate("/nation/ALL/" + params.duration);
           }}
         />
-        <label htmlFor="nation" className="peer-checked/nation:text-sky-500 ml-2">
+        <label
+          htmlFor="nation"
+          className="peer-checked/nation:text-sky-500 ml-2"
+        >
           국가
         </label>
       </div>
