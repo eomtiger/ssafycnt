@@ -9,6 +9,7 @@ import WorldMap from "../../organism/WorldMap";
 import News from "../../organism/News";
 import TextMining from "../../organism/TextMining";
 import NewsTextMining from "../../organism/NewsTextMining";
+import html2canvas from 'html2canvas';
 
 function Nation() {
   const params = useParams();
@@ -18,7 +19,9 @@ function Nation() {
   useEffect(() => {
     axios
       .get(
-        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1/?" +
+        // "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/onerow?" +
+        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
+          // "statCd=" +
           "statcd=" +
           params.nationCode +
           "&" +
@@ -26,10 +29,14 @@ function Nation() {
           params.duration.substring(0, 6) +
           "&" +
           "endDate=" +
-          params.duration.substring(7, 12)
+          params.duration.substring(7, 13)
       )
       .then((response) => setData(response.data));
   }, [params]);
+
+  html2canvas(document.body).then(canvas => {
+    document.body.appendChild(canvas);
+});
 
   // const [position, setPosition] = useState(window.pageYOffset);
   // const [visible, setVisible] = useState(true);
