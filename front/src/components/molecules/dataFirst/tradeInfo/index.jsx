@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 
 function tradeInfo({ data1 }) {
-    let money = [data1.expdlrSum, data1.impdlrSum, data1.balpaymentsLr]        // 수출, 수입, 무역수지
+    let money = [data1.expdlrSum, data1.impdlrSum, data1.balpaymentsDlr]        // 수출, 수입, 무역수지
     let weight = [data1.expwgtSum, data1.impwgtSum, data1.balpaymentsWgt]        // 수출, 수입, 무역수지
 
     if (data1.expdlrSum) {
