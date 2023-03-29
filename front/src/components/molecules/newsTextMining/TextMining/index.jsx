@@ -20,8 +20,8 @@ import WordCloud from "react-d3-cloud";
 
 function TextMining(props) {
   let textDataInfo = props.textDataInfo;
+  // console.log(textDataInfo);
 
-  // const [selectedWord, setSelectedWord] = useState("");
   return (
     <>
       <WordCloud

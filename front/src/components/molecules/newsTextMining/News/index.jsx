@@ -22,7 +22,7 @@ function News(props) {
   // console.log(newsData);
   let selectedWord = props.selectedWord;
   let selectedWordNewsData = props.selectedWordNewsData;
-  // console.log(selectedWordNewsData);
+  console.log(selectedWordNewsData);
 
   return (
     // <div>1</div>
@@ -80,31 +80,6 @@ function News(props) {
           ))}
         </div>
       )}
-      {/* <div>
-        {newsData.map((news, index) => (
-          <a
-            // key={index}
-            href={news.newsLink}
-            target="_blank"
-            className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-          >
-            <h5>{news.newsPress}</h5>
-            <h5>{news.newsDate}</h5>
-            <h5
-              // key={index}
-              className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              {news.newsTitle}
-            </h5>
-            <p
-              // key={index}
-              className="font-normal text-gray-700 dark:text-gray-400"
-            >
-              {news.newsContent}
-            </p>
-          </a>
-        ))}
-      </div> */}
     </div>
   );
 }
