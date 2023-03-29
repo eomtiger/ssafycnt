@@ -18,7 +18,7 @@ function Nation() {
   useEffect(() => {
     axios
       .get(
-        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
+        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1/?" +
           "statcd=" +
           params.nationCode +
           "&" +
