@@ -96,9 +96,9 @@ function ItemSelector() {
   };
 
   return (
-    <div>
-      <button onClick={openModal} className="rounded-full bg-blue-300">
-        품목 설정
+    <div className="font-mun">
+      <button onClick={openModal} className="text-2xl inline-flex mr-2">
+        품목
       </button>
       <Modal
         ariaHideApp={false}
