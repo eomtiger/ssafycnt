@@ -64,7 +64,6 @@ function NewsTextMining() {
 
   const [newsData, setNewsData] = useState([]);
   const [textData, setTextData] = useState([]);
-  // console.log(newsData);
   // console.log(textData);
 
   useEffect(() => {
@@ -93,16 +92,24 @@ function NewsTextMining() {
     setSelectedWord(word.text);
     // console.log(word.text);
   };
+  useEffect(() => {
+    setSelectedWord("");
+  }, [params]);
+
   // 선택 단어 초기화
   const nothingHandler = (event) => {
     setSelectedWord("");
   };
   console.log(selectedWord);
+
   // console.log(textData[selectedWord]);
 
   const selectedWordNewsData = [];
   if (selectedWord === "") {
-    // console.log("default");
+    // for (let i = 0; i < newsData.length; i++) {
+    //   selectedWordNewsData.push(newsData[i]);
+    // }
+    // console.log(selectedWordNewsData);
   } else {
     for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
