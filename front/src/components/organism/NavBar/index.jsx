@@ -9,8 +9,11 @@ import ViewPeriod from "../../molecules/navBar/ViewPeriod";
 import Pdf from "../../molecules/navBar/Pdf";
 import unImg from "./../../../../assets/nationalFlags/UN.png";
 import Code from "../../../assets/Code.json";
+import Excel from "../../molecules/navBar/Excel";
+import axios from "axios";
 
-function NavBar() {
+
+function NavBar(props) {
   // Nation, Item의 state에서 Default를 Nation으로 설정
   const [state, setState] = useState("Nation");
 
@@ -62,7 +65,7 @@ function NavBar() {
 
         <div className="flex justify-between items-center align-middle mr-10">
           <Pdf />
-          <img src={excel} className="w-10 h-10" />
+          <Excel apiData={props.apiData} />
         </div>
       </nav>
     </>
