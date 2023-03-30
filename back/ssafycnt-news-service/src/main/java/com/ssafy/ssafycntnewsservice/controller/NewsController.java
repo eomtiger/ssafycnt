@@ -25,5 +25,4 @@ public class NewsController {
         List<NewsDto> newsdata = newsService.getNewsData(country, item, startDate, endDate);
         return miningService.getMiningData(newsdata);
     }
-
 }
