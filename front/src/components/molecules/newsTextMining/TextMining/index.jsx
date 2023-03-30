@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import WordCloud from "react-d3-cloud";
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import Code from "../../../../assets/Code.json";
 // import { useParams } from "react-router-dom";
 // import TextMiningInfo from "../../../../assets/TextMiningInfo.json";
-import WordCloud from "react-d3-cloud";
 
 // DUMMY_TEXTDATA
 // const textMiningInfo = Object.keys(TextMiningInfo);
