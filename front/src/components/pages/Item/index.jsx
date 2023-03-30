@@ -4,6 +4,7 @@ import axios from "axios";
 import DataThirdI from "../../organism/DataThirdI";
 import NavBarI from "../../organism/NavBarI";
 import WorldMapI from "../../organism/WorldMapI";
+import NewsTextMiningI from "../../organism/NewsTextMiningI";
 function Item() {
   return (
     <>
@@ -14,6 +15,7 @@ function Item() {
         <WorldMapI />
       </div>
       <DataThirdI />
+      <NewsTextMiningI />
     </>
   );
 }
