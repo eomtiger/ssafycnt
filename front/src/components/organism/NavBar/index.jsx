@@ -6,8 +6,9 @@ import excel from "./../../../assets/excel.svg";
 import NationOrItem from "../../molecules/navBar/NationOrItem";
 import NationSelector from "../../molecules/navBar/NationSelector";
 import ViewPeriod from "../../molecules/navBar/ViewPeriod";
+import Pdf from "../../molecules/navBar/Pdf";
 import unImg from "./../../../../assets/nationalFlags/UN.png";
-import Code from "../../../assets/Code.json"
+import Code from "../../../assets/Code.json";
 
 function NavBar() {
   // Nation, Item의 state에서 Default를 Nation으로 설정
@@ -25,13 +26,13 @@ function NavBar() {
     e.target.src = unImg;
   };
 
-  const nationNameList = []
+  const nationNameList = [];
   for (let i = 3; i < Code.국가코드.length; i++) {
     if (Code.국가코드[i].Column1 === params.nationCode) {
-      nationNameList.push(Code.국가코드[i].Column2)
+      nationNameList.push(Code.국가코드[i].Column2);
     }
   }
-  console.log(nationNameList)
+  // console.log(nationNameList)
 
   return (
     <>
@@ -56,11 +57,11 @@ function NavBar() {
         {/* // {state === "Item" ? <ItemSelector /> : null} */}
 
         <div className="flex flex-inline items-center text-2xl ml-5">
-            <ViewPeriod />
+          <ViewPeriod />
         </div>
 
         <div className="flex justify-between items-center align-middle mr-10">
-          <img src={pdf} className="w-10 h-10 mr-5" />
+          <Pdf />
           <img src={excel} className="w-10 h-10" />
         </div>
       </nav>
