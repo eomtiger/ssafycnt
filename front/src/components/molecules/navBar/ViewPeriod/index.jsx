@@ -17,7 +17,7 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    height: "55%",
+    height: "40%",
     width: "25%",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
@@ -79,10 +79,12 @@ function ViewPeriod() {
   const params = useParams();
   const navigate = useNavigate();
   const [IsOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState(false);
 
   // Modal을 Open하는 함수
   const openModal = () => {
     setIsOpen(true);
+    setSearch(false);
   };
 
   // const afterOpenModal = () => {
@@ -125,6 +127,7 @@ function ViewPeriod() {
   const [endMonth, setEndMonth] = useState();
   const endMonthHandler = (event) => {
     setEndMonth(event.value);
+    setSearch(true);
   };
 
   // 조회 종료 기간
@@ -194,8 +197,13 @@ function ViewPeriod() {
         기간
         <img src={magnifier1} className="w-8 h-8 ml-2" />
       </button>
-      {params.duration.substring(0, 4) + '.' + params.duration.substring(4, 6) +
-          ' ~ ' + params.duration.substring(7, 11) + '.' + params.duration.substring(11, 13)}
+      {params.duration.substring(0, 4) +
+        "." +
+        params.duration.substring(4, 6) +
+        " ~ " +
+        params.duration.substring(7, 11) +
+        "." +
+        params.duration.substring(11, 13)}
       <Modal
         ariaHideApp={false}
         isOpen={IsOpen}
@@ -208,29 +216,66 @@ function ViewPeriod() {
         <div className="font-mun flex justify-around items-center">
           {/* <h2>시작 년/월</h2> */}
           <h2 className="text-lg">시작 연월</h2>
-          <Select options={yearList} onChange={startYearHandler} placeholder={params.duration.substring(0, 4)} />
+          <Select
+            options={yearList}
+            onChange={startYearHandler}
+            placeholder="연"
+          />
           {startYM.startY === todayYear ? (
-            <Select options={todayYearMonthList} onChange={startMonthHandler} placeholder={params.duration.substring(5, 6)}/>
+            <Select
+              options={todayYearMonthList}
+              onChange={startMonthHandler}
+              placeholder="월"
+            />
           ) : (
-            <Select options={monthList} onChange={startMonthHandler} placeholder={params.duration.substring(5, 6)}/>
+            <Select
+              options={monthList}
+              onChange={startMonthHandler}
+              placeholder="월"
+            />
           )}
         </div>
-          
+
         <br />
-        
+
         <div className="font-mun flex justify-around items-center">
           <h3 className="text-lg">종료 연월</h3>
-          <Select options={endYearList} onChange={endYearHandler} placeholder={params.duration.substring(7, 11)}/>
+          <Select
+            options={endYearList}
+            onChange={endYearHandler}
+            // placeholder={params.duration.substring(7, 11)}
+            placeholder="연"
+          />
           {endYM.endY === todayYear ? (
-            <Select options={endMonthList} onChange={endMonthHandler} placeholder={params.duration.substring(12, 13)}/>
+            <Select
+              options={endMonthList}
+              onChange={endMonthHandler}
+              // placeholder={params.duration.substring(12, 13)}
+              placeholder="월"
+            />
           ) : (
-            <Select options={endMonthList} onChange={endMonthHandler} placeholder={params.duration.substring(12, 13)}/>
+            <Select
+              options={endMonthList}
+              onChange={endMonthHandler}
+              placeholder="월"
+            />
           )}
         </div>
-        
+
         <br />
-        <form className="font-mun flex justify-center text-lg">
-          <button className="rounded hover:rounded-lg bg-blue-300 mr-3 pl-4 pr-4 pt-1 pb-1" onClick={durationHandler}>조회</button>
+        <form className="font-mun flex justify-center text-lg ">
+          {search === true ? (
+            <button
+              className="rounded hover:rounded-lg bg-blue-300 mr-3 pl-4 pr-4 pt-1 pb-1"
+              onClick={durationHandler}
+            >
+              조회
+            </button>
+          ) : (
+            <div className="rounded  bg-gray-300 mr-3 pl-4 pr-4 pt-1 pb-1">
+              조회
+            </div>
+          )}
         </form>
       </Modal>
     </div>

@@ -12,7 +12,7 @@ import React from "react";
 //   </div>
 // ));
 
-function News(props) {
+function NewsI(props) {
   let newsData = props.newsData;
   // console.log(newsData);
   let selectedWord = props.selectedWord;
@@ -79,4 +79,4 @@ function News(props) {
     </>
   );
 }
-export default News;
+export default NewsI;
