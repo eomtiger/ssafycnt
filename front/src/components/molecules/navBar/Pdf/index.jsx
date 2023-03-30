@@ -12,7 +12,7 @@ for (let i = 3; i < Code.국가코드.length; i++) {
     nationName: Code.국가코드[i].Column2,
   });
 }
-console.log(nationState);
+// console.log(nationState);
 
 function Pdf() {
   const params = useParams();

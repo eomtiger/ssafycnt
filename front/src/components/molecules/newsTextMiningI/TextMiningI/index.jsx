@@ -18,7 +18,7 @@ import WordCloud from "react-d3-cloud";
 // }
 // console.log(textInfo);
 
-function TextMining(props) {
+function TextMiningI(props) {
   let textDataInfo = props.textDataInfo;
   // console.log(textDataInfo);
 
@@ -46,4 +46,4 @@ function TextMining(props) {
   );
 }
 
-export default TextMining;
+export default TextMiningI;
