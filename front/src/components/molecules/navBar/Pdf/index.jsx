@@ -1,5 +1,6 @@
 import React from "react";
 import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import pdf from "../../../../assets/pdf.svg";
 import Code from "../../../../assets/Code.json";
 import { useParams } from "react-router-dom";
@@ -11,7 +12,7 @@ for (let i = 3; i < Code.국가코드.length; i++) {
     nationName: Code.국가코드[i].Column2,
   });
 }
-// console.log(nationState);
+console.log(nationState);
 
 function Pdf() {
   const params = useParams();
