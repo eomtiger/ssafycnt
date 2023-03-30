@@ -2,33 +2,34 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Code from "../../../assets/Code.json";
-import News from "../../molecules/newsTextMining/News";
-import TextMining from "../../molecules/newsTextMining/TextMining";
+import NewsI from "../../molecules/newsTextMiningI/NewsI";
+import TextMiningI from "../../molecules/newsTextMiningI/TextMiningI";
 
-function NewsTextMining() {
+function NewsTextMiningI() {
   const params = useParams();
 
-  const paramsNationCode = params.nationCode;
-  const paramsNation = Code.국가코드;
-  const countryList = [];
-  for (let i = 3; i < paramsNation.length; i++) {
-    if (paramsNation[i].Column1 === params.nationCode) {
-      countryList.push(paramsNation[i].Column2);
+  const paramsHsCode = params.hsCode;
+  // console.log(paramsHsCode);
+  const itemList = [];
+  for (let i = 4; i < Code.성질통합분류코드.length; i++) {
+    let itemHsCode = Code.성질통합분류코드[i].Column2;
+    let itemName = Code.성질통합분류코드[i].Column5;
+    if (itemHsCode === paramsHsCode) {
+      itemList.push(itemName);
     }
   }
-  // console.log(countryList);
+  // console.log(itemList);
 
-  const countryFullName = countryList[0];
-  // console.log(countryFullName);
+  const itemFullName = itemList[0];
+  // console.log(itemFullName);
 
-  // url 중 'country='에 국가이름이 입력. But, 전체국가 선택시 'county='가 되어야 하는데, 'country=전세계'가 되서 if문 사용하여 수정
-  const country = [];
-  if (countryFullName === "전세계") {
-    country.push();
+  const item = [];
+  if (itemFullName === "전품목") {
+    item.push();
   } else {
-    country.push(countryFullName.split(" ")[0]);
+    item.push(itemFullName);
   }
-  // console.log(country);
+  // console.log(item);
 
   // startDate와 endDate 연결
   const paramsDuration = params.duration;
@@ -43,8 +44,8 @@ function NewsTextMining() {
   const newsUrl =
     "http://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
     "country=" +
-    country +
     "&item=" +
+    item +
     "&startDate=" +
     startDate +
     "&endDate=" +
@@ -55,15 +56,16 @@ function NewsTextMining() {
   const textMiningUrl =
     "http://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
     "country=" +
-    country +
     "&item=" +
+    item +
     "&startDate=" +
     startDate +
     "&endDate=" +
     endDate;
+  // console.log(textMiningUrl);
 
   const [newsData, setNewsData] = useState([]);
-  console.log(newsData);
+  // console.log(newsData);
   const [textData, setTextData] = useState([]);
   // console.log(textData);
 
@@ -115,12 +117,12 @@ function NewsTextMining() {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
-  console.log(selectedWordNewsData);
+  // console.log(selectedWordNewsData);
 
   return (
     <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
       <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
-        <News
+        <NewsI
           newsData={newsData}
           selectedWord={selectedWord}
           selectedWordNewsData={selectedWordNewsData}
@@ -129,7 +131,7 @@ function NewsTextMining() {
 
       <div>
         <div>선택 단어 : {selectedWord}</div>
-        <TextMining
+        <TextMiningI
           textDataInfo={textDataInfo}
           wordClickHandler={wordClickHandler}
           nothingHandler={nothingHandler}
@@ -139,4 +141,4 @@ function NewsTextMining() {
   );
 }
 
-export default NewsTextMining;
+export default NewsTextMiningI;
