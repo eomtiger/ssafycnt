@@ -12,7 +12,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:18080", "http://localhost:8180" })
+@CrossOrigin(origins = {"http://ssafycnt.site", "http://localhost:5173" })
 public class NewsController {
     private final NewsService newsService;
     private final MiningService miningService;
