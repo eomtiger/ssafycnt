@@ -33,7 +33,7 @@ function NavBarI() {
         </div>
 
         {/* {state === "Nation" ? ( */}
-        <div className="content-center flex items-center">
+        <div className="content-center flex items-center text-2xl">
           <ItemSelector />
           {params.hsCode}
         </div>
