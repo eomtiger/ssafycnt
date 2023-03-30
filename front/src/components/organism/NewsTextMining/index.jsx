@@ -63,6 +63,7 @@ function NewsTextMining() {
     endDate;
 
   const [newsData, setNewsData] = useState([]);
+  console.log(newsData);
   const [textData, setTextData] = useState([]);
   // console.log(textData);
 
@@ -100,7 +101,7 @@ function NewsTextMining() {
   const nothingHandler = (event) => {
     setSelectedWord("");
   };
-  console.log(selectedWord);
+  // console.log(selectedWord);
 
   // console.log(textData[selectedWord]);
 
@@ -109,12 +110,12 @@ function NewsTextMining() {
     // for (let i = 0; i < newsData.length; i++) {
     //   selectedWordNewsData.push(newsData[i]);
     // }
-    // console.log(selectedWordNewsData);
   } else {
     for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
+  console.log(selectedWordNewsData);
 
   return (
     <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
@@ -125,11 +126,15 @@ function NewsTextMining() {
           selectedWordNewsData={selectedWordNewsData}
         />
       </div>
-      <TextMining
-        textDataInfo={textDataInfo}
-        wordClickHandler={wordClickHandler}
-        nothingHandler={nothingHandler}
-      />
+
+      <div>
+        <div>선택 단어 : {selectedWord}</div>
+        <TextMining
+          textDataInfo={textDataInfo}
+          wordClickHandler={wordClickHandler}
+          nothingHandler={nothingHandler}
+        />
+      </div>
     </div>
   );
 }
