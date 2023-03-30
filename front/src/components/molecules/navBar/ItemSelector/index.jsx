@@ -19,81 +19,83 @@ const customStyles = {
 };
 
 const styles = {
-  control: base => ({
+  control: (base) => ({
     ...base,
     fontFamily: "munchebu",
   }),
-  menu: base => ({
+  menu: (base) => ({
     ...base,
     fontFamily: "munchebu",
-  })
+  }),
 };
-
-// vlaue에 codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5과
-const itemOptions = [];
-for (let i = 4; i < Code.성질통합분류코드.length; i++) {
-  let codeColumn2 = Code.성질통합분류코드[i].Column2;
-  let codeColumn4 = Code.성질통합분류코드[i].Column4;
-  let codeColumn5 = Code.성질통합분류코드[i].Column5;
-  if (codeColumn4.length >= 20 && codeColumn5.length >= 20) {
-    itemOptions.push({
-      value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-      label:
-        codeColumn2 +
-        " / " +
-        codeColumn4.substr(0, 19) +
-        " ..." +
-        " / " +
-        codeColumn5.substr(0, 19) +
-        " ...",
-    });
-  } else if (codeColumn4.length >= 20 && codeColumn5.length < 20) {
-    itemOptions.push({
-      value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-      label:
-        codeColumn2 +
-        " / " +
-        codeColumn4.substr(0, 19) +
-        " ..." +
-        " / " +
-        codeColumn5,
-    });
-  } else if (codeColumn4.length < 20 && codeColumn5.length >= 20) {
-    itemOptions.push({
-      value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-      label:
-        codeColumn2 +
-        " / " +
-        codeColumn4 +
-        " / " +
-        codeColumn5.substr(0, 19) +
-        " ...",
-    });
-  } else {
-    itemOptions.push({
-      value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-      label: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-    });
-  }
-}
-
-// react-select/async 사용
-const filterNations = (inputValue) => {
-  return itemOptions.filter((i) =>
-    i.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
-};
-
-// Promise 사용
-const promiseOptions = (inputValue) =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(filterNations(inputValue));
-    }, 1000);
-  });
 
 function ItemSelector() {
   const params = useParams();
+
+  // vlaue에 codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5과
+  const itemOptions = [];
+  for (let i = 4; i < Code.성질통합분류코드.length; i++) {
+    let codeColumn2 = Code.성질통합분류코드[i].Column2;
+    let codeColumn4 = Code.성질통합분류코드[i].Column4;
+    let codeColumn5 = Code.성질통합분류코드[i].Column5;
+    if (codeColumn4.length >= 20 && codeColumn5.length >= 20) {
+      itemOptions.push({
+        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+        label:
+          codeColumn2 +
+          " / " +
+          codeColumn4.substr(0, 19) +
+          " ..." +
+          " / " +
+          codeColumn5.substr(0, 19) +
+          " ...",
+      });
+    } else if (codeColumn4.length >= 20 && codeColumn5.length < 20) {
+      itemOptions.push({
+        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+        label:
+          codeColumn2 +
+          " / " +
+          codeColumn4.substr(0, 19) +
+          " ..." +
+          " / " +
+          codeColumn5,
+      });
+    } else if (codeColumn4.length < 20 && codeColumn5.length >= 20) {
+      itemOptions.push({
+        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+        label:
+          codeColumn2 +
+          " / " +
+          codeColumn4 +
+          " / " +
+          codeColumn5.substr(0, 19) +
+          " ...",
+      });
+    } else {
+      itemOptions.push({
+        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+        label: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+      });
+    }
+  }
+  // console.log(itemOptions);
+
+  // react-select/async 사용
+  const filterNations = (inputValue) => {
+    return itemOptions.filter((i) =>
+      i.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  };
+
+  // Promise 사용
+  const promiseOptions = (inputValue) =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(filterNations(inputValue));
+      }, 1000);
+    });
+
   // const [itemSelect, setItemSelect] = useState(params.nationCode);
   const navigate = useNavigate();
 
@@ -109,10 +111,21 @@ function ItemSelector() {
     setIsOpen(false);
   };
 
-  const [codeCoulmn, setCodeColumn] = useState(itemOptions[0].value);
+  const itemSelect = [];
+  for (let i = 0; i < itemOptions.length; i++) {
+    if (params.hsCode === itemOptions[i].value.split(" / ")[0]) {
+      itemSelect.push({
+        value: itemOptions[i].value,
+      });
+    }
+  }
+  console.log(itemSelect);
+
+  const [codeCoulmn, setCodeColumn] = useState(itemSelect[0].value);
   const codeColumnHandler = (event) => {
     setCodeColumn(event.value);
   };
+  console.log(codeCoulmn);
   // console.log(codeCoulmn.slice(0, 10));
   const allCodeColumn = {
     hsCode: codeCoulmn.split(" / ")[0],
@@ -136,7 +149,7 @@ function ItemSelector() {
       >
         <AsyncSelect
           cacheOptions
-          defaultValue={itemOptions[0]}
+          // defaultValue={itemOptions[0]}
           defaultOptions={false}
           loadOptions={promiseOptions}
           filterOption={null}
