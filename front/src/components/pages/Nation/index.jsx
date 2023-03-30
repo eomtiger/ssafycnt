@@ -6,9 +6,9 @@ import DataFirst from "../../organism/DataFirst";
 import DataSecond from "../../organism/DataSecond";
 import DataThird from "../../organism/DataThird/index";
 import WorldMap from "../../organism/WorldMap";
-import News from "../../organism/News";
-import TextMining from "../../organism/TextMining";
 import NewsTextMining from "../../organism/NewsTextMining";
+// import News from "../../organism/News";
+// import TextMining from "../../organism/TextMining";
 
 function Nation() {
   const params = useParams();
@@ -33,21 +33,6 @@ function Nation() {
       .then((response) => setData(response.data));
   }, [params]);
 
-  // const [position, setPosition] = useState(window.pageYOffset);
-  // const [visible, setVisible] = useState(true);
-
-  //   useEffect(() => {
-  //   const handleScroll = () => {
-  //     const moving = window.pageYOffset;
-  //     setVisible(position > moving);
-  //     setPosition(moving);
-  //     }
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [position]);
-
   return (
     <>
       <div className="z-30 sticky top-0">
@@ -55,7 +40,7 @@ function Nation() {
       </div>
 
       <div className="z-0">
-        <WorldMap data1={data} />
+        <WorldMap />
       </div>
       <DataFirst data1={data} />
       <DataSecond />
