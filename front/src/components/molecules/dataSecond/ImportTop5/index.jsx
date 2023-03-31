@@ -193,7 +193,7 @@ function ImportTop5(props) {
         <div className='ml-3'>
             <div className='flex justify-between items-center ml-2 text-left'>
                 <div>
-                    <div className='mt-1 font-bold text-base text-gray-12'>{ pickNation }</div>                {/* 동적값으로 할당 해야함 */}               
+                    <div className='mt-1 font-bold text-base text-gray-12 font-mun'>{ pickNation }</div>                {/* 동적값으로 할당 해야함 */}               
                     <div className='mt-1 font-bold text-xl font-mun'>수입 Top 5</div>
                 </div>
                 <div className='flex w-40 h-8 justify-center items-center bg-[#f3f4f6] font-bold text-xs'>

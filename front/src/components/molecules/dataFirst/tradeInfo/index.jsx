@@ -7,7 +7,7 @@ function tradeInfo({ data1 }) {
 
   if (data1.expdlrSum) {
     money = money.map(
-      (item) => item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " 원"
+      (item) => item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " $"
     );
     weight = weight.map(
       (item) => item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " kg"
@@ -21,12 +21,12 @@ function tradeInfo({ data1 }) {
         <p className="mt-8">수입</p>
         <p className="mt-8">무역수지</p>
       </div>
-      <div className="ml-8">
+      <div className="ml-8 text-right">
         <p>{money[0]}</p>
         <p className="mt-8">{money[1]}</p>
         <p className="mt-8">{money[2]}</p>
       </div>
-      <div className="ml-8">
+      <div className="ml-8 text-right">
         <p>{weight[0]}</p>
         <p className="mt-8">{weight[1]}</p>
         <p className="mt-8">{weight[2]}</p>

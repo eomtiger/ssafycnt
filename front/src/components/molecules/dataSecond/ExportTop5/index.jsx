@@ -181,7 +181,7 @@ function ExportTop5(props) {
     <div>
       <div className="flex justify-between items-center ml-2 text-left">
         <div>
-          <div className="mt-1 font-bold text-base text-gray-12">
+          <div className="mt-1 font-bold text-base text-gray-12 font-mun">
             {pickNation}
           </div>{" "}
           {/* 동적값으로 할당 해야함 */}
