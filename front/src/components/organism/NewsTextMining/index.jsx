@@ -63,7 +63,7 @@ function NewsTextMining() {
     endDate;
 
   const [newsData, setNewsData] = useState([]);
-  console.log(newsData);
+  // console.log(newsData);
   const [textData, setTextData] = useState([]);
   // console.log(textData);
 
@@ -115,7 +115,7 @@ function NewsTextMining() {
       selectedWordNewsData.push(textData[selectedWord][i]);
     }
   }
-  console.log(selectedWordNewsData);
+  // console.log(selectedWordNewsData);
 
   return (
     <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">

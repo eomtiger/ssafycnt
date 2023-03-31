@@ -90,9 +90,13 @@ function NewsTextMiningI() {
 
   //검색된 단어 송수신
   const [searchWord, setSearchWord] = useState("");
-  const searchWordHandler = (e) => {
-    setSearchWord(e);
+  const searchWordHandler = (event) => {
+    event.preventDefault();
+    setSearchWord(event.target[0].value);
+
+    // console.log(event.target[0].value);
   };
+  console.log(searchWord);
 
   // search 후 newsUrl 요청
   const newsUrlSearch =
@@ -167,16 +171,14 @@ function NewsTextMiningI() {
       </div>
 
       <div className="mt-3">
-        <form>
+        <form onSubmit={searchWordHandler}>
           <input
             class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             placeholder="원하는 품목을 입력하세요."
           />
 
-          <button type="button" onClick={searchWordHandler} value={searchWord}>
-            버틍니다니ㅏㄴ디ㅏ
-          </button>
+          <button type="submit">버튼</button>
         </form>
         {/* <div>{searchWord}</div> */}
         <TextMiningI
