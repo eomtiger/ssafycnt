@@ -26,91 +26,107 @@ function DataThirdI(props) {
     { accessor: "hsCode", Header: "품목코드(HS코드)" },
   ]);
 
-  // const imColumns = useMemo(() => [
-  //   { accessor: "ranking", Header: "순위" },
-  //   {
-  //     accessor: "nationCode",
-  //     Header: "국가코드",
-  //     Cell: AvatarCell,
-  //   },
-  //   { accessor: "duration", Header: "조회기준" },
-  //   { accessor: "impdlrSum", Header: "금액($)" },
-  //   { accessor: "impdlrRatio", Header: "금액 점유율(%)" },
-  //   { accessor: "impwgtSum", Header: "중량(kg)" },
-  //   { accessor: "impwgtRatio", Header: "중량 점유율(%)" },
-  //   { accessor: "hsCode", Header: "품목코드(HS코드)" },
-  // ]);
+  const imColumns = useMemo(() => [
+    { accessor: "ranking", Header: "순위" },
+    {
+      accessor: "nationCode",
+      Header: "국가코드",
+      Cell: AvatarCell,
+    },
+    { accessor: "duration", Header: "조회기준" },
+    { accessor: "impdlrSum", Header: "금액($)" },
+    { accessor: "impdlrRatio", Header: "금액 점유율(%)" },
+    { accessor: "impwgtSum", Header: "중량(kg)" },
+    { accessor: "impwgtRatio", Header: "중량 점유율(%)" },
+    { accessor: "hsCode", Header: "품목코드(HS코드)" },
+  ]);
 
-  // const [imData, setImData] = useState([]);
+  const [imData, setImData] = useState([]);
 
-  // const imDataHandler = (data) => {
-  //   const temp = [];
-  //   for (let objKey in data["importDetail"]) {
-  //     data["importDetail"][objKey]["nationCode"] = objKey;
-  //     data["importDetail"][objKey]["duration"] = data["period"];
+  const imDataHandler = (data) => {
+    const temp = [];
+    for (let objKey in data["importDetail"]) {
+      data["importDetail"][objKey]["nationCode"] = objKey;
+      data["importDetail"][objKey]["duration"] = data["period"];
 
-  //     let num = data["importDetail"][objKey]["impdlrRatio"]
-  //       .toString()
-  //       .split(".");
+      let num = data["importDetail"][objKey]["impdlrRatio"]
+        .toString()
+        .split(".");
 
-  //     data["importDetail"][objKey]["impdlrRatio"] =
-  //       num[0] + "." + num[1].slice(0, 1);
+      data["importDetail"][objKey]["impdlrRatio"] =
+        num[0] + "." + num[1].slice(0, 1);
 
-  //     num = data["importDetail"][objKey]["impwgtRatio"].toString().split(".");
+      num = data["importDetail"][objKey]["impwgtRatio"].toString().split(".");
 
-  //     data["importDetail"][objKey]["impwgtRatio"] =
-  //       num[0] + "." + num[1].slice(0, 1);
+      data["importDetail"][objKey]["impwgtRatio"] =
+        num[0] + "." + num[1].slice(0, 1);
 
-  //     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  //     num = data["importDetail"][objKey]["impdlrSum"].toLocaleString();
-  //     data["importDetail"][objKey]["impdlrSum"] = num;
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      num = data["importDetail"][objKey]["impdlrSum"].toLocaleString();
+      data["importDetail"][objKey]["impdlrSum"] = num;
 
-  //     num = data["importDetail"][objKey]["impwgtSum"].toLocaleString();
-  //     data["importDetail"][objKey]["impwgtSum"] = num;
+      num = data["importDetail"][objKey]["impwgtSum"].toLocaleString();
+      data["importDetail"][objKey]["impwgtSum"] = num;
 
-  //     temp.push(data["importDetail"][objKey]);
-  //   }
+      temp.push(data["importDetail"][objKey]);
+    }
 
-  //   setImData(temp);
-  // };
+    setImData(temp);
+  };
 
-  // const [exData, setExData] = useState([]);
+  const [exData, setExData] = useState([]);
 
-  // const exDataHandler = (data) => {
-  //   const temp = [];
-  //   for (let objKey in data["exportDetail"]) {
-  //     data["exportDetail"][objKey]["nationCode"] = objKey;
-  //     data["exportDetail"][objKey]["duration"] = data["period"];
+  const exDataHandler = (data) => {
+    const temp = [];
+    for (let objKey in data["exportDetail"]) {
+      data["exportDetail"][objKey]["nationCode"] = objKey;
+      data["exportDetail"][objKey]["duration"] = data["period"];
 
-  //     let num = data["exportDetail"][objKey]["expdlrRatio"]
-  //       .toString()
-  //       .split(".");
+      let num = data["exportDetail"][objKey]["expdlrRatio"]
+        .toString()
+        .split(".");
 
-  //     data["exportDetail"][objKey]["expdlrRatio"] =
-  //       num[0] + "." + num[1].slice(0, 1);
+      data["exportDetail"][objKey]["expdlrRatio"] =
+        num[0] + "." + num[1].slice(0, 1);
 
-  //     num = data["exportDetail"][objKey]["expwgtRatio"].toString().split(".");
+      num = data["exportDetail"][objKey]["expwgtRatio"].toString().split(".");
 
-  //     data["exportDetail"][objKey]["expwgtRatio"] =
-  //       num[0] + "." + num[1].slice(0, 1);
+      data["exportDetail"][objKey]["expwgtRatio"] =
+        num[0] + "." + num[1].slice(0, 1);
 
-  //     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  //     num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
-  //     data["exportDetail"][objKey]["expdlrSum"] = num;
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
+      data["exportDetail"][objKey]["expdlrSum"] = num;
 
-  //     num = data["exportDetail"][objKey]["expwgtSum"].toLocaleString();
-  //     data["exportDetail"][objKey]["expwgtSum"] = num;
+      num = data["exportDetail"][objKey]["expwgtSum"].toLocaleString();
+      data["exportDetail"][objKey]["expwgtSum"] = num;
 
-  //     temp.push(data["exportDetail"][objKey]);
-  //   }
+      temp.push(data["exportDetail"][objKey]);
+    }
 
-  //   setExData(temp);
-  // };
+    setExData(temp);
+  };
 
   ///////여기에서 axios 쓴다
-  useEffect(() => {
-    // console.log("세부정보~~~~~~~~~~", params);
-  }, [duration]);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
+  //         // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
+  //         "startDate=" +
+  //         params.duration.substring(0, 6) +
+  //         "&" +
+  //         "endDate=" +
+  //         params.duration.substring(7, 13)
+  //     )
+  //     .then((response) => {
+  //       exDataHandler(response.data);
+  //       imDataHandler(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [duration]);
 
   const exportImportStateHandler = () => {
     setExportImportState(!exportImportState);
