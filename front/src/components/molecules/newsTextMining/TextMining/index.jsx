@@ -35,12 +35,29 @@ function TextMining(props) {
           spiral="archimedean"
           rotate={() => 0}
         />
-        <button
-          onClick={props.nothingHandler}
-          className="bg-slate-400 w-24 h-12 rounded-full ml-96 font-mun font-bold mb-4"
-        >
-          뉴스 초기화
-        </button>
+        <div className="flex flex-inline justify-center ml-2">
+          {props.selectedWord === "" ? (
+            <label
+              className="block text-gray-700 text-sm font-bold mt-3"
+              for="username"
+            >
+              선택된 단어: 없음
+            </label>
+          ) : (
+            <label
+              className="block text-gray-700 text-sm font-bold mt-3 "
+              for="username"
+            >
+              선택된 단어: {props.selectedWord}
+            </label>
+          )}
+          <button
+            onClick={props.nothingHandler}
+            className="bg-slate-400 w-24 h-12 rounded-full ml-10 font-mun font-bold mb-4"
+          >
+            뉴스 초기화
+          </button>
+        </div>
       </div>
     </>
   );
