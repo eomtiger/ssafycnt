@@ -114,7 +114,7 @@ function TrendItems(props) {
 
     return (
         <div className='mr-3'>
-            <div className='flex justify-between items-center ml-2 text-left mb-3'>
+            <div className='flex justify-between items-center ml-2 text-left mb-3 font-mun'>
                 <div>
                     <div data-tooltip-target="tooltip-top" data-tooltip-placement="top" className='mt-1 font-bold text-base text-gray-12 w-40 truncate '>{ pickItem }</div>               
                     <div id="tooltip-top" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 font-mun">
