@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Chart from "react-google-charts";
+import logo from "./../../../../public/logo.svg";
 
 function WorldMap() {
   const params = useParams();
   const duration = params.duration;
   const [a, setA] = useState(params.nationCode);
   const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const data1 = [
     ["Country", "balnce", "test"],
@@ -55,6 +58,7 @@ function WorldMap() {
       )
       .then((response) => {
         dataHandler(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -111,17 +115,26 @@ function WorldMap() {
       {/* <div className="mr-5">수출입</div> */}
       {/* <div className="ml-20">{params.nationName}</div> */}
       {/* </div> */}
-      <div className="mt-2 static flex justify-center">
-        <Chart
-          chartType="GeoChart"
-          data={data}
-          options={options}
-          chartEvents={chartEvents}
-        />
-        {/* <div className="absolute bottom-0 left-3 mt-5">
-          <p className="font-mun">무역 수지</p>
-        </div> */}
-      </div>
+
+      {isLoading && (
+        <div className="mb-20">
+          <div class="relative flex h-10 w-10 ml-96 mt-10">
+            <div class="animate-ping absolute h-full w-full rounded-full bg-sky-400 opacity-75"></div>
+            <div class="relative  rounded-full bg-sky-500"></div>
+          </div>
+          <span className="text-4xl font-mun mr-96">세계지도 로딩중...</span>
+        </div>
+      )}
+      {!isLoading && (
+        <div className="mt-2 static flex justify-center">
+          <Chart
+            chartType="GeoChart"
+            data={data}
+            options={options}
+            chartEvents={chartEvents}
+          />
+        </div>
+      )}
     </>
   );
 }
