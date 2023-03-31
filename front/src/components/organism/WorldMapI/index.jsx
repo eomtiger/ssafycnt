@@ -32,7 +32,7 @@ function WorldMapI() {
     for (let i in data) {
       const item = [];
       item.push(i);
-      item.push(data[i]["balpaymentsLr"]);
+      item.push(data[i]["balpaymentsDlr"]);
       // item.push(data[i]["nationName"]);
       // item.push(100);
       temp.push(item);
@@ -41,28 +41,31 @@ function WorldMapI() {
     setData(temp);
   };
 
-  //여기서 axios
-  //   useEffect(() => {
-  //     axios
-  //       .get(
-  //         "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/map?" +
-  //           "startDate=" +
-  //           params.duration.substring(0, 6) +
-  //           "&" +
-  //           "endDate=" +
-  //           params.duration.substring(7, 12)
-  //       )
-  //       .then((response) => {
-  //         dataHandler(response.data);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }, [duration]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/item/zerorow?" +
+          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/map?" +
+          "item=" +
+          params.hsCode +
+          "&" +
+          "startDate=" +
+          params.duration.substring(0, 6) +
+          "&" +
+          "endDate=" +
+          params.duration.substring(7, 13)
+      )
+      .then((response) => {
+        dataHandler(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params]);
 
-  //   useEffect(() => {
-  //     navigate("/item/" + a + "/" + params.duration);
-  //   }, [a]);
+  useEffect(() => {
+    navigate("/item/" + a + "/" + params.duration);
+  }, [a]);
 
   const options = {
     // backgroundColor: "81d4fa",  "008000"
@@ -88,7 +91,7 @@ function WorldMapI() {
   return (
     <>
       <div className="mt-2 static flex justify-center">
-        <Chart chartType="GeoChart" data={data1} options={options} />
+        <Chart chartType="GeoChart" data={data} options={options} />
       </div>
     </>
   );
