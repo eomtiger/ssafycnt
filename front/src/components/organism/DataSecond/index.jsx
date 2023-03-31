@@ -59,7 +59,7 @@ function DataSecond() {
   useEffect(() => {
     axios
       .get(
-        "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?" +
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?" +
           "statCd=" + params.nationCode + "&" +
           "startDate=" + params.duration.substring(0,6) + "&" +
           "endDate=" + params.duration.substring(7,13)
