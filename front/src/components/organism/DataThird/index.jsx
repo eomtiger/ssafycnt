@@ -124,7 +124,7 @@ function DataThird() {
   useEffect(() => {
     axios
       .get(
-        "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
           // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
           "startDate=" +
           params.duration.substring(0, 6) +
