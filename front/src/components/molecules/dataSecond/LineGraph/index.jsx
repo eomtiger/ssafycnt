@@ -10,6 +10,7 @@ import {
     Legend,
   } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import 'flowbite';
 
 ChartJS.register(
     CategoryScale,
@@ -62,7 +63,7 @@ function TrendItems(props) {
     }
 
     values = values.map(function(x) {
-        return x / 1000000
+        return (x / 1000000).toFixed(0)
     });
     
     const options = {
@@ -72,7 +73,7 @@ function TrendItems(props) {
                         enabled: true,        // 그래프 호버시, 모달창 안나오게 하기
                         callbacks: {
                                 label: function(tooltipItem, data) {
-                                    return '금액 : ' + tooltipItem.dataset.data[tooltipItem.dataIndex] + ' 백만달러'
+                                    return '금액 : ' + tooltipItem.dataset.data[tooltipItem.dataIndex].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' 백만달러'
                                 },
                                 afterLabel: function (tooltipItem, data) {
                                     return '증감율 : ' + tooltipItem.dataset.data1[tooltipItem.dataIndex] + ' %'
@@ -113,11 +114,11 @@ function TrendItems(props) {
 
     return (
         <div className='mr-3'>
-            <div className='flex justify-between items-center ml-2 text-left mb-3'>
+            <div className='flex justify-between items-center ml-2 text-left mb-3 font-mun'>
                 <div>
                     <div data-tooltip-target="tooltip-top" data-tooltip-placement="top" className='mt-1 font-bold text-base text-gray-12 w-40 truncate '>{ pickItem }</div>               
-                    <div id="tooltip-default" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                        Tooltip content
+                    <div id="tooltip-top" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 font-mun">
+                        { pickItem }
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                     <div className='mt-1 font-bold text-xl font-mun'>{imOrExport} 추세</div>
