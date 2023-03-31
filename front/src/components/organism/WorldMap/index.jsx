@@ -45,7 +45,7 @@ function WorldMap() {
   useEffect(() => {
     axios
       .get(
-        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/fourrow?" +
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/zerorow?" +
           // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/map?" +
           "startDate=" +
           params.duration.substring(0, 6) +
