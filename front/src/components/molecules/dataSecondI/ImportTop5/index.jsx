@@ -34,6 +34,9 @@ function ImportTop5(props) {
 
     if (typeof props.alreadyClicked[5]['수입'] !== 'undefined' && props.alreadyClicked[5]['수입'] !== null) {
         labels = Object.keys(props.alreadyClicked[5]['수입'])
+        //     .map(v => {
+        //     return props.alreadyClicked[5]["수입"][v]['nationName']
+        //   });
     } else {
         labels = ['', '', '', '', '']
     }

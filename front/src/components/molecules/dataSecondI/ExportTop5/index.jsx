@@ -37,7 +37,10 @@ function ExportTop5(props) {
     typeof props.alreadyClicked[5]["수출"] !== "undefined" &&
     props.alreadyClicked[5]["수출"] !== null
   ) {
-    labels = Object.keys(props.alreadyClicked[5]["수출"]);
+    labels = Object.keys(props.alreadyClicked[5]["수출"])
+    //   .map(v => {
+    //   return props.alreadyClicked[5]["수출"][v]['nationName']
+    // });
   } else {
     labels = ["", "", "", "", ""];
   }
@@ -115,6 +118,7 @@ function ExportTop5(props) {
     onClick: function (evt, element) {
       if (element.length > 0) {
         setColorsHandler(element[0]["index"]);
+        console.log(data.labels[element[0]["index"]])
         props.onSaveClickOrNot(data.labels[element[0]["index"]]);
       }
     },
