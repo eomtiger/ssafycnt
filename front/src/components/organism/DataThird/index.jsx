@@ -105,8 +105,6 @@ function DataThird() {
       data["exportDetail"][objKey]["expwgtRatio"] =
         a[0] + "." + a[1].slice(0, 1);
 
-      console.log();
-
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
       data["exportDetail"][objKey]["expdlrSum"] = num;
