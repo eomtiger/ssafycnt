@@ -33,7 +33,7 @@ function NationOrItem(props) {
           name="status"
           onClick={() => {
             props.stateHandler("Item");
-            navigate("/item/0000000000/" + params.duration);
+            navigate("/item/000000/" + params.duration);
           }}
         />
         <label

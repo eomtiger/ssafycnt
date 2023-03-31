@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import AsyncSelect from "react-select/async";
 import Modal from "react-modal";
 import Code from "../../../../assets/Code.json";
+import SixCode from "../../../../assets/SixCode.json";
 import magnifier1 from "../../../../assets/magnifier1.png";
 
 const customStyles = {
@@ -32,54 +33,100 @@ const styles = {
 function ItemSelector() {
   const params = useParams();
 
+  // hsCode 정제
+  const sixDigitCode = [];
+  for (let i = 4; i < SixCode.length; i++) {
+    sixDigitCode.push(SixCode[i].hsCode.toString());
+  }
+  // console.log(sixDigitCode);
+
+  // hsCode 10자리
   // vlaue에 codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5과
+  // const itemOptions = [];
+  // for (let i = 4; i < Code.성질통합분류코드.length; i++) {
+  //   let codeColumn2 = Code.성질통합분류코드[i].Column2.toString().substring(
+  //     0,
+  //     6
+  //   );
+  //   let codeColumn4 = Code.성질통합분류코드[i].Column4;
+  //   let codeColumn5 = Code.성질통합분류코드[i].Column5;
+  //   // console.log(codeColumn2);
+  //   if (codeColumn4.length >= 20 && codeColumn5.length >= 20) {
+  //     itemOptions.push({
+  //       value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+  //       label:
+  //         codeColumn2 +
+  //         " / " +
+  //         codeColumn4.substr(0, 19) +
+  //         " ..." +
+  //         " / " +
+  //         codeColumn5.substr(0, 19) +
+  //         " ...",
+  //     });
+  //   } else if (codeColumn4.length >= 20 && codeColumn5.length < 20) {
+  //     itemOptions.push({
+  //       value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+  //       label:
+  //         codeColumn2 +
+  //         " / " +
+  //         codeColumn4.substr(0, 19) +
+  //         " ..." +
+  //         " / " +
+  //         codeColumn5,
+  //     });
+  //   } else if (codeColumn4.length < 20 && codeColumn5.length >= 20) {
+  //     itemOptions.push({
+  //       value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+  //       label:
+  //         codeColumn2 +
+  //         " / " +
+  //         codeColumn4 +
+  //         " / " +
+  //         codeColumn5.substr(0, 19) +
+  //         " ...",
+  //     });
+  //   } else {
+  //     itemOptions.push({
+  //       value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+  //       label: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
+  //     });
+  //   }
+  // }
+
+  // for (let i = 4; i < Code.성질통합분류코드.length; i++) {
+  //   console.log(Code.성질통합분류코드[i].Column2.toString().substring(0, 6));
+  // }
+  // console.log(Code.성질통합분류코드[3].Column2);
+  // hsCode 6자리
   const itemOptions = [];
-  for (let i = 4; i < Code.성질통합분류코드.length; i++) {
-    let codeColumn2 = Code.성질통합분류코드[i].Column2;
-    let codeColumn4 = Code.성질통합분류코드[i].Column4;
-    let codeColumn5 = Code.성질통합분류코드[i].Column5;
-    if (codeColumn4.length >= 20 && codeColumn5.length >= 20) {
-      itemOptions.push({
-        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-        label:
-          codeColumn2 +
-          " / " +
-          codeColumn4.substr(0, 19) +
-          " ..." +
-          " / " +
-          codeColumn5.substr(0, 19) +
-          " ...",
-      });
-    } else if (codeColumn4.length >= 20 && codeColumn5.length < 20) {
-      itemOptions.push({
-        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-        label:
-          codeColumn2 +
-          " / " +
-          codeColumn4.substr(0, 19) +
-          " ..." +
-          " / " +
-          codeColumn5,
-      });
-    } else if (codeColumn4.length < 20 && codeColumn5.length >= 20) {
-      itemOptions.push({
-        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-        label:
-          codeColumn2 +
-          " / " +
-          codeColumn4 +
-          " / " +
-          codeColumn5.substr(0, 19) +
-          " ...",
-      });
-    } else {
-      itemOptions.push({
-        value: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-        label: codeColumn2 + " / " + codeColumn4 + " / " + codeColumn5,
-      });
+  for (let j = 0; j < sixDigitCode.length; j++) {
+    for (let i = 4; i < Code.성질통합분류코드.length; i++) {
+      let codeColumn2 = Code.성질통합분류코드[i].Column2.toString().substring(
+        0,
+        6
+      );
+
+      let codeColumn4 = Code.성질통합분류코드[i].Column4;
+      if (
+        sixDigitCode[j] === codeColumn2 &&
+        Code.성질통합분류코드[i - 1].Column2.toString().substring(0, 6) !=
+          Code.성질통합분류코드[i].Column2.toString().substring(0, 6)
+      ) {
+        if (codeColumn4.length >= 20) {
+          itemOptions.push({
+            value: codeColumn2 + " / " + codeColumn4,
+            label: codeColumn2 + " / " + codeColumn4.substr(0, 19) + " ...",
+          });
+        } else {
+          itemOptions.push({
+            value: codeColumn2 + " / " + codeColumn4,
+            label: codeColumn2 + " / " + codeColumn4,
+          });
+        }
+      }
     }
   }
-  // console.log(itemOptions);
+  console.log(itemOptions);
 
   // react-select/async 사용
   const filterNations = (inputValue) => {
@@ -125,13 +172,14 @@ function ItemSelector() {
   const codeColumnHandler = (event) => {
     setCodeColumn(event.value);
   };
-  console.log(codeCoulmn);
+  // console.log(codeCoulmn);
   // console.log(codeCoulmn.slice(0, 10));
   const allCodeColumn = {
     hsCode: codeCoulmn.split(" / ")[0],
     fourDigit: codeCoulmn.split(" / ")[1],
-    tenDigit: codeCoulmn.split(" / ")[2],
+    // tenDigit: codeCoulmn.split(" / ")[2], // hsCode 10자리
   };
+  // console.log(allCodeColumn);
 
   return (
     <div className="font-mun">
@@ -162,17 +210,17 @@ function ItemSelector() {
           <h2 className="font-semibold">HS CODE</h2>
           <div>{allCodeColumn.hsCode}</div>
           <br />
-          <h2 className="font-semibold">세번 4단위품명</h2>
+          <h2 className="font-semibold">세번 6단위품명</h2>
           <div>{allCodeColumn.fourDigit}</div>
-          <br />
+          {/* <br />
           <h2 className="font-semibold">세번 10단위품명</h2>
-          <div>{allCodeColumn.tenDigit}</div>
+          <div>{allCodeColumn.tenDigit}</div> */}
           <div className="mt-5 left-20px flex justify-center">
             <button
               onClick={() => {
                 closeModal();
                 navigate(
-                  "/item/" + codeCoulmn.slice(0, 10) + "/" + params.duration
+                  "/item/" + codeCoulmn.slice(0, 6) + "/" + params.duration
                 );
               }}
               className="rounded hover:rounded-lg bg-blue-300 mr-3 pl-4 pr-4 pt-1 pb-1"
