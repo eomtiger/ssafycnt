@@ -42,7 +42,7 @@ function NewsTextMiningI() {
 
   // newsUrl 요청
   const newsUrl =
-    "http://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
     "country=" +
     "&item=" +
     item +
@@ -54,7 +54,7 @@ function NewsTextMiningI() {
 
   // textMiningUrl 요청
   const textMiningUrl =
-    "http://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
     "country=" +
     "&item=" +
     item +
@@ -88,6 +88,43 @@ function NewsTextMiningI() {
     });
   }
 
+  //검색된 단어 송수신
+  const [searchWord, setSearchWord] = useState("");
+  const searchWordHandler = (e) => {
+    setSearchWord(e);
+  };
+
+  // search 후 newsUrl 요청
+  const newsUrlSearch =
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
+    "country=" +
+    "&item=" +
+    searchWord +
+    "&startDate=" +
+    startDate +
+    "&endDate=" +
+    endDate;
+  // console.log(newsUrl);
+
+  //  search 후 textMiningUrl 요청
+  const textMiningUrlSearch =
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
+    "country=" +
+    "&item=" +
+    searchWord +
+    "&startDate=" +
+    startDate +
+    "&endDate=" +
+    endDate;
+  // console.log(textMiningUrl);
+
+  useEffect(() => {
+    axios.get(newsUrlSearch).then((response) => setNewsData(response.data));
+    axios
+      .get(textMiningUrlSearch)
+      .then((response) => setTextData(response.data));
+  }, [searchWord]);
+
   // TextMining 단어 클릭 시 해당 단어 저장
   // But, 단어 클릭 시 TextMining 구조가 재배치
   const [selectedWord, setSelectedWord] = useState("");
@@ -120,7 +157,7 @@ function NewsTextMiningI() {
   // console.log(selectedWordNewsData);
 
   return (
-    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
+    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
       <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
         <NewsI
           newsData={newsData}
@@ -129,12 +166,24 @@ function NewsTextMiningI() {
         />
       </div>
 
-      <div>
-        <div>선택 단어 : {selectedWord}</div>
+      <div className="mt-3">
+        <form>
+          <input
+            class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="원하는 품목을 입력하세요."
+          />
+
+          <button type="button" onClick={searchWordHandler} value={searchWord}>
+            버틍니다니ㅏㄴ디ㅏ
+          </button>
+        </form>
+        {/* <div>{searchWord}</div> */}
         <TextMiningI
           textDataInfo={textDataInfo}
           wordClickHandler={wordClickHandler}
           nothingHandler={nothingHandler}
+          selectedWord={selectedWord}
         />
       </div>
     </div>

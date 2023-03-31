@@ -128,11 +128,12 @@ function NewsTextMining() {
       </div>
 
       <div>
-        <div>선택 단어 : {selectedWord}</div>
+        {/* <div>선택 단어 : {selectedWord}</div> */}
         <TextMining
           textDataInfo={textDataInfo}
           wordClickHandler={wordClickHandler}
           nothingHandler={nothingHandler}
+          selectedWord={selectedWord}
         />
       </div>
     </div>
