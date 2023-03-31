@@ -8,28 +8,27 @@ import NavBarI from "../../organism/NavBarI";
 import WorldMapI from "../../organism/WorldMapI";
 import NewsTextMiningI from "../../organism/NewsTextMiningI";
 function Item() {
-
   const params = useParams();
-
+  // ssafycnt-trade-service/api/trade/item/zerorow?item=854231&startDate=201901&endDate=202005
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/onerow?" +
-  //       // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
-  //         "statCd=" +
-  //         // "statcd=" +
-  //         params.nationCode +
-  //         "&" +
-  //         "startDate=" +
-  //         params.duration.substring(0, 6) +
-  //         "&" +
-  //         "endDate=" +
-  //         params.duration.substring(7, 13)
-  //     )
-  //     .then((response) => setData(response.data));
-  // }, [params]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/item/onerow?" +
+        // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
+          "item=" +
+          // "statcd=" +
+          params.hsCode +
+          "&" +
+          "startDate=" +
+          params.duration.substring(0, 6) +
+          "&" +
+          "endDate=" +
+          params.duration.substring(7, 13)
+      )
+      .then((response) => setData(response.data));
+  }, [params]);
 
   return (
     <>

@@ -12,7 +12,7 @@ import NewsTextMining from "../../organism/NewsTextMining";
 
 function Nation() {
   const params = useParams();
-
+  
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
   useEffect(() => {
