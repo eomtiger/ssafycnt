@@ -32,7 +32,7 @@ function WorldMap() {
     for (let i in data) {
       const item = [];
       item.push(i);
-      item.push(data[i]["balpaymentsLr"]);
+      item.push(data[i]["balpaymentsDlr"]);
       // item.push(data[i]["nationName"]);
       // item.push(100);
       temp.push(item);
@@ -45,12 +45,13 @@ function WorldMap() {
   useEffect(() => {
     axios
       .get(
-        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/map?" +
+        "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/fourrow?" +
+          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/map?" +
           "startDate=" +
           params.duration.substring(0, 6) +
           "&" +
           "endDate=" +
-          params.duration.substring(7, 12)
+          params.duration.substring(7, 13)
       )
       .then((response) => {
         dataHandler(response.data);
