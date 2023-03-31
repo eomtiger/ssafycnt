@@ -48,7 +48,7 @@ function NationRatio({data1}) {
             tooltip: {
                 callbacks: {
                     label: ((tooltipItem, data) => {
-                        return tooltipItem.formattedValue + ' 원'
+                        return tooltipItem.formattedValue + ' $'
                     })
                 }
             },
@@ -79,7 +79,7 @@ function NationRatio({data1}) {
         <div className='mb-5'>
             <div className='flex justify-between items-center ml-2 text-left'>
                 <div>
-                    <div className='w-72 mt-1 mb-3 font-bold text-xl font-mun'>수출입 비중 ( 한국 ⇆ { nation } )</div>
+                    <div className='w-72 mt-1 mb-3 font-bold text-xl font-mun'>수출입 비중</div>
                     <hr className='mb-10'/>
                 </div>
             </div>
