@@ -41,7 +41,7 @@ function NewsTextMining() {
 
   // newsUrl 요청
   const newsUrl =
-    "http://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news?" +
     "country=" +
     country +
     "&item=" +
@@ -53,7 +53,7 @@ function NewsTextMining() {
 
   // textMiningUrl 요청
   const textMiningUrl =
-    "http://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
+    "https://ssafycnt.site:8000/ssafycnt-news-service/api/news/mining?" +
     "country=" +
     country +
     "&item=" +

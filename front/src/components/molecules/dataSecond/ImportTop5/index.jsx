@@ -83,10 +83,16 @@ function ImportTop5(props) {
 
     const options = {
         indexAxis: 'y',
+
         plugins: {
                     tooltip: {
-                        enabled: false        // 그래프 호버시, 모달창 안나오게 하기
-                    },
+                        enabled: true,        // 그래프 호버시, 모달창 안나오게 하기
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                return tooltipItem.dataset.data[tooltipItem.dataIndex].toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            },
+                        },
+                },
                     legend: {               // 범례 스타일링
                         display: false,
                     },
@@ -120,6 +126,11 @@ function ImportTop5(props) {
                 grid: {
                     display: false,
                 },
+                ticks: {
+                    callback: function (value) {
+                      return this.getLabelForValue(value).substring(0, 6)
+                    }
+                  }
             },
         },
         
@@ -183,7 +194,7 @@ function ImportTop5(props) {
                 anchor:'end',
                 align: 'end',
                 color: 'black',
-                formatter: function(value) { return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
+                formatter: function(value) { return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
             },
         },
       ],
