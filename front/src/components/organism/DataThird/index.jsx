@@ -55,10 +55,16 @@ function DataThird() {
       data["importDetail"][objKey]["impdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      num = data["importDetail"][objKey]["impwgtRatio"].toString().split(".");
+      if (data["importDetail"][objKey]["impwgtRatio"] === 0) {
+        data["importDetail"][objKey]["impwgtRatio"] = "0.0";
+      }
+
+      const a = data["importDetail"][objKey]["impwgtRatio"]
+        .toString()
+        .split(".");
 
       data["importDetail"][objKey]["impwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+        a[0] + "." + a[1].slice(0, 1);
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["importDetail"][objKey]["impdlrSum"].toLocaleString();
@@ -88,10 +94,18 @@ function DataThird() {
       data["exportDetail"][objKey]["expdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      num = data["exportDetail"][objKey]["expwgtRatio"].toString().split(".");
+      if (data["exportDetail"][objKey]["expwgtRatio"] === 0) {
+        data["exportDetail"][objKey]["expwgtRatio"] = "0.0";
+      }
+
+      const a = data["exportDetail"][objKey]["expwgtRatio"]
+        .toString()
+        .split(".");
 
       data["exportDetail"][objKey]["expwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+        a[0] + "." + a[1].slice(0, 1);
+
+      console.log();
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
@@ -110,12 +124,13 @@ function DataThird() {
   useEffect(() => {
     axios
       .get(
-        "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
+        "http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
+          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
           "startDate=" +
           params.duration.substring(0, 6) +
           "&" +
           "endDate=" +
-          params.duration.substring(7, 12)
+          params.duration.substring(7, 13)
       )
       .then((response) => {
         exDataHandler(response.data);
