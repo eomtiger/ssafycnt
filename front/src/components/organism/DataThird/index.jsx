@@ -55,15 +55,16 @@ function DataThird() {
       data["importDetail"][objKey]["impdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      data["importDetail"][objKey]["impwgtRatio"] === 0
-        ? (data["importDetail"][objKey]["impwgtRatio"] = "0.0")
-        : (data["importDetail"][objKey]["impwgtRatio"] =
-            num[0] + "." + num[1].slice(0, 1));
+      if (data["importDetail"][objKey]["impwgtRatio"] === 0) {
+        data["importDetail"][objKey]["impwgtRatio"] = "0.0";
+      }
 
-      // num = data["importDetail"][objKey]["impwgtRatio"].toString().split(".");
+      const a = data["importDetail"][objKey]["impwgtRatio"]
+        .toString()
+        .split(".");
 
       data["importDetail"][objKey]["impwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+        a[0] + "." + a[1].slice(0, 1);
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["importDetail"][objKey]["impdlrSum"].toLocaleString();
@@ -93,15 +94,18 @@ function DataThird() {
       data["exportDetail"][objKey]["expdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      data["exportDetail"][objKey]["expwgtRatio"] === 0
-        ? (data["exportDetail"][objKey]["expwgtRatio"] = "0.0")
-        : (data["exportDetail"][objKey]["expwgtRatio"] =
-            num[0] + "." + num[1].slice(0, 1));
+      if (data["exportDetail"][objKey]["expwgtRatio"] === 0) {
+        data["exportDetail"][objKey]["expwgtRatio"] = "0.0";
+      }
 
-      // num = data["exportDetail"][objKey]["expwgtRatio"].toString().split(".");
+      const a = data["exportDetail"][objKey]["expwgtRatio"]
+        .toString()
+        .split(".");
 
       data["exportDetail"][objKey]["expwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+        a[0] + "." + a[1].slice(0, 1);
+
+      console.log();
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
