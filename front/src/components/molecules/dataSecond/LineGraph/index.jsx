@@ -63,7 +63,7 @@ function TrendItems(props) {
     }
 
     values = values.map(function(x) {
-        return x / 1000000
+        return (x / 1000000).toFixed(0)
     });
     
     const options = {
@@ -73,7 +73,7 @@ function TrendItems(props) {
                         enabled: true,        // 그래프 호버시, 모달창 안나오게 하기
                         callbacks: {
                                 label: function(tooltipItem, data) {
-                                    return '금액 : ' + tooltipItem.dataset.data[tooltipItem.dataIndex] + ' 백만달러'
+                                    return '금액 : ' + tooltipItem.dataset.data[tooltipItem.dataIndex].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' 백만달러'
                                 },
                                 afterLabel: function (tooltipItem, data) {
                                     return '증감율 : ' + tooltipItem.dataset.data1[tooltipItem.dataIndex] + ' %'
