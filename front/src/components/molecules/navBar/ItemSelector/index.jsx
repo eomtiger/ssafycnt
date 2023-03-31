@@ -126,7 +126,6 @@ function ItemSelector() {
       }
     }
   }
-  console.log(itemOptions);
 
   // react-select/async 사용
   const filterNations = (inputValue) => {
@@ -166,7 +165,7 @@ function ItemSelector() {
       });
     }
   }
-  console.log(itemSelect);
+  // console.log(itemSelect);
 
   const [codeCoulmn, setCodeColumn] = useState(itemSelect[0].value);
   const codeColumnHandler = (event) => {
