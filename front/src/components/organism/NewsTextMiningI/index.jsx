@@ -173,14 +173,19 @@ function NewsTextMiningI() {
       </div>
 
       <div className="mt-3">
-        <form onSubmit={searchWordHandler}>
+        <form onSubmit={searchWordHandler} className="h-10">
           <input
-            class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            placeholder="원하는 품목을 입력하세요."
+            placeholder="품목을 검색하세요."
           />
 
-          <button type="submit">버튼</button>
+          <button
+            type="submit"
+            className="rounded-full bg-blue-300 w-20 h-10 font-mun text-2xl ml-5"
+          >
+            검색
+          </button>
         </form>
         {/* <div>{searchWord}</div> */}
         <TextMiningI
