@@ -96,9 +96,9 @@ function WorldMapI() {
     <>
       {isLoading && (
         <div className="mb-40 h-96">
-          <div class="relative flex h-10 w-10 ml-96 mt-10 pt-60 ">
-            <div class="animate-ping absolute h-24 w-24 rounded-full bg-sky-400 opacity-75"></div>
-            <div class="relative  rounded-full bg-sky-500"></div>
+          <div className="relative flex h-10 w-10 ml-96 mt-10 pt-60 ">
+            <div className="animate-ping absolute h-24 w-24 rounded-full bg-sky-400 opacity-75"></div>
+            <div className="relative  rounded-full bg-sky-500"></div>
           </div>
           <span className="text-5xl font-mun  mt-90">세계지도 로딩중...</span>
         </div>
