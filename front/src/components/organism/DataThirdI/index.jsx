@@ -56,7 +56,13 @@ function DataThirdI(props) {
       data["importDetail"][objKey]["impdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      num = data["importDetail"][objKey]["impwgtRatio"].toString().split(".");
+      if (data["importDetail"][objKey]["impwgtRatio"] === 0) {
+        data["importDetail"][objKey]["impwgtRatio"] = "0.0";
+      }
+
+      const a = data["importDetail"][objKey]["impwgtRatio"]
+        .toString()
+        .split(".");
 
       data["importDetail"][objKey]["impwgtRatio"] =
         num[0] + "." + num[1].slice(0, 1);
@@ -89,7 +95,13 @@ function DataThirdI(props) {
       data["exportDetail"][objKey]["expdlrRatio"] =
         num[0] + "." + num[1].slice(0, 1);
 
-      num = data["exportDetail"][objKey]["expwgtRatio"].toString().split(".");
+      if (data["exportDetail"][objKey]["expwgtRatio"] === 0) {
+        data["exportDetail"][objKey]["expwgtRatio"] = "0.0";
+      }
+
+      const a = data["exportDetail"][objKey]["expwgtRatio"]
+        .toString()
+        .split(".");
 
       data["exportDetail"][objKey]["expwgtRatio"] =
         num[0] + "." + num[1].slice(0, 1);
@@ -108,50 +120,53 @@ function DataThirdI(props) {
   };
 
   ///////여기에서 axios 쓴다
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
-  //         // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
-  //         "startDate=" +
-  //         params.duration.substring(0, 6) +
-  //         "&" +
-  //         "endDate=" +
-  //         params.duration.substring(7, 13)
-  //     )
-  //     .then((response) => {
-  //       exDataHandler(response.data);
-  //       imDataHandler(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [duration]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/item/threerow?" +
+          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data3?" +
+          "item=" +
+          params.hsCode +
+          "&" +
+          "startDate=" +
+          params.duration.substring(0, 6) +
+          "&" +
+          "endDate=" +
+          params.duration.substring(7, 13)
+      )
+      .then((response) => {
+        exDataHandler(response.data);
+        imDataHandler(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params]);
 
   const exportImportStateHandler = () => {
     setExportImportState(!exportImportState);
   };
 
-  const data = useMemo(
-    () =>
-      Array(100)
-        .fill()
-        .map(() => ({
-          ranking: faker.datatype.number({ min: 1, max: 10 }),
-          nationCode: faker.address.countryCode(),
-          // imgSrc:
-          //   "./../../../../../assets/nationalFlags/" +
-          //   faker.address.countryCode() +
-          //   ".gif",
-          duration: "2022.3 - 2023.3",
-          expdlrSum: faker.commerce.price(0, 100000000, 0, "$"),
-          expdlrRatio: "11%",
-          expwgtSum: faker.datatype.number({ min: 100000 }),
-          expwgtRatio: "11%",
-          hsCode: "전체품목",
-        })),
-    []
-  );
+  // const data = useMemo(
+  //   () =>
+  //     Array(100)
+  //       .fill()
+  //       .map(() => ({
+  //         ranking: faker.datatype.number({ min: 1, max: 10 }),
+  //         nationCode: faker.address.countryCode(),
+  //         // imgSrc:
+  //         //   "./../../../../../assets/nationalFlags/" +
+  //         //   faker.address.countryCode() +
+  //         //   ".gif",
+  //         duration: "2022.3 - 2023.3",
+  //         expdlrSum: faker.commerce.price(0, 100000000, 0, "$"),
+  //         expdlrRatio: "11%",
+  //         expwgtSum: faker.datatype.number({ min: 100000 }),
+  //         expwgtRatio: "11%",
+  //         hsCode: "전체품목",
+  //       })),
+  //   []
+  // );
 
   return (
     <>
@@ -162,15 +177,25 @@ function DataThirdI(props) {
           params={params}
         />
       </div>
-      <div className="min-h-screen mt-5 text-gray-900">
+      <div className=" mt-5 text-gray-900">
         <main className="mx-10 my-5">
-          <div className="mt-2">
-            <Table
-              columns={exColumns}
-              data={data}
-              exportImportState={exportImportState}
-            />
-          </div>
+          {exportImportState === true ? (
+            <div className="mt-2">
+              <Table
+                columns={exColumns}
+                data={exData}
+                exportImportState={exportImportState}
+              />
+            </div>
+          ) : (
+            <div className="mt-2">
+              <Table
+                columns={imColumns}
+                data={imData}
+                exportImportState={exportImportState}
+              />
+            </div>
+          )}
         </main>
       </div>
     </>
