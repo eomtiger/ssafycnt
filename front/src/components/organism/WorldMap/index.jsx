@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Chart from "react-google-charts";
-import logo from "./../../../../public/logo.svg";
 
 function WorldMap() {
   const params = useParams();

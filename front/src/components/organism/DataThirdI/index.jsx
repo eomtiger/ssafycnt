@@ -5,17 +5,19 @@ import ExportImportToggle from "../../molecules/dataThird/ExportImportToggle";
 import Table from "../../molecules/dataThirdI/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
 import axios from "axios";
-import { faker } from "@faker-js/faker";
+import codeName from "../../../assets/nationNameToCode.json";
+
 function DataThirdI(props) {
   const [exportImportState, setExportImportState] = useState(true);
   const params = useParams();
   const duration = params.duration;
+  const [isLoading, setIsLoading] = useState(true);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },
     {
       accessor: "nationCode",
-      Header: "국가코드",
+      Header: "국가명",
       Cell: AvatarCell,
     },
     { accessor: "duration", Header: "조회기준" },
@@ -30,7 +32,7 @@ function DataThirdI(props) {
     { accessor: "ranking", Header: "순위" },
     {
       accessor: "nationCode",
-      Header: "국가코드",
+      Header: "국가명",
       Cell: AvatarCell,
     },
     { accessor: "duration", Header: "조회기준" },
@@ -49,12 +51,18 @@ function DataThirdI(props) {
       data["importDetail"][objKey]["nationCode"] = objKey;
       data["importDetail"][objKey]["duration"] = data["period"];
 
+      if (data["importDetail"][objKey]["impdlrRatio"] === 0) {
+        data["importDetail"][objKey]["impdlrRatio"] = "0.0";
+      }
+
       let num = data["importDetail"][objKey]["impdlrRatio"]
         .toString()
         .split(".");
 
-      data["importDetail"][objKey]["impdlrRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+      if (num != 100) {
+        data["importDetail"][objKey]["impdlrRatio"] =
+          num[0] + "." + num[1].slice(0, 1);
+      }
 
       if (data["importDetail"][objKey]["impwgtRatio"] === 0) {
         data["importDetail"][objKey]["impwgtRatio"] = "0.0";
@@ -64,8 +72,10 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      data["importDetail"][objKey]["impwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+      if (a != 100) {
+        data["importDetail"][objKey]["impwgtRatio"] =
+          a[0] + "." + a[1].slice(0, 1);
+      }
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["importDetail"][objKey]["impdlrSum"].toLocaleString();
@@ -73,6 +83,9 @@ function DataThirdI(props) {
 
       num = data["importDetail"][objKey]["impwgtSum"].toLocaleString();
       data["importDetail"][objKey]["impwgtSum"] = num;
+
+      data["importDetail"][objKey]["nationCode"] =
+        codeName[data["importDetail"][objKey]["nationCode"]];
 
       temp.push(data["importDetail"][objKey]);
     }
@@ -88,12 +101,18 @@ function DataThirdI(props) {
       data["exportDetail"][objKey]["nationCode"] = objKey;
       data["exportDetail"][objKey]["duration"] = data["period"];
 
+      if (data["exportDetail"][objKey]["expdlrRatio"] === 0) {
+        data["exportDetail"][objKey]["expdlrRatio"] = "0.0";
+      }
+
       let num = data["exportDetail"][objKey]["expdlrRatio"]
         .toString()
         .split(".");
 
-      data["exportDetail"][objKey]["expdlrRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+      if (num != 100) {
+        data["exportDetail"][objKey]["expdlrRatio"] =
+          num[0] + "." + num[1].slice(0, 1);
+      }
 
       if (data["exportDetail"][objKey]["expwgtRatio"] === 0) {
         data["exportDetail"][objKey]["expwgtRatio"] = "0.0";
@@ -103,8 +122,10 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      data["exportDetail"][objKey]["expwgtRatio"] =
-        num[0] + "." + num[1].slice(0, 1);
+      if (a != 100) {
+        data["exportDetail"][objKey]["expwgtRatio"] =
+          a[0] + "." + a[1].slice(0, 1);
+      }
 
       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       num = data["exportDetail"][objKey]["expdlrSum"].toLocaleString();
@@ -112,6 +133,9 @@ function DataThirdI(props) {
 
       num = data["exportDetail"][objKey]["expwgtSum"].toLocaleString();
       data["exportDetail"][objKey]["expwgtSum"] = num;
+
+      data["exportDetail"][objKey]["nationCode"] =
+        codeName[data["exportDetail"][objKey]["nationCode"]];
 
       temp.push(data["exportDetail"][objKey]);
     }
@@ -137,6 +161,7 @@ function DataThirdI(props) {
       .then((response) => {
         exDataHandler(response.data);
         imDataHandler(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -171,33 +196,49 @@ function DataThirdI(props) {
   return (
     <>
       <hr className="mt-3"></hr>
-      <div onClick={exportImportStateHandler} className="mt-5 left-0">
-        <ExportImportToggle
-          exportImportState={exportImportState}
-          params={params}
-        />
-      </div>
-      <div className=" mt-5 text-gray-900">
-        <main className="mx-10 my-5">
-          {exportImportState === true ? (
-            <div className="mt-2">
-              <Table
-                columns={exColumns}
-                data={exData}
-                exportImportState={exportImportState}
-              />
-            </div>
-          ) : (
-            <div className="mt-2">
-              <Table
-                columns={imColumns}
-                data={imData}
-                exportImportState={exportImportState}
-              />
-            </div>
-          )}
-        </main>
-      </div>
+
+      {isLoading && (
+        <div className="mb-40 h-96">
+          <div className="relative flex h-10 w-10 ml-96 mt-10 pt-60 ">
+            <div className="animate-ping absolute h-24 w-24 rounded-full bg-sky-400 opacity-75"></div>
+            <div className="relative  rounded-full bg-sky-500"></div>
+          </div>
+          <span className="text-5xl font-mun  mt-90">상세정보 로딩중...</span>
+        </div>
+      )}
+      {!isLoading && (
+        <div>
+          <div onClick={exportImportStateHandler} className="mt-5 left-0">
+            <ExportImportToggle
+              exportImportState={exportImportState}
+              params={params}
+            />
+          </div>
+          <div className=" mt-5  text-gray-900">
+            <main className="mx-10 my-5">
+              {/* mx-auto px-4 sm:px-6 lg:px-8 pt-4  */}
+
+              {exportImportState === true ? (
+                <div className="mt-2">
+                  <Table
+                    columns={exColumns}
+                    data={exData}
+                    exportImportState={exportImportState}
+                  />
+                </div>
+              ) : (
+                <div className="mt-2">
+                  <Table
+                    columns={imColumns}
+                    data={imData}
+                    exportImportState={exportImportState}
+                  />
+                </div>
+              )}
+            </main>
+          </div>
+        </div>
+      )}
     </>
   );
 }
