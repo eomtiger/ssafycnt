@@ -206,7 +206,9 @@ function ItemSelector() {
         />
         <div className="font-mun">
           <div className="rounded hover:rounded-lg bg-stone-200 mr-3 pl-4 pr-4 pt-1 pb-1 w-full text-center mt-3">
-            <a href="https://www.hs-tariff.com/" target="_blank">HS CODE 상세검색</a>
+            <a href="https://www.hs-tariff.com/" target="_blank">
+              HS CODE 상세검색
+            </a>
           </div>
           <br />
           <h2 className="font-semibold">HS CODE</h2>

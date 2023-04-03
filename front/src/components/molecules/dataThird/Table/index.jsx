@@ -6,6 +6,7 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/solid";
+import codeName from "../../../../assets/codeToName.json";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -174,7 +175,7 @@ function Table({ columns, data, exportImportState }) {
                             <td
                               {...cell.getCellProps()}
                               role="cell"
-                              className="px-6 py-4 whitespace-nowrap"
+                              className=" py-4 whitespace-nowrap "
                             >
                               {cell.render("Cell")}
                             </td>
@@ -293,10 +294,11 @@ const onErrorImg = (e) => {
   e.target.src = unImg;
 };
 export function AvatarCell({ value }) {
-  const imgSrc = "./../../../../../assets/nationalFlags/" + value + ".gif";
+  const code = codeName[value];
+  const imgSrc = "./../../../../../assets/nationalFlags/" + code + ".gif";
   return (
-    <div className="flex items-center justify-items-center">
-      <div className="flex-shrink-0 h-10 w-10">
+    <div className="flex items-center ">
+      <div className="flex-shrink-0 h-10 w-10 ml-5">
         <img className="mt-2 h-7 w-10 " src={imgSrc} onError={onErrorImg} />
       </div>
       <div className="ml-3">

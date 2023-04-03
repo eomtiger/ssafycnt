@@ -28,7 +28,7 @@ function NewsI(props) {
         <div className="grid items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700 border-r-4 border-black">
           {newsData.map((news, index) => (
             <a
-              // key={index}
+              key={index}
               href={news.newsLink}
               target="_blank"
               className="mb-10 block max-w-l p-6 items-center justify-center bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
@@ -54,7 +54,7 @@ function NewsI(props) {
         <div className="grid items-center justify-center p-8 text-center bg-white  rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700 border-r-4 border-black">
           {selectedWordNewsData.map((wordNews, index) => (
             <a
-              // key={index}
+              key={index}
               href={wordNews.newsLink}
               target="_blank"
               className="mb-10 block max-w-l p-6 bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
