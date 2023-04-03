@@ -36,7 +36,7 @@ public class MiningServiceImpl implements MiningService{
                 if (word.matches("[0-9]+")) {
                     continue;
                 }
-                if (word.equals("무역") || word.equals(country) || word.equals(item)) {
+                if (word.equals("무역") || country.contains(word) || item.contains(word)) {
                     continue;
                 }
                 List<NewsDto> newsDtoList = wordDict.computeIfAbsent(word, k -> new ArrayList<>());
