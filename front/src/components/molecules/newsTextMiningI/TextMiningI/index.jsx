@@ -40,14 +40,14 @@ function TextMiningI(props) {
           {props.selectedWord === "" ? (
             <label
               className="block text-gray-700 text-sm font-bold mt-3"
-              for="username"
+              htmlFor="username"
             >
               선택된 단어: 없음
             </label>
           ) : (
             <label
               className="block text-gray-700 text-sm font-bold mt-3 "
-              for="username"
+              htmlFor="username"
             >
               선택된 단어: {props.selectedWord}
             </label>

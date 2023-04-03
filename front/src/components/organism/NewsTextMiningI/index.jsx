@@ -96,7 +96,6 @@ function NewsTextMiningI() {
 
     // console.log(event.target[0].value);
   };
-  console.log(searchWord);
 
   // search 후 newsUrl 요청
   const newsUrlSearch =
@@ -161,8 +160,11 @@ function NewsTextMiningI() {
   // console.log(selectedWordNewsData);
 
   return (
-    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
-      <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
+    <div className="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
+      <div
+        className=" overflow-y-scroll scrollbar-hide bg-blue-300 mt-10"
+        style={{ height: "600px" }}
+      >
         <NewsI
           newsData={newsData}
           selectedWord={selectedWord}
@@ -171,14 +173,19 @@ function NewsTextMiningI() {
       </div>
 
       <div className="mt-3">
-        <form onSubmit={searchWordHandler}>
+        <form onSubmit={searchWordHandler} className="h-10">
           <input
-            class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            placeholder="원하는 품목을 입력하세요."
+            placeholder="품목을 검색하세요."
           />
 
-          <button type="submit">버튼</button>
+          <button
+            type="submit"
+            className="rounded-full bg-blue-300 w-20 h-10 font-mun text-2xl ml-5"
+          >
+            검색
+          </button>
         </form>
         {/* <div>{searchWord}</div> */}
         <TextMiningI

@@ -9,6 +9,8 @@ function WorldMap() {
   const [a, setA] = useState(params.nationCode);
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const data1 = [
     ["Country", "balnce", "test"],
     ["Germany", -100, 100],
@@ -55,6 +57,7 @@ function WorldMap() {
       )
       .then((response) => {
         dataHandler(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -111,17 +114,28 @@ function WorldMap() {
       {/* <div className="mr-5">수출입</div> */}
       {/* <div className="ml-20">{params.nationName}</div> */}
       {/* </div> */}
-      <div className="mt-2 static flex justify-center">
-        <Chart
-          chartType="GeoChart"
-          data={data}
-          options={options}
-          chartEvents={chartEvents}
-        />
-        {/* <div className="absolute bottom-0 left-3 mt-5">
-          <p className="font-mun">무역 수지</p>
-        </div> */}
-      </div>
+
+      {isLoading && (
+        <div className="mb-40 h-96">
+          <div className="relative flex h-10 w-10 ml-96 mt-10 pt-60 ">
+            <div className="animate-ping absolute h-24 w-24 rounded-full bg-sky-400 opacity-75"></div>
+            <div className="relative  rounded-full bg-sky-500"></div>
+          </div>
+          <span className="text-5xl font-mun mr-90 mt-90">
+            세계지도 로딩중...
+          </span>
+        </div>
+      )}
+      {!isLoading && (
+        <div className="mt-2 static flex justify-center">
+          <Chart
+            chartType="GeoChart"
+            data={data}
+            options={options}
+            chartEvents={chartEvents}
+          />
+        </div>
+      )}
     </>
   );
 }
