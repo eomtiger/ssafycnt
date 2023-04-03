@@ -24,7 +24,7 @@ function TextMining(props) {
 
   return (
     <>
-      <div className="mr-12">
+      <div className="mr-12 mt-5">
         <WordCloud
           data={textDataInfo}
           // onWordClick={(event, d) => {
