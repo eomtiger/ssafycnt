@@ -36,7 +36,6 @@ function TrendItems(props) {
 
     // 정렬된 순서로 들어와야함 (Top1 -> Top5)
     if (Object.keys(props.anyItem[7]).length === 3) {
-        console.log(')))))))))))))))*********')
         labels = Object.keys(props.anyItem[7]).map(v => {
             if (v !== 'changeRate') {
                 return v
