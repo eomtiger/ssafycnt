@@ -118,8 +118,11 @@ function NewsTextMining() {
   // console.log(selectedWordNewsData);
 
   return (
-    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
-      <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
+    <div className="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
+      <div
+        className="overflow-y-scroll scrollbar-hide bg-gray-300 mt-10"
+        style={{ height: "600px" }}
+      >
         <News
           newsData={newsData}
           selectedWord={selectedWord}

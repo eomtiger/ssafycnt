@@ -11,6 +11,7 @@ import {
     Legend,
   } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import CodeToName from "../../../../assets/codeToName.json"
 
 ChartJS.register(
     CategoryScale,
@@ -34,6 +35,9 @@ function ImportTop5(props) {
 
     if (typeof props.alreadyClicked[5]['수입'] !== 'undefined' && props.alreadyClicked[5]['수입'] !== null) {
         labels = Object.keys(props.alreadyClicked[5]['수입'])
+            .map(v => {
+            return props.alreadyClicked[5]["수입"][v]['nationName']
+          });
     } else {
         labels = ['', '', '', '', '']
     }
@@ -137,7 +141,7 @@ function ImportTop5(props) {
         onClick: function (evt, element) {
             if (element.length > 0) {
                 setColorsHandler(element[0]['index'])
-                props.onSaveClickOrNot(data.labels[element[0]['index']])
+                props.onSaveClickOrNot(CodeToName[data.labels[element[0]["index"]]])
             }
         }
     }
