@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import logo from "./../../../assets/logo.svg";
 import pdf from "./../../../assets/pdf.svg";
 import excel from "./../../../assets/excel.svg";
@@ -12,8 +12,8 @@ import Code from "../../../assets/Code.json";
 import Excel from "../../molecules/navBar/Excel";
 import axios from "axios";
 
-
 function NavBar(props) {
+  const navigate = useNavigate();
   // Nation, Item의 state에서 Default를 Nation으로 설정
   const [state, setState] = useState("Nation");
 
@@ -41,7 +41,13 @@ function NavBar(props) {
     <>
       <nav className="flex justify-between  sticky top-0 bg-slate-200 content-center font-mun">
         {/* <img src={logo} className="w-20 h-20 ml-5 mt-2" /> */}
-        <img src={logo} className="w-32 h-32 ml-10" />
+        <button
+          onClick={() => {
+            navigate("/nation/ALL/202203-202302");
+          }}
+        >
+          <img src={logo} className="w-32 h-32 ml-10" />
+        </button>
 
         <div className="content-center flex items-center">
           <NationOrItem stateHandler={stateHandler} />

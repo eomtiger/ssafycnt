@@ -31,7 +31,7 @@ function NewsI(props) {
               // key={index}
               href={news.newsLink}
               target="_blank"
-              className="mb-10 block max-w-sm p-6 items-center justify-center bg-blue-200 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              className="mb-10 block max-w-l p-6 items-center justify-center bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
               <blockquote className="  max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                 <h5
@@ -57,7 +57,7 @@ function NewsI(props) {
               // key={index}
               href={wordNews.newsLink}
               target="_blank"
-              className="mb-10 block max-w-sm p-6 bg-blue-200 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              className="mb-10 block max-w-l p-6 bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
               <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                 <h5

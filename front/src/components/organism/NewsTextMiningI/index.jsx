@@ -96,7 +96,6 @@ function NewsTextMiningI() {
 
     // console.log(event.target[0].value);
   };
-  console.log(searchWord);
 
   // search 후 newsUrl 요청
   const newsUrlSearch =
@@ -162,7 +161,10 @@ function NewsTextMiningI() {
 
   return (
     <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
-      <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
+      <div
+        className=" overflow-y-scroll scrollbar-hide bg-blue-300 mt-10"
+        style={{ height: "600px" }}
+      >
         <NewsI
           newsData={newsData}
           selectedWord={selectedWord}

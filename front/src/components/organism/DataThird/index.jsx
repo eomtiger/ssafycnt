@@ -173,7 +173,7 @@ function DataThird() {
           params={params}
         />
       </div>
-      <div className="min-h-screen mt-5  text-gray-900">
+      <div className=" mt-5  text-gray-900">
         <main className="mx-10 my-5">
           {/* mx-auto px-4 sm:px-6 lg:px-8 pt-4  */}
 
