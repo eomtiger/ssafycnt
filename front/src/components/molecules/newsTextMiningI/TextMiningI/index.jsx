@@ -1,22 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WordCloud from "react-d3-cloud";
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import Code from "../../../../assets/Code.json";
-// import { useParams } from "react-router-dom";
-// import TextMiningInfo from "../../../../assets/TextMiningInfo.json";
-
-// DUMMY_TEXTDATA
-// const textMiningInfo = Object.keys(TextMiningInfo);
-// const textInfo = [];
-// for (let i = 0; i < textMiningInfo.length; i++) {
-//   let wordString = textMiningInfo[i];
-//   textInfo.push({
-//     text: wordString,
-//     value: TextMiningInfo[wordString].length,
-//   });
-// }
-// console.log(textInfo);
+import { useRecoilState } from "recoil";
+import { textMiningImgAtom } from "../../../../states/recoilPdfState";
+import html2canvas from "html2canvas";
 
 function TextMiningI(props) {
   let textDataInfo = props.textDataInfo;
@@ -27,9 +13,6 @@ function TextMiningI(props) {
       <div className="mr-12">
         <WordCloud
           data={textDataInfo}
-          // onWordClick={(event, d) => {
-          //   console.log(`onWordClick: ${d.text}`);
-          // }}
           onWordClick={props.wordClickHandler}
           font="munchebu"
           spiral="archimedean"
