@@ -102,6 +102,7 @@ function NewsTextMiningI() {
   const [searchWord, setSearchWord] = useState("");
   const searchWordHandler = (event) => {
     event.preventDefault();
+    setSelectedWord("");
     setSearchWord(event.target[0].value);
 
     // console.log(event.target[0].value);
