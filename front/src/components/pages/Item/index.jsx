@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DataFirstI from "../../organism/DataFirstI"
-import DataSecondI from "../../organism/DataSecondI"
+import DataFirstI from "../../organism/DataFirstI";
+import DataSecondI from "../../organism/DataSecondI";
 import DataThirdI from "../../organism/DataThirdI";
 import NavBarI from "../../organism/NavBarI";
 import WorldMapI from "../../organism/WorldMapI";
@@ -16,7 +16,7 @@ function Item() {
     axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/item/onerow?" +
-        // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
+          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
           "item=" +
           // "statcd=" +
           params.hsCode +

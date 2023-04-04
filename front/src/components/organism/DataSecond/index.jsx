@@ -4,6 +4,8 @@ import LineChartTrend from "./../../molecules/dataSecond/LineGraph/index";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { excelState2 } from "../../../states/Excel";
 
 // function DataSecond() {
 //   const params = useParams();
@@ -52,6 +54,7 @@ import axios from "axios";
 // export default DataSecond;
 
 function DataSecond() {
+  const [exelData, setExcelData] = useRecoilState(excelState2);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -94,7 +97,7 @@ function DataSecond() {
           nation,
           firstExportData,
         ]);
-        console.log(response.data);
+        setExcelData(response.data);
       })
       .catch((error) => {
         console.log(error);
