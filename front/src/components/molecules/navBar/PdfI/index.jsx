@@ -25,19 +25,22 @@ function PdfI() {
 
   const pdfHead = `HsCode : ${params.hsCode}, Duration : ${params.duration}`;
   const pdfData1 = `1. Export & Import Proportion`;
-  const pdfData2 = `2. Export & Import TOP5 country`;
+  const pdfData2 = `2. Export & Import TOP5 Country`;
+  const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.hsCode}`;
 
   const downloadPdf = () => {
     const pdf = new jsPDF();
     pdf.text(pdfHead, 10, 10);
-    pdf.text(pdfData1, 10, 15);
-    pdf.addImage(data1Img, "JPEG", 0, 20, 100, 20);
-    pdf.text(pdfData2, 10, 38);
-    pdf.addImage(data2Img, "JPEG", 0, 50, 100, 20);
-    pdf.text(pdfData3, 10, 60);
-    pdf.addImage(data3Img, "JPEG", 0, 80, 200, 20);
-    pdf.addImage(textMiningImg, "JPEG", 0, 110, 100, 20);
+    pdf.text(pdfData1, 10, 30);
+    pdf.addImage(data1Img, "JPEG", 0, 45, 200, 80);
+    pdf.text(pdfData2, 10, 160);
+    pdf.addImage(data2Img, "JPEG", 0, 175, 200, 80);
+    pdf.text(pdfPage1, 100, 290);
+    pdf.addPage("a4");
+    pdf.text(pdfData3, 10, 30);
+    pdf.addImage(data3Img, "JPEG", 5, 35, 200, 150);
+    pdf.addImage(textMiningImg, "JPEG", 10, 180, 100, 100);
     pdf.save(`Report_${params.hsCode}_${params.duration}`);
   };
 

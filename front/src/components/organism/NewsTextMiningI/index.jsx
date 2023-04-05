@@ -195,7 +195,6 @@ function NewsTextMiningI() {
           >
             검색
           </button>
-
         </form>
         {/* <div>{searchWord}</div> */}
         <div id="textMiningImgHadler">
