@@ -65,7 +65,7 @@ function NavBar(props) {
 
         <div className="flex justify-between items-center align-middle mr-10">
           <Pdf />
-          <Excel apiData={props.apiData} />
+          <Excel apiData={props.apiData} state={state}/>
         </div>
       </nav>
     </>

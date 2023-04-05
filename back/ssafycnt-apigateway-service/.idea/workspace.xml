@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a6f5957-1b05-4d67-9b79-3efc053bda98" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserDetailServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/constants/CdConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/constants/CdConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/controller/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/controller/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/request/Row1RequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/Row1ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/stat/StatRow1ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/Row2ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/stat/StatRow2ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/Row3ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/stat/StatRow3ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/dto/response/Row4ResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/GraphService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/StatGraphService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-config-service/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-config-service/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-config-service/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-config-service/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/src/components/molecules/navBar/Excel/exelData2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/components/molecules/navBar/Excel/exelData2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/src/components/molecules/navBar/Excel/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/components/molecules/navBar/Excel/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/src/components/organism/NavBar/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/components/organism/NavBar/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/src/components/pages/Nation/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/components/pages/Nation/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +38,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ssafycnt-apigateway-service" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -72,7 +75,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/SSAFY/Desktop/S08P22B308/back/ssafycnt-apigateway-service",
+    "last_opened_file_path": "D:/Sub_1/github/S08P22B308/back/ssafycnt-user-service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,7 +83,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "28ac49bea78cd1ce2ddc3336e1c9e7aa",
+    "spring.configuration.checksum": "b116035cf86325bf28c111476fde5224",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -89,12 +92,19 @@
       <recent name="D:\Sub_1\github\S08P22B308\back\ssafycnt-apigateway-service\src\main\resources\ssl" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SsafycntApigatewayServiceApplication">
+    <configuration name="SsafycntApigatewayServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ssafycnt-apigateway-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ssafy.ssafycntapigatewayservice.SsafycntApigatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SsafycntApigatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" value="dev" />
-      <option name="ALTERNATIVE_JRE_PATH" value="zulu-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" value="zulu-8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <module name="back.ssafycnt-apigateway-service.main" />
+      <module name="ssafycnt-apigateway-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ssafy.ssafycntapigatewayservice.SsafycntApigatewayServiceApplication" />
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
@@ -105,6 +115,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.SsafycntApigatewayServiceApplication" />
+      <item itemvalue="Spring Boot.SsafycntApigatewayServiceApplication (1)" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -120,6 +134,9 @@
       <workItem from="1679966019071" duration="1506000" />
       <workItem from="1679969504779" duration="2470000" />
       <workItem from="1680235859120" duration="983000" />
+      <workItem from="1680250934649" duration="600000" />
+      <workItem from="1680617064279" duration="4226000" />
+      <workItem from="1680652477505" duration="1161000" />
     </task>
     <servers />
   </component>
