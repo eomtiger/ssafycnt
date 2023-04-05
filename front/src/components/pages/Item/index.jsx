@@ -9,17 +9,17 @@ import WorldMapI from "../../organism/WorldMapI";
 import NewsTextMiningI from "../../organism/NewsTextMiningI";
 import html2canvas from "html2canvas";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { data1ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import { data1ImgAtom, pdfStateAtom } from "../../../states/recoilPdfState";
 import { excelStateI1 } from "../../../states/Excel";
 
 function Item() {
   const params = useParams();
   const [excelData, setExcelData] = useRecoilState(excelStateI1);
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
-  const stateI = useRecoilValue(pdfStateI);
+  const pdfState = useRecoilValue(pdfStateAtom);
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("data1ImgHandler");
       html2canvas(input).then((canvas) => {
         let data1 = canvas.toDataURL("image/png");
@@ -27,7 +27,7 @@ function Item() {
         // console.log("Item Data1 Done");
       });
     }
-  }, [stateI]);
+  }, [pdfState]);
 
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);

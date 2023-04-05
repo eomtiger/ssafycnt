@@ -10,8 +10,8 @@ import { excelState3 } from "../../../states/Excel";
 import html2canvas from "html2canvas";
 import {
   data3ImgAtom,
-  pdfStateI,
-  data3State,
+  pdfStateAtom,
+  data3StateAtom,
 } from "../../../states/recoilPdfState";
 import { excelDisabled } from "../../../states/Excel";
 
@@ -22,21 +22,21 @@ function DataThird() {
   const [isLoading, setIsLoading] = useState(true);
   const [excelData, setExcelData] = useRecoilState(excelState3);
   const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
-  const [dataState, setDataState] = useRecoilState(data3State);
-  const stateI = useRecoilValue(pdfStateI);
+  const [data3State, setData3State] = useRecoilState(data3StateAtom);
+  const pdfState = useRecoilValue(pdfStateAtom);
   const [disable, setDisable] = useRecoilState(excelDisabled);
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("data3ImgHandler");
       html2canvas(input).then((canvas) => {
         let data3 = canvas.toDataURL("image/png");
         setData3Img(data3);
-        setDataState(true);
+        setData3State(true);
       });
     }
-  }, [stateI]);
-  // console.log(dataState);
+  }, [pdfState]);
+  // console.log(data3State);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },

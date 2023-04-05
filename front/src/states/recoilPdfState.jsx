@@ -20,28 +20,28 @@ const textMiningImgAtom = atom({
   default: "",
 });
 
-const pdfStateI = atom({
-  key: "pdfStateI",
+const pdfStateAtom = atom({
+  key: "pdfStateAtom",
   default: false,
 });
 
-const data1State = atom({
-  key: "data1State",
+const data1StateAtom = atom({
+  key: "data1StateAtom",
   default: false,
 });
 
-const data2State = atom({
-  key: "data2State",
+const data2StateAtom = atom({
+  key: "data2StateAtom",
   default: false,
 });
 
-const data3State = atom({
-  key: "data3State",
+const data3StateAtom = atom({
+  key: "data3StateAtom",
   default: false,
 });
 
-const textMiningState = atom({
-  key: "textMiningState",
+const textMiningStateAtom = atom({
+  key: "textMiningStateAtom",
   default: false,
 });
 
@@ -55,10 +55,10 @@ export {
   data2ImgAtom,
   data3ImgAtom,
   textMiningImgAtom,
-  pdfStateI,
-  data1State,
-  data2State,
-  data3State,
-  textMiningState,
+  pdfStateAtom,
+  data1StateAtom,
+  data2StateAtom,
+  data3StateAtom,
+  textMiningStateAtom,
   preventClickAtom,
 };
