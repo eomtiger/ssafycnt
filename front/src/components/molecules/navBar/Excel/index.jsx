@@ -100,7 +100,7 @@ function Excel(props) {
 
   function convertDataI2ToTable(data1, data2) {
     const table = [
-      ["item", data1.hsCode],
+      ["item", data1.itemName],
       ["period", data1.period],
       [],
       [
@@ -261,6 +261,7 @@ function Excel(props) {
   };
 
   const exportToExcelI = () => {
+    console.log(dataI1);
     const wsI1 = XLSX.utils.aoa_to_sheet(convertDataI2ToTable(dataI1, dataI2));
     const wsI2 = XLSX.utils.aoa_to_sheet(convertData3ToTable(dataI3));
 
