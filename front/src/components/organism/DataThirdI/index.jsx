@@ -16,6 +16,7 @@ function DataThirdI(props) {
   const params = useParams();
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
+  const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },
@@ -167,6 +168,11 @@ function DataThirdI(props) {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
+        const input = document.getElementById("data3ImgHandler");
+        html2canvas(input).then((canvas) => {
+          let data3 = canvas.toDataURL("image/png");
+          setData3Img(data3);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -229,10 +235,7 @@ function DataThirdI(props) {
               params={params}
             />
           </div>
-          <div
-            className=" mt-5  text-gray-900"
-            // id="data3ImgHadler"
-          >
+          <div className=" mt-5  text-gray-900" id="data3ImgHandler">
             <main className="mx-10 my-5">
               {/* mx-auto px-4 sm:px-6 lg:px-8 pt-4  */}
 

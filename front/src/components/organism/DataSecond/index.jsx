@@ -101,11 +101,14 @@ function DataSecond() {
           firstExportData,
         ]);
         setExcelData(response.data);
-        const input = document.getElementById("data2ImgHandler");
-        html2canvas(input).then((canvas) => {
-          let data2 = canvas.toDataURL("image/png");
-          setData2Img(data2);
-        });
+        setTimeout(() => {
+          const input = document.getElementById("data2ImgHandler");
+          html2canvas(input).then((canvas) => {
+            let data2 = canvas.toDataURL("image/png");
+            setData2Img(data2);
+            console.log("Nation data2 done");
+          });
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
