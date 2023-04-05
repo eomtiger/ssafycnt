@@ -5,12 +5,15 @@ import { AvatarCell } from "../../molecules/dataThird/Table";
 import ExportImportToggle from "../../molecules/dataThird/ExportImportToggle";
 import axios from "axios";
 import codeName from "../../../assets/nationNameToCode.json";
+import { useRecoilState } from "recoil";
+import { excelState3 } from "../../../states/Excel";
 
 function DataThird() {
   const [exportImportState, setExportImportState] = useState(true);
   const params = useParams();
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
+  const [excelData, setExcelData] = useRecoilState(excelState3);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },
@@ -158,6 +161,7 @@ function DataThird() {
         exDataHandler(response.data);
         imDataHandler(response.data);
         setIsLoading(false);
+        setExcelData(response.data);
       })
       .catch((error) => {
         console.log(error);
