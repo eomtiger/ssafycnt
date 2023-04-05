@@ -23,9 +23,7 @@ function Nation() {
     axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/onerow?" +
-          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
           "statCd=" +
-          // "statcd=" +
           params.nationCode +
           "&" +
           "startDate=" +
@@ -50,15 +48,12 @@ function Nation() {
       <div className="z-30 sticky top-0">
         <NavBar apiData={data} />
       </div>
-
       <div className="z-0">
         <WorldMap />
       </div>
       <DataFirst data1={data} />
       <DataSecond />
       <DataThird />
-      {/* <TextMining />
-      <News /> */}
       <NewsTextMining />
     </>
   );
