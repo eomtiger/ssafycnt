@@ -80,7 +80,7 @@ function DataSecondI() {
         setData2Img(data2);
       });
     }
-  }, [stateI]);
+  }, [pdfState]);
 
   useEffect(() => {
     axios
