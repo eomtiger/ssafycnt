@@ -36,7 +36,7 @@ function Nation() {
   return (
     <>
       <div className="z-30 sticky top-0">
-        <NavBar apiData={data}/>
+        <NavBar apiData={data} />
       </div>
 
       <div className="z-0">

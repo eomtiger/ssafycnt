@@ -8,7 +8,7 @@
   },
   "exportTop": {
     "김치": {
-      "exppdlrSum": 807000,
+      "expdlrSum": 807000,
       "exportChange": {
         "changeRate": [30, -10],
         "2023.01": 300000,
@@ -16,7 +16,7 @@
       }
     },
     "가전제품": {
-      "exppdlrSum": 700000,
+      "expdlrSum": 700000,
       "exportChange": {
         "changeRate": [30, -10],
         "2023.01": 400000,
@@ -24,7 +24,7 @@
       }
     },
     "반도체": {
-      "exppdlrSum": 600000,
+      "expdlrSum": 600000,
       "exportChange": {
         "changeRate": [30, -10],
         "2023.01": 200000,
@@ -32,7 +32,7 @@
       }
     },
     "자동차": {
-      "exppdlrSum": 432000,
+      "expdlrSum": 432000,
       "exportChange": {
         "changeRate": [30, -10],
         "2023.01": 300000,
@@ -40,7 +40,7 @@
       }
     },
     "합성수지": {
-      "exppdlrSum": 234000,
+      "expdlrSum": 234000,
       "exportChange": {
         "changeRate": [30, -10],
         "2023.01": 134000,
