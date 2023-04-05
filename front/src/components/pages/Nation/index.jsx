@@ -37,11 +37,14 @@ function Nation() {
       .then((response) => {
         setData(response.data);
         setExcelData(response.data);
-        const input = document.getElementById("data1ImgHandler");
-        html2canvas(input).then((canvas) => {
-          let data1 = canvas.toDataURL("image/png");
-          setData1Img(data1);
-        });
+        setTimeout(() => {
+          const input = document.getElementById("data1ImgHandler");
+          html2canvas(input).then((canvas) => {
+            let data1 = canvas.toDataURL("image/png");
+            setData1Img(data1);
+            console.log("!!!!!!!!!!!!!!!!!!!!");
+          });
+        }, 3000);
       });
   }, [params]);
 
