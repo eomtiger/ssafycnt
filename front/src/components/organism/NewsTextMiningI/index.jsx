@@ -195,7 +195,6 @@ function NewsTextMiningI() {
             type="text"
             placeholder="품목을 검색하세요."
           />
-
         </form>
         {/* <div>{searchWord}</div> */}
         <div id="textMiningImgHadler">
