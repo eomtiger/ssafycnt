@@ -25,6 +25,8 @@ function Nation() {
   const preventClick = useRecoilValue(preventClickAtom);
   const pdfState = useRecoilValue(pdfStateAtom);
 
+  // PDF Button Click 시, pdfState가 true로 변경되며 Rendering이 완료된 화면을 Capture
+  // 화면 Capture 완료 후, data1State를 true로 변경하며 화면 Capture 완료 상태를 관리
   useEffect(() => {
     if (pdfState === true) {
       const input = document.getElementById("data1ImgHandler");
