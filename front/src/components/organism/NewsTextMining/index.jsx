@@ -4,11 +4,30 @@ import { useParams } from "react-router-dom";
 import Code from "../../../assets/Code.json";
 import News from "../../molecules/newsTextMining/News";
 import TextMining from "../../molecules/newsTextMining/TextMining";
-import { useRecoilState } from "recoil";
-import { textMiningImgAtom } from "../../../states/recoilPdfState";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+  textMiningImgAtom,
+  pdfStateI,
+  textMiningState,
+} from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 
 function NewsTextMining() {
+  const stateI = useRecoilValue(pdfStateI);
+  const [dataState, setDataState] = useRecoilState(textMiningState);
+
+  useEffect(() => {
+    if (stateI === true) {
+      const input = document.getElementById("textMiningImgHadler");
+      html2canvas(input).then((canvas) => {
+        const textMining = canvas.toDataURL("image/png");
+        setTextMiningImg(textMining);
+        setDataState(true);
+      });
+    }
+  }, [stateI]);
+  // console.log(dataState);
+
   const params = useParams();
 
   const paramsNationCode = params.nationCode;
@@ -76,11 +95,6 @@ function NewsTextMining() {
     axios.get(newsUrl).then((response) => setNewsData(response.data));
     axios.get(textMiningUrl).then((response) => {
       setTextData(response.data);
-      const input = document.getElementById("textMiningImgHadler");
-      html2canvas(input).then((canvas) => {
-        const textMining = canvas.toDataURL("image/png");
-        setTextMiningImg(textMining);
-      });
     });
   }, [params]);
 
@@ -141,9 +155,8 @@ function NewsTextMining() {
           selectedWordNewsData={selectedWordNewsData}
         />
       </div>
-
+      {/* <div>선택 단어 : {selectedWord}</div> */}
       <div id="textMiningImgHadler">
-        {/* <div>선택 단어 : {selectedWord}</div> */}
         <TextMining
           textDataInfo={textDataInfo}
           wordClickHandler={wordClickHandler}

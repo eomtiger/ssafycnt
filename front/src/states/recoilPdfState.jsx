@@ -25,10 +25,34 @@ const pdfStateI = atom({
   default: false,
 });
 
+const data1State = atom({
+  key: "data1State",
+  default: false,
+});
+
+const data2State = atom({
+  key: "data2State",
+  default: false,
+});
+
+const data3State = atom({
+  key: "data3State",
+  default: false,
+});
+
+const textMiningState = atom({
+  key: "textMiningState",
+  default: false,
+});
+
 export {
   data1ImgAtom,
   data2ImgAtom,
   data3ImgAtom,
   textMiningImgAtom,
   pdfStateI,
+  data1State,
+  data2State,
+  data3State,
+  textMiningState,
 };

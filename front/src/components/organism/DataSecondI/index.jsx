@@ -73,11 +73,13 @@ function DataSecondI() {
   let nationConnection;
 
   useEffect(() => {
-    const input = document.getElementById("data2ImgHandler");
-    html2canvas(input).then((canvas) => {
-      let data2 = canvas.toDataURL("image/png");
-      setData2Img(data2);
-    });
+    if (stateI === true) {
+      const input = document.getElementById("data2ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data2 = canvas.toDataURL("image/png");
+        setData2Img(data2);
+      });
+    }
   }, [stateI]);
 
   useEffect(() => {

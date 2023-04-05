@@ -20,11 +20,13 @@ function DataThirdI(props) {
   const stateI = useRecoilValue(pdfStateI);
 
   useEffect(() => {
-    const input = document.getElementById("data3ImgHandler");
-    html2canvas(input).then((canvas) => {
-      let data3 = canvas.toDataURL("image/png");
-      setData3Img(data3);
-    });
+    if (stateI === true) {
+      const input = document.getElementById("data3ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data3 = canvas.toDataURL("image/png");
+        setData3Img(data3);
+      });
+    }
   }, [stateI]);
 
   const exColumns = useMemo(() => [
