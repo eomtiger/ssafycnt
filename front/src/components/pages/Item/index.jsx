@@ -10,9 +10,11 @@ import NewsTextMiningI from "../../organism/NewsTextMiningI";
 import html2canvas from "html2canvas";
 import { useRecoilState } from "recoil";
 import { data1ImgAtom } from "../../../states/recoilPdfState";
+import { excelStateI1 } from "../../../states/Excel";
 
 function Item() {
   const params = useParams();
+  const [excelData, setExcelData] = useRecoilState(excelStateI1);
 
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
   // console.log(data1Img);
@@ -41,6 +43,7 @@ function Item() {
         html2canvas(input).then((canvas) => {
           let data1 = canvas.toDataURL("image/png");
           setData1Img(data1);
+          setExcelData(response.data);
         });
       });
   }, [params]);

@@ -7,6 +7,7 @@ import axios from "axios";
 import { useRecoilState } from "recoil";
 import { data2ImgAtom } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
+import { excelStateI2 } from "../../../states/Excel";
 
 // function DataSecond() {
 //   const params = useParams();
@@ -55,6 +56,7 @@ import html2canvas from "html2canvas";
 // export default DataSecond;
 
 function DataSecondI() {
+  const [excelData, setExcelData] = useRecoilState(excelStateI2);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -98,6 +100,7 @@ function DataSecondI() {
           nation,
           firstExportData,
         ]);
+        setExcelData(response.data);
       })
       .catch((error) => {
         console.log(error);

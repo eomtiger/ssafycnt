@@ -6,6 +6,9 @@ import {
   excelState1,
   excelState2,
   excelState3,
+  excelStateI1,
+  excelStateI2,
+  excelStateI3,
 } from "../../../../states/Excel";
 
 function Excel(props) {
@@ -15,6 +18,10 @@ function Excel(props) {
   const data1 = useRecoilValue(excelState1);
   const data2 = useRecoilValue(excelState2);
   const data3 = useRecoilValue(excelState3);
+
+  const dataI1 = useRecoilValue(excelStateI1);
+  const dataI2 = useRecoilValue(excelStateI2);
+  const dataI3 = useRecoilValue(excelStateI3);
 
   function convertData2ToTable(data1, data2) {
     const table = [
@@ -86,6 +93,81 @@ function Excel(props) {
         table.push([itemRow[i], dateRow[i], impDlrRow[i]]);
       }
       table.push(["impdlrSum", "", topItem.impdlrSum]);
+    });
+
+    return table;
+  }
+
+  function convertDataI2ToTable(data1, data2) {
+    const table = [
+      ["item", data1.hsCode],
+      ["period", data1.period],
+      [],
+      [
+        "expdlrSum",
+        "impdlrSum",
+        "balpaymentsDlr",
+        "expwgtSum",
+        "impwgtSum",
+        "balpaymentsWgt",
+      ],
+      [
+        data1.expdlrSum,
+        data1.impdlrSum,
+        data1.balpaymentsDlr,
+        data1.expwgtSum,
+        data1.impwgtSum,
+        data1.balpaymentsWgt,
+      ],
+    ];
+
+    // Add exportTop data to the table
+    table.push([], ["수출 top5"], ["nation", "date", "expDlr"]);
+    const dates = Object.keys(data2.expdlrChange).filter(
+      (key) => key !== "changeRate"
+    );
+
+    Object.keys(data2.exportTop).forEach((key) => {
+      const topNation = data2.exportTop[key];
+      const expChange = topNation.exportChange;
+      const nationRow = [key];
+      const dateRow = [dates[0]];
+      const expDlrRow = [expChange[dates[0]]];
+
+      // iterate over the dates and push date and expDlr to the table except the first date
+      for (let i = 1; i < dates.length; i++) {
+        nationRow[i] = "";
+        dateRow[i] = dates[i];
+        expDlrRow[i] = expChange[dates[i]];
+      }
+      // push item, date, expDlr to the table
+      for (let i = 0; i < nationRow.length; i++) {
+        table.push([nationRow[i], dateRow[i], expDlrRow[i]]);
+      }
+      table.push(["expdlrSum", "", topNation.expdlrSum]);
+    });
+
+    // Add exportTop data to the table
+    table.push([], ["수입 top5"], ["Nation", "date", "impDlr"]);
+
+    Object.keys(data2.importTop).forEach((key) => {
+      const topNation = data2.importTop[key];
+      const impChange = topNation.importChange;
+      const nationRow = [key];
+      const dateRow = [dates[0]];
+      const impDlrRow = [impChange[dates[0]]];
+
+      // iterate over the dates and push date and impDlr to the table except the first date
+      for (let i = 1; i < dates.length; i++) {
+        nationRow[i] = "";
+        dateRow[i] = dates[i];
+        impDlrRow[i] = impChange[dates[i]];
+      }
+      // push item, date, impDlr to the table
+      for (let i = 0; i < nationRow.length; i++) {
+        table.push([nationRow[i], dateRow[i], impDlrRow[i]]);
+      }
+      table.push(["impdlrSum", "", topNation.impdlrSum]);
     });
 
     return table;
@@ -178,8 +260,22 @@ function Excel(props) {
     XLSX.writeFile(wb, filename);
   };
 
-  return (
+  const exportToExcelI = () => {
+    const wsI1 = XLSX.utils.aoa_to_sheet(convertDataI2ToTable(dataI1, dataI2));
+    const wsI2 = XLSX.utils.aoa_to_sheet(convertData3ToTable(dataI3));
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, wsI1, "수출입 비중 & top 5");
+    XLSX.utils.book_append_sheet(wb, wsI2, "수출입 상세");
+    XLSX.writeFile(wb, filename);
+  };
+
+  return props.state == "Nation" ? (
     <button onClick={exportToExcel}>
+      <img src={excel} className="w-10 h-10" />
+    </button>
+  ) : (
+    <button onClick={exportToExcelI}>
       <img src={excel} className="w-10 h-10" />
     </button>
   );
