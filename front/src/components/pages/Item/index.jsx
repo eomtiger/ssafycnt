@@ -39,12 +39,10 @@ function Item() {
           const input = document.getElementById("data1ImgHandler");
           html2canvas(input).then((canvas) => {
             let data1 = canvas.toDataURL("image/png");
-            let imgWidth = 100;
-            let imgHeight = 100;
             setData1Img(data1);
             console.log("Item Data1 Done");
           });
-        }, 2000);
+        }, 3000);
       });
   }, [params]);
 
