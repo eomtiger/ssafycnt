@@ -8,6 +8,8 @@ import ItemSelector from "../../molecules/navBar/ItemSelector";
 import ViewPeriodI from "./../../molecules/navBar/ViewPeriodI";
 import PdfI from "../../molecules/navBar/PdfI";
 
+import Excel from "./../../molecules/navBar/Excel/index";
+
 function NavBarI() {
   const navigate = useNavigate();
   // Nation, Item의 state에서 Default를 Nation으로 설정
@@ -46,7 +48,7 @@ function NavBarI() {
 
         <div className="flex justify-between items-center align-middle mr-10">
           <PdfI />
-          <img src={excel} className="w-10 h-10" />
+          <Excel state={state} />
         </div>
       </nav>
     </>
