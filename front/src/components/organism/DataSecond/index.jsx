@@ -4,10 +4,14 @@ import LineChartTrend from "./../../molecules/dataSecond/LineGraph/index";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { excelState2 } from "../../../states/Excel";
 import html2canvas from "html2canvas";
-import { data2ImgAtom } from "../../../states/recoilPdfState";
+import {
+  data2ImgAtom,
+  pdfStateI,
+  data2State,
+} from "../../../states/recoilPdfState";
 
 // function DataSecond() {
 //   const params = useParams();
@@ -58,6 +62,8 @@ import { data2ImgAtom } from "../../../states/recoilPdfState";
 function DataSecond() {
   const [exelData, setExcelData] = useRecoilState(excelState2);
   const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
+  const [dataState, setDataState] = useRecoilState(data2State);
+  const stateI = useRecoilValue(pdfStateI);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -69,6 +75,19 @@ function DataSecond() {
     "전세계",
     {},
   ]); // initialize the state with an empty array
+
+  useEffect(() => {
+    if (stateI === true) {
+      const input = document.getElementById("data2ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data2 = canvas.toDataURL("image/png");
+        setData2Img(data2);
+        setDataState(true);
+      });
+    }
+  }, [stateI]);
+  // console.log(dataState);
+
   // http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?statCd=US&startDate=202201&endDate=202203
   useEffect(() => {
     axios
@@ -101,14 +120,6 @@ function DataSecond() {
           firstExportData,
         ]);
         setExcelData(response.data);
-        setTimeout(() => {
-          const input = document.getElementById("data2ImgHandler");
-          html2canvas(input).then((canvas) => {
-            let data2 = canvas.toDataURL("image/png");
-            setData2Img(data2);
-            console.log("Nation data2 done");
-          });
-        }, 3000);
       })
       .catch((error) => {
         console.log(error);

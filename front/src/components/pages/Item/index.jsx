@@ -19,12 +19,14 @@ function Item() {
   const stateI = useRecoilValue(pdfStateI);
 
   useEffect(() => {
-    const input = document.getElementById("data1ImgHandler");
-    html2canvas(input).then((canvas) => {
-      let data1 = canvas.toDataURL("image/png");
-      setData1Img(data1);
-      // console.log("Item Data1 Done");
-    });
+    if (stateI === true) {
+      const input = document.getElementById("data1ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data1 = canvas.toDataURL("image/png");
+        setData1Img(data1);
+        // console.log("Item Data1 Done");
+      });
+    }
   }, [stateI]);
 
   // 지도 & 데이터 1열 axios 요청

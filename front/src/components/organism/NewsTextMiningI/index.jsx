@@ -12,11 +12,13 @@ function NewsTextMiningI() {
   const stateI = useRecoilValue(pdfStateI);
 
   useEffect(() => {
-    const input = document.getElementById("textMiningImgHadler");
-    html2canvas(input).then((canvas) => {
-      const textMining = canvas.toDataURL("image/png");
-      setTextMiningImg(textMining);
-    });
+    if (stateI === true) {
+      const input = document.getElementById("textMiningImgHadler");
+      html2canvas(input).then((canvas) => {
+        const textMining = canvas.toDataURL("image/png");
+        setTextMiningImg(textMining);
+      });
+    }
   }, [stateI]);
 
   const params = useParams();
