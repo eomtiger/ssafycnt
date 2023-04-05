@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { excelState2 } from "../../../states/Excel";
+import html2canvas from "html2canvas";
+import { data2ImgAtom } from "../../../states/recoilPdfState";
 
 // function DataSecond() {
 //   const params = useParams();
@@ -55,6 +57,7 @@ import { excelState2 } from "../../../states/Excel";
 
 function DataSecond() {
   const [exelData, setExcelData] = useRecoilState(excelState2);
+  const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -98,6 +101,11 @@ function DataSecond() {
           firstExportData,
         ]);
         setExcelData(response.data);
+        const input = document.getElementById("data2ImgHandler");
+        html2canvas(input).then((canvas) => {
+          let data2 = canvas.toDataURL("image/png");
+          setData2Img(data2);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -130,7 +138,7 @@ function DataSecond() {
   };
 
   return (
-    <div className="flex justify-center space-x-5 mt-7">
+    <div className="flex justify-center space-x-5 mt-7" id="data2ImgHandler">
       <LineChartTrend anyItem={currentState} />
       <BarChartExport
         alreadyClicked={currentState}
