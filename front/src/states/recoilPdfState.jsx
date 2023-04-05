@@ -20,4 +20,15 @@ const textMiningImgAtom = atom({
   default: "",
 });
 
-export { data1ImgAtom, data2ImgAtom, data3ImgAtom, textMiningImgAtom };
+const pdfStateI = atom({
+  key: "pdfStateI",
+  default: false,
+});
+
+export {
+  data1ImgAtom,
+  data2ImgAtom,
+  data3ImgAtom,
+  textMiningImgAtom,
+  pdfStateI,
+};
