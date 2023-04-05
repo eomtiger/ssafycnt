@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import CodeToName from "../../../../assets/codeToName.json"
 
 ChartJS.register(
   CategoryScale,
@@ -32,12 +33,17 @@ function ExportTop5(props) {
   // 정렬된 순서로 들어와야함 (Top1 -> Top5)
   let labels;
   let values;
+  let nationName
 
   if (
     typeof props.alreadyClicked[5]["수출"] !== "undefined" &&
     props.alreadyClicked[5]["수출"] !== null
   ) {
-    labels = Object.keys(props.alreadyClicked[5]["수출"]);
+    nationName = Object.keys(props.alreadyClicked[5]["수출"])
+    labels = Object.keys(props.alreadyClicked[5]["수출"])
+      .map(v => {
+      return props.alreadyClicked[5]["수출"][v]['nationName']
+    });
   } else {
     labels = ["", "", "", "", ""];
   }
@@ -115,7 +121,7 @@ function ExportTop5(props) {
     onClick: function (evt, element) {
       if (element.length > 0) {
         setColorsHandler(element[0]["index"]);
-        props.onSaveClickOrNot(data.labels[element[0]["index"]]);
+        props.onSaveClickOrNot(CodeToName[data.labels[element[0]["index"]]]);
       }
     },
   };

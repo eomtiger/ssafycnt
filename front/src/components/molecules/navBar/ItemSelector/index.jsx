@@ -126,7 +126,6 @@ function ItemSelector() {
       }
     }
   }
-  console.log(itemOptions);
 
   // react-select/async 사용
   const filterNations = (inputValue) => {
@@ -166,7 +165,7 @@ function ItemSelector() {
       });
     }
   }
-  console.log(itemSelect);
+  // console.log(itemSelect);
 
   const [codeCoulmn, setCodeColumn] = useState(itemSelect[0].value);
   const codeColumnHandler = (event) => {
@@ -201,11 +200,16 @@ function ItemSelector() {
           defaultOptions={false}
           loadOptions={promiseOptions}
           filterOption={null}
-          placeholder="품목명이나 hsCode를 입력하세요."
+          placeholder="품목명이나 HS CODE를 입력하세요."
           onChange={codeColumnHandler}
           styles={styles}
         />
         <div className="font-mun">
+          <div className="rounded hover:rounded-lg bg-stone-200 mr-3 pl-4 pr-4 pt-1 pb-1 w-full text-center mt-3">
+            <a href="https://www.hs-tariff.com/" target="_blank">
+              HS CODE 상세검색
+            </a>
+          </div>
           <br />
           <h2 className="font-semibold">HS CODE</h2>
           <div>{allCodeColumn.hsCode}</div>
