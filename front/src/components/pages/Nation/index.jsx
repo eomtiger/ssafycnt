@@ -14,6 +14,7 @@ import {
   data1ImgAtom,
   pdfStateI,
   data1State,
+  preventClickAtom,
 } from "../../../states/recoilPdfState";
 
 function Nation() {
@@ -21,6 +22,7 @@ function Nation() {
   const [excelData, setExcelData] = useRecoilState(excelState1);
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
   const [dataState, setDataState] = useRecoilState(data1State);
+  const preventClick = useRecoilValue(preventClickAtom);
   const stateI = useRecoilValue(pdfStateI);
 
   useEffect(() => {
@@ -59,17 +61,47 @@ function Nation() {
 
   return (
     <>
-      <div className="z-30 sticky top-0">
-        <NavBar apiData={data} />
-      </div>
-      <div className="z-0">
-        <WorldMap />
-      </div>
-      <DataFirst data1={data} />
-      <DataSecond />
-      <DataThird />
-      <NewsTextMining />
+      {preventClick === true ? (
+        <div>
+          <div className="z-30 sticky top-0 hidden">
+            <NavBar apiData={data} />
+          </div>
+          <div className="z-0 hidden">
+            <WorldMap />
+          </div>
+          <DataFirst data1={data} />
+          <DataSecond />
+          <DataThird />
+          <NewsTextMining />
+        </div>
+      ) : (
+        <div>
+          <div className="z-30 sticky top-0">
+            <NavBar apiData={data} />
+          </div>
+          <div className="z-0">
+            <WorldMap />
+          </div>
+          <DataFirst data1={data} />
+          <DataSecond />
+          <DataThird />
+          <NewsTextMining />
+        </div>
+      )}
     </>
+    // <>
+    //   {preventClick === true}
+    //   <div className="z-30 sticky top-0">
+    //     <NavBar apiData={data} />
+    //   </div>
+    //   <div className="z-0">
+    //     <WorldMap />
+    //   </div>
+    //   <DataFirst data1={data} />
+    //   <DataSecond />
+    //   <DataThird />
+    //   <NewsTextMining />
+    // </>
   );
 }
 
