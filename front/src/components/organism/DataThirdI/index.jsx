@@ -168,11 +168,13 @@ function DataThirdI(props) {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
-        const input = document.getElementById("data3ImgHandler");
-        html2canvas(input).then((canvas) => {
-          let data3 = canvas.toDataURL("image/png");
-          setData3Img(data3);
-        });
+        setTimeout(() => {
+          const input = document.getElementById("data3ImgHandler");
+          html2canvas(input).then((canvas) => {
+            let data3 = canvas.toDataURL("image/png");
+            setData3Img(data3);
+          });
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
