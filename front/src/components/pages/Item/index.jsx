@@ -15,20 +15,15 @@ import { excelStateI1 } from "../../../states/Excel";
 function Item() {
   const params = useParams();
   const [excelData, setExcelData] = useRecoilState(excelStateI1);
-
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
-  // console.log(data1Img);
 
-  // ssafycnt-trade-service/api/trade/item/zerorow?item=854231&startDate=201901&endDate=202005
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/item/onerow?" +
-          // "https://98320413-724a-44ba-a0b5-9b226001b6d6.mock.pstmn.io/api/trade/country/data1?" +
           "item=" +
-          // "statcd=" +
           params.hsCode +
           "&" +
           "startDate=" +
@@ -39,12 +34,17 @@ function Item() {
       )
       .then((response) => {
         setData(response.data);
-        const input = document.getElementById("data1ImgHandler");
-        html2canvas(input).then((canvas) => {
-          let data1 = canvas.toDataURL("image/png");
-          setData1Img(data1);
-          setExcelData(response.data);
-        });
+        setExcelData(response.data);
+        setTimeout(() => {
+          const input = document.getElementById("data1ImgHandler");
+          html2canvas(input).then((canvas) => {
+            let data1 = canvas.toDataURL("image/png");
+            let imgWidth = 100;
+            let imgHeight = 100;
+            setData1Img(data1);
+            console.log("Item Data1 Done");
+          });
+        }, 2000);
       });
   }, [params]);
 

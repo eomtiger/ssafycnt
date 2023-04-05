@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import excel from "../../../../assets/excel.svg";
 import { useRecoilValue } from "recoil";
@@ -9,6 +8,7 @@ import {
   excelStateI1,
   excelStateI2,
   excelStateI3,
+  excelDisabled,
 } from "../../../../states/Excel";
 
 function Excel(props) {
@@ -22,6 +22,8 @@ function Excel(props) {
   const dataI1 = useRecoilValue(excelStateI1);
   const dataI2 = useRecoilValue(excelStateI2);
   const dataI3 = useRecoilValue(excelStateI3);
+
+  const disable = useRecoilValue(excelDisabled);
 
   function convertData2ToTable(data1, data2) {
     const table = [
@@ -100,7 +102,7 @@ function Excel(props) {
 
   function convertDataI2ToTable(data1, data2) {
     const table = [
-      ["item", data1.hsCode],
+      ["item", data1.itemName],
       ["period", data1.period],
       [],
       [
@@ -271,9 +273,15 @@ function Excel(props) {
   };
 
   return props.state == "Nation" ? (
-    <button onClick={exportToExcel}>
-      <img src={excel} className="w-10 h-10" />
-    </button>
+    disable == true ? (
+      <button onClick={exportToExcel} disabled={disable}>
+        <img src={excel} className="w-10 h-10 grayscale" />
+      </button>
+    ) : (
+      <button onClick={exportToExcel} disabled={disable}>
+        <img src={excel} className="w-10 h-10" />
+      </button>
+    )
   ) : (
     <button onClick={exportToExcelI}>
       <img src={excel} className="w-10 h-10" />

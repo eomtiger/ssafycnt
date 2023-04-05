@@ -57,6 +57,7 @@ import { excelStateI2 } from "../../../states/Excel";
 
 function DataSecondI() {
   const [excelData, setExcelData] = useRecoilState(excelStateI2);
+  const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -101,6 +102,11 @@ function DataSecondI() {
           firstExportData,
         ]);
         setExcelData(response.data);
+        const input = document.getElementById("data2ImgHandler");
+        html2canvas(input).then((canvas) => {
+          let data2 = canvas.toDataURL("image/png");
+          setData2Img(data2);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -144,10 +150,7 @@ function DataSecondI() {
   // // console.log(data2Img);
 
   return (
-    <div
-      className="flex justify-center space-x-5 mt-7"
-      // id="data2ImgHadler"
-    >
+    <div className="flex justify-center space-x-5 mt-7" id="data2ImgHandler">
       <LineChartTrend anyItem={currentState} />
       <BarChartExport
         alreadyClicked={currentState}
