@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import Code from "../../../assets/Code.json";
 import NewsI from "../../molecules/newsTextMiningI/NewsI";
 import TextMiningI from "../../molecules/newsTextMiningI/TextMiningI";
+import { useRecoilState } from "recoil";
+import { textMiningImgAtom } from "../../../states/recoilPdfState";
+import html2canvas from "html2canvas";
 
 function NewsTextMiningI() {
   const params = useParams();
@@ -71,7 +74,14 @@ function NewsTextMiningI() {
 
   useEffect(() => {
     axios.get(newsUrl).then((response) => setNewsData(response.data));
-    axios.get(textMiningUrl).then((response) => setTextData(response.data));
+    axios.get(textMiningUrl).then((response) => {
+      setTextData(response.data);
+      const input = document.getElementById("textMiningImgHadler");
+      html2canvas(input).then((canvas) => {
+        const textMining = canvas.toDataURL("image/png");
+        setTextMiningImg(textMining);
+      });
+    });
   }, [params]);
 
   const textDataKeys = Object.keys(textData);
@@ -90,8 +100,12 @@ function NewsTextMiningI() {
 
   //검색된 단어 송수신
   const [searchWord, setSearchWord] = useState("");
-  const searchWordHandler = (e) => {
-    setSearchWord(e);
+  const searchWordHandler = (event) => {
+    event.preventDefault();
+    setSelectedWord("");
+    setSearchWord(event.target[0].value);
+
+    // console.log(event.target[0].value);
   };
 
   // search 후 newsUrl 요청
@@ -117,6 +131,8 @@ function NewsTextMiningI() {
     "&endDate=" +
     endDate;
   // console.log(textMiningUrl);
+
+  const [textMiningImg, setTextMiningImg] = useRecoilState(textMiningImgAtom);
 
   useEffect(() => {
     axios.get(newsUrlSearch).then((response) => setNewsData(response.data));
@@ -146,9 +162,6 @@ function NewsTextMiningI() {
 
   const selectedWordNewsData = [];
   if (selectedWord === "") {
-    // for (let i = 0; i < newsData.length; i++) {
-    //   selectedWordNewsData.push(newsData[i]);
-    // }
   } else {
     for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
@@ -157,8 +170,11 @@ function NewsTextMiningI() {
   // console.log(selectedWordNewsData);
 
   return (
-    <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
-      <div className="max-h-96 overflow-y-scroll scrollbar-hide bg-blue-300 mt-40">
+    <div className="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
+      <div
+        className=" overflow-y-scroll scrollbar-hide bg-blue-300 mt-10"
+        style={{ height: "600px" }}
+      >
         <NewsI
           newsData={newsData}
           selectedWord={selectedWord}
@@ -166,25 +182,30 @@ function NewsTextMiningI() {
         />
       </div>
 
-      <div className="mt-3">
-        <form>
+      <div className="mt-3 font-mun">
+        <form onSubmit={searchWordHandler} className="h-10">
+          <button
+            type="submit"
+            className="rounded-full bg-blue-300 font-mun text-xl ml-5"
+          >
+            검색
+          </button>
           <input
-            class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            placeholder="원하는 품목을 입력하세요."
+            placeholder="품목을 검색하세요."
           />
 
-          <button type="button" onClick={searchWordHandler} value={searchWord}>
-            버틍니다니ㅏㄴ디ㅏ
-          </button>
         </form>
         {/* <div>{searchWord}</div> */}
-        <TextMiningI
-          textDataInfo={textDataInfo}
-          wordClickHandler={wordClickHandler}
-          nothingHandler={nothingHandler}
-          selectedWord={selectedWord}
-        />
+        <div id="textMiningImgHadler">
+          <TextMiningI
+            textDataInfo={textDataInfo}
+            wordClickHandler={wordClickHandler}
+            nothingHandler={nothingHandler}
+            selectedWord={selectedWord}
+          />
+        </div>
       </div>
     </div>
   );
