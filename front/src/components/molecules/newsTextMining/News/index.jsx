@@ -25,7 +25,7 @@ function News(props) {
       {selectedWord === "" ? (
         // <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 grid-cols-2">
 
-        <div className="grid items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700 border-r-4 border-black">
+        <div className="grid items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700 border-r-4 border-black font-mun">
           {newsData.map((news, index) => (
             <a
               key={index}
