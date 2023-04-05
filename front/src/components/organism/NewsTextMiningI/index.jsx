@@ -170,7 +170,7 @@ function NewsTextMiningI() {
   // console.log(selectedWordNewsData);
 
   return (
-    <div className="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
+    <div className="grid mb-5 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 ">
       <div
         className=" overflow-y-scroll scrollbar-hide bg-blue-300 mt-10"
         style={{ height: "600px" }}
@@ -182,19 +182,19 @@ function NewsTextMiningI() {
         />
       </div>
 
-      <div className="mt-3 font-mun">
-        <form onSubmit={searchWordHandler} className="h-10">
-          <button
-            type="submit"
-            className="rounded-full bg-blue-300 font-mun text-xl ml-5"
-          >
-            검색
-          </button>
+      <div className="mt-10 font-mun">
+        <form onSubmit={searchWordHandler} className="h-10 ml-10">
           <input
-            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-mun"
             type="text"
             placeholder="품목을 검색하세요."
           />
+          <button
+            type="submit"
+            className="rounded hover:rounded-lg bg-blue-300 mr-3 pl-4 pr-4 pt-1 pb-1 h-10 ml-3"
+          >
+            검색
+          </button>
         </form>
         {/* <div>{searchWord}</div> */}
         <div id="textMiningImgHadler">
