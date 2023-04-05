@@ -8,9 +8,11 @@ import codeName from "../../../assets/nationNameToCode.json";
 import { useRecoilState } from "recoil";
 import { data3ImgAtom } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
+import { excelStateI3 } from "../../../states/Excel";
 
 function DataThirdI(props) {
   const [exportImportState, setExportImportState] = useState(true);
+  const [excelData, setExcelData] = useRecoilState(excelStateI3);
   const params = useParams();
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
@@ -164,6 +166,7 @@ function DataThirdI(props) {
         exDataHandler(response.data);
         imDataHandler(response.data);
         setIsLoading(false);
+        setExcelData(response.data);
       })
       .catch((error) => {
         console.log(error);
