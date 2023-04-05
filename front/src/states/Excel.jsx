@@ -30,6 +30,11 @@ const excelStateI3 = atom({
   default: "",
 });
 
+const excelDisabled = atom({
+  key: "excelDisabled",
+  default: true,
+});
+
 export {
   excelState1,
   excelState2,
@@ -37,4 +42,5 @@ export {
   excelStateI1,
   excelStateI2,
   excelStateI3,
+  excelDisabled,
 };
