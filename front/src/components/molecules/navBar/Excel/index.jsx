@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import excel from "../../../../assets/excel.svg";
 import { useRecoilValue } from "recoil";
@@ -261,7 +260,6 @@ function Excel(props) {
   };
 
   const exportToExcelI = () => {
-    console.log(dataI1);
     const wsI1 = XLSX.utils.aoa_to_sheet(convertDataI2ToTable(dataI1, dataI2));
     const wsI2 = XLSX.utils.aoa_to_sheet(convertData3ToTable(dataI3));
 
