@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import pdf from "../../../../assets/pdf.svg";
+import Modal from "react-modal";
 import { useParams } from "react-router-dom";
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
@@ -13,6 +14,7 @@ import {
   data2State,
   data3State,
   textMiningState,
+  preventClickAtom,
 } from "../../../../states/recoilPdfState";
 
 function Pdf() {
@@ -27,6 +29,8 @@ function Pdf() {
   const [textMiningState1, setTextMiningState1] =
     useRecoilState(textMiningState);
   const [stateI, setStateI] = useRecoilState(pdfStateI);
+  const [preventClick, setPreventClick] = useRecoilState(preventClickAtom);
+
   // setTimeout(() => {
 
   //   // console.log("Finish");
@@ -52,6 +56,7 @@ function Pdf() {
   const pdfData3 = `3. Detail Statistics about ${params.nationCode}`;
 
   const downloadPdf = () => {
+    setPreventClick(true);
     setStateI(true);
   };
   // console.log(stateI);
@@ -74,16 +79,19 @@ function Pdf() {
       pdf.text(pdfData3, 10, 30);
       pdf.addImage(data3Img, "JPEG", 5, 35, 200, 150);
       pdf.addImage(textMiningImg, "JPEG", 10, 180, 100, 100);
-
       pdf.save(`Report_${params.nationCode}_${params.duration}`);
       setStateI(false);
       setDataState1(false);
       setDataState2(false);
       setDataState3(false);
       setTextMiningState1(false);
+      setTimeout(() => {
+        setPreventClick(false);
+      }, 100);
     }
   }, [dataState1, dataState2, dataState3, textMiningState1]);
   // console.log(stateI);
+  console.log(preventClick);
 
   return (
     <>

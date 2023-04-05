@@ -45,6 +45,11 @@ const textMiningState = atom({
   default: false,
 });
 
+const preventClickAtom = atom({
+  key: "preventClickAtom",
+  default: false,
+});
+
 export {
   data1ImgAtom,
   data2ImgAtom,
@@ -55,4 +60,5 @@ export {
   data2State,
   data3State,
   textMiningState,
+  preventClickAtom,
 };
