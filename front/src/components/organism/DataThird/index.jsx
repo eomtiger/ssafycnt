@@ -7,6 +7,8 @@ import axios from "axios";
 import codeName from "../../../assets/nationNameToCode.json";
 import { useRecoilState } from "recoil";
 import { excelState3 } from "../../../states/Excel";
+import html2canvas from "html2canvas";
+import { data3ImgAtom } from "../../../states/recoilPdfState";
 
 function DataThird() {
   const [exportImportState, setExportImportState] = useState(true);
@@ -14,6 +16,7 @@ function DataThird() {
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
   const [excelData, setExcelData] = useRecoilState(excelState3);
+  const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },
@@ -162,6 +165,11 @@ function DataThird() {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
+        const input = document.getElementById("data3ImgHandler");
+        html2canvas(input).then((canvas) => {
+          let data3 = canvas.toDataURL("image/png");
+          setData3Img(data3);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -214,7 +222,7 @@ function DataThird() {
               params={params}
             />
           </div>
-          <div className=" mt-5  text-gray-900">
+          <div className=" mt-5  text-gray-900" id="data3ImgHandler">
             <main className="mx-10 my-5">
               {/* mx-auto px-4 sm:px-6 lg:px-8 pt-4  */}
 
