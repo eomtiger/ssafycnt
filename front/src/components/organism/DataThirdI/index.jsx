@@ -5,8 +5,8 @@ import Table from "../../molecules/dataThirdI/Table";
 import { AvatarCell } from "../../molecules/dataThird/Table";
 import axios from "axios";
 import codeName from "../../../assets/nationNameToCode.json";
-import { useRecoilState } from "recoil";
-import { data3ImgAtom } from "../../../states/recoilPdfState";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { data3ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 import { excelStateI3 } from "../../../states/Excel";
 
@@ -17,6 +17,15 @@ function DataThirdI(props) {
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
   const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
+  const stateI = useRecoilValue(pdfStateI);
+
+  useEffect(() => {
+    const input = document.getElementById("data3ImgHandler");
+    html2canvas(input).then((canvas) => {
+      let data3 = canvas.toDataURL("image/png");
+      setData3Img(data3);
+    });
+  }, [stateI]);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },
@@ -168,13 +177,6 @@ function DataThirdI(props) {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
-        setTimeout(() => {
-          const input = document.getElementById("data3ImgHandler");
-          html2canvas(input).then((canvas) => {
-            let data3 = canvas.toDataURL("image/png");
-            setData3Img(data3);
-          });
-        }, 3000);
       })
       .catch((error) => {
         console.log(error);

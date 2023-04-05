@@ -8,14 +8,24 @@ import NavBarI from "../../organism/NavBarI";
 import WorldMapI from "../../organism/WorldMapI";
 import NewsTextMiningI from "../../organism/NewsTextMiningI";
 import html2canvas from "html2canvas";
-import { useRecoilState } from "recoil";
-import { data1ImgAtom } from "../../../states/recoilPdfState";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { data1ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
 import { excelStateI1 } from "../../../states/Excel";
 
 function Item() {
   const params = useParams();
   const [excelData, setExcelData] = useRecoilState(excelStateI1);
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
+  const stateI = useRecoilValue(pdfStateI);
+
+  useEffect(() => {
+    const input = document.getElementById("data1ImgHandler");
+    html2canvas(input).then((canvas) => {
+      let data1 = canvas.toDataURL("image/png");
+      setData1Img(data1);
+      // console.log("Item Data1 Done");
+    });
+  }, [stateI]);
 
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
@@ -35,14 +45,6 @@ function Item() {
       .then((response) => {
         setData(response.data);
         setExcelData(response.data);
-        setTimeout(() => {
-          const input = document.getElementById("data1ImgHandler");
-          html2canvas(input).then((canvas) => {
-            let data1 = canvas.toDataURL("image/png");
-            setData1Img(data1);
-            console.log("Item Data1 Done");
-          });
-        }, 3000);
       });
   }, [params]);
 

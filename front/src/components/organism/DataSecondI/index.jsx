@@ -4,8 +4,8 @@ import LineChartTrend from "./../../molecules/dataSecondI/LineGraph/index";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useRecoilState } from "recoil";
-import { data2ImgAtom } from "../../../states/recoilPdfState";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { data2ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 import { excelStateI2 } from "../../../states/Excel";
 
@@ -58,6 +58,7 @@ import { excelStateI2 } from "../../../states/Excel";
 function DataSecondI() {
   const [excelData, setExcelData] = useRecoilState(excelStateI2);
   const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
+  const stateI = useRecoilValue(pdfStateI);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -70,6 +71,15 @@ function DataSecondI() {
     {},
   ]); // initialize the state with an empty array
   let nationConnection;
+
+  useEffect(() => {
+    const input = document.getElementById("data2ImgHandler");
+    html2canvas(input).then((canvas) => {
+      let data2 = canvas.toDataURL("image/png");
+      setData2Img(data2);
+    });
+  }, [stateI]);
+
   useEffect(() => {
     axios
       .get(
@@ -102,13 +112,6 @@ function DataSecondI() {
           firstExportData,
         ]);
         setExcelData(response.data);
-        setTimeout(() => {
-          const input = document.getElementById("data2ImgHandler");
-          html2canvas(input).then((canvas) => {
-            let data2 = canvas.toDataURL("image/png");
-            setData2Img(data2);
-          });
-        }, 3000);
       })
       .catch((error) => {
         console.log(error);

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 // import html2canvas from "html2canvas";
 import pdf from "../../../../assets/pdf.svg";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import {
   data1ImgAtom,
   data2ImgAtom,
   data3ImgAtom,
   textMiningImgAtom,
+  pdfStateI,
 } from "../../../../states/recoilPdfState";
 
 function PdfI() {
@@ -16,6 +17,11 @@ function PdfI() {
   const data2Img = useRecoilValue(data2ImgAtom);
   const data3Img = useRecoilValue(data3ImgAtom);
   const textMiningImg = useRecoilValue(textMiningImgAtom);
+  const [stateI, setStateI] = useRecoilState(pdfStateI);
+  setTimeout(() => {
+    setStateI(true);
+    // console.log("Finish");
+  }, 10000);
   // console.log(data1Img);
   // console.log(data2Img);
   // console.log(data3Img);
@@ -46,9 +52,15 @@ function PdfI() {
 
   return (
     <>
-      <button onClick={downloadPdf}>
-        <img src={pdf} className="w-10 h-10 mr-5" />
-      </button>
+      {stateI === false ? (
+        <button onClick={downloadPdf} disabled={!stateI}>
+          <img src={pdf} className="grayscale w-10 h-10 mr-5" />
+        </button>
+      ) : (
+        <button onClick={downloadPdf} disabled={!stateI}>
+          <img src={pdf} className="w-10 h-10 mr-5" />
+        </button>
+      )}
     </>
   );
 }
