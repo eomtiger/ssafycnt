@@ -1,6 +1,20 @@
 package com.ssafy.ssafycntuserservice.controller;
 
+import com.netflix.discovery.DiscoveryClient;
+import com.ssafy.ssafycntuserservice.dto.UserDto;
+import com.ssafy.ssafycntuserservice.jpa.Role;
+import com.ssafy.ssafycntuserservice.jpa.UserEntity;
+import com.ssafy.ssafycntuserservice.service.UserService;
+import com.ssafy.ssafycntuserservice.vo.RequestUser;
+import com.ssafy.ssafycntuserservice.vo.ResponseUser;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -8,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/")
 public class UserController {
     private Environment env;
