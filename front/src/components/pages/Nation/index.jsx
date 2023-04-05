@@ -7,12 +7,15 @@ import DataSecond from "../../organism/DataSecond";
 import DataThird from "../../organism/DataThird/index";
 import WorldMap from "../../organism/WorldMap";
 import NewsTextMining from "../../organism/NewsTextMining";
+import html2canvas from "html2canvas";
 import { useRecoilState } from "recoil";
 import { excelState1 } from "../../../states/Excel";
+import { data1ImgAtom } from "../../../states/recoilPdfState";
 
 function Nation() {
   const params = useParams();
   const [excelData, setExcelData] = useRecoilState(excelState1);
+  const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
 
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
@@ -34,6 +37,11 @@ function Nation() {
       .then((response) => {
         setData(response.data);
         setExcelData(response.data);
+        const input = document.getElementById("data1ImgHandler");
+        html2canvas(input).then((canvas) => {
+          let data1 = canvas.toDataURL("image/png");
+          setData1Img(data1);
+        });
       });
   }, [params]);
 
