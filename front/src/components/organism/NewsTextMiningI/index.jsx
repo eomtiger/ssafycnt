@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import Code from "../../../assets/Code.json";
 import NewsI from "../../molecules/newsTextMiningI/NewsI";
 import TextMiningI from "../../molecules/newsTextMiningI/TextMiningI";
+import { useRecoilState } from "recoil";
+import { textMiningImgAtom } from "../../../states/recoilPdfState";
+import html2canvas from "html2canvas";
 
 function NewsTextMiningI() {
   const params = useParams();
@@ -71,7 +74,14 @@ function NewsTextMiningI() {
 
   useEffect(() => {
     axios.get(newsUrl).then((response) => setNewsData(response.data));
-    axios.get(textMiningUrl).then((response) => setTextData(response.data));
+    axios.get(textMiningUrl).then((response) => {
+      setTextData(response.data);
+      const input = document.getElementById("textMiningImgHadler");
+      html2canvas(input).then((canvas) => {
+        const textMining = canvas.toDataURL("image/png");
+        setTextMiningImg(textMining);
+      });
+    });
   }, [params]);
 
   const textDataKeys = Object.keys(textData);
@@ -92,6 +102,7 @@ function NewsTextMiningI() {
   const [searchWord, setSearchWord] = useState("");
   const searchWordHandler = (event) => {
     event.preventDefault();
+    setSelectedWord("");
     setSearchWord(event.target[0].value);
 
     // console.log(event.target[0].value);
@@ -121,6 +132,8 @@ function NewsTextMiningI() {
     endDate;
   // console.log(textMiningUrl);
 
+  const [textMiningImg, setTextMiningImg] = useRecoilState(textMiningImgAtom);
+
   useEffect(() => {
     axios.get(newsUrlSearch).then((response) => setNewsData(response.data));
     axios
@@ -149,9 +162,6 @@ function NewsTextMiningI() {
 
   const selectedWordNewsData = [];
   if (selectedWord === "") {
-    // for (let i = 0; i < newsData.length; i++) {
-    //   selectedWordNewsData.push(newsData[i]);
-    // }
   } else {
     for (let i = 0; i < textData[selectedWord].length; i++) {
       selectedWordNewsData.push(textData[selectedWord][i]);
@@ -188,12 +198,14 @@ function NewsTextMiningI() {
           </button>
         </form>
         {/* <div>{searchWord}</div> */}
-        <TextMiningI
-          textDataInfo={textDataInfo}
-          wordClickHandler={wordClickHandler}
-          nothingHandler={nothingHandler}
-          selectedWord={selectedWord}
-        />
+        <div id="textMiningImgHadler">
+          <TextMiningI
+            textDataInfo={textDataInfo}
+            wordClickHandler={wordClickHandler}
+            nothingHandler={nothingHandler}
+            selectedWord={selectedWord}
+          />
+        </div>
       </div>
     </div>
   );

@@ -5,15 +5,6 @@ import pdf from "../../../../assets/pdf.svg";
 import Code from "../../../../assets/Code.json";
 import { useParams } from "react-router-dom";
 
-const nationState = [];
-for (let i = 3; i < Code.국가코드.length; i++) {
-  nationState.push({
-    nationCode: Code.국가코드[i].Column1,
-    nationName: Code.국가코드[i].Column2,
-  });
-}
-// console.log(nationState);
-
 function Pdf() {
   const params = useParams();
 
