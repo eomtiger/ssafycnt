@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Chart from "react-google-charts";
 import { useRecoilState } from "recoil";
-import { pdfStateI } from "../../../states/recoilPdfState";
+import { pdfStateAtom } from "../../../states/recoilPdfState";
 
 function WorldMap() {
-  const [stateI, setState] = useRecoilState(pdfStateI);
+  const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
   const params = useParams();
   const duration = params.duration;
   const [a, setA] = useState(params.nationCode);
@@ -47,7 +47,7 @@ function WorldMap() {
   }, [duration]);
 
   useEffect(() => {
-    setState(false);
+    setPdfState(false);
     navigate("/nation/" + a + "/" + params.duration);
   }, [a]);
 

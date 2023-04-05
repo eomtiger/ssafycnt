@@ -9,11 +9,11 @@ import {
   data2ImgAtom,
   data3ImgAtom,
   textMiningImgAtom,
-  pdfStateI,
-  data1State,
-  data2State,
-  data3State,
-  textMiningState,
+  pdfStateAtom,
+  data1StateAtom,
+  data2StateAtom,
+  data3StateAtom,
+  textMiningStateAtom,
   preventClickAtom,
 } from "../../../../states/recoilPdfState";
 
@@ -23,12 +23,12 @@ function Pdf() {
   const data2Img = useRecoilValue(data2ImgAtom);
   const data3Img = useRecoilValue(data3ImgAtom);
   const textMiningImg = useRecoilValue(textMiningImgAtom);
-  const [dataState1, setDataState1] = useRecoilState(data1State);
-  const [dataState2, setDataState2] = useRecoilState(data2State);
-  const [dataState3, setDataState3] = useRecoilState(data3State);
-  const [textMiningState1, setTextMiningState1] =
-    useRecoilState(textMiningState);
-  const [stateI, setStateI] = useRecoilState(pdfStateI);
+  const [data1State, setData1State] = useRecoilState(data1StateAtom);
+  const [data2State, setData2State] = useRecoilState(data2StateAtom);
+  const [data3State, setData3State] = useRecoilState(data3StateAtom);
+  const [textMiningState, setTextMiningState] =
+    useRecoilState(textMiningStateAtom);
+  const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
   const [preventClick, setPreventClick] = useRecoilState(preventClickAtom);
 
   // setTimeout(() => {
@@ -57,16 +57,16 @@ function Pdf() {
 
   const downloadPdf = () => {
     setPreventClick(true);
-    setStateI(true);
+    setPdfState(true);
   };
-  // console.log(stateI);
+  // console.log(pdfState);
 
   useEffect(() => {
     if (
-      dataState1 === true &&
-      dataState2 === true &&
-      dataState3 === true &&
-      textMiningState1 === true
+      data1State === true &&
+      data2State === true &&
+      data3State === true &&
+      textMiningState === true
     ) {
       const pdf = new jsPDF();
       pdf.text(pdfHead, 10, 10);
@@ -80,18 +80,18 @@ function Pdf() {
       pdf.addImage(data3Img, "JPEG", 5, 35, 200, 150);
       pdf.addImage(textMiningImg, "JPEG", 10, 180, 100, 100);
       pdf.save(`Report_${params.nationCode}_${params.duration}`);
-      setStateI(false);
-      setDataState1(false);
-      setDataState2(false);
-      setDataState3(false);
-      setTextMiningState1(false);
+      setPdfState(false);
+      setData1State(false);
+      setData2State(false);
+      setData3State(false);
+      setTextMiningState(false);
       setTimeout(() => {
         setPreventClick(false);
       }, 100);
     }
-  }, [dataState1, dataState2, dataState3, textMiningState1]);
-  // console.log(stateI);
-  console.log(preventClick);
+  }, [data1State, data2State, data3State, textMiningState]);
+  // console.log(pdfState);
+  // console.log(preventClick);
 
   return (
     <>

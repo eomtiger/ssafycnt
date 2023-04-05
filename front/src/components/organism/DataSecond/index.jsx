@@ -9,8 +9,8 @@ import { excelState2 } from "../../../states/Excel";
 import html2canvas from "html2canvas";
 import {
   data2ImgAtom,
-  pdfStateI,
-  data2State,
+  pdfStateAtom,
+  data2StateAtom,
 } from "../../../states/recoilPdfState";
 
 // function DataSecond() {
@@ -62,8 +62,8 @@ import {
 function DataSecond() {
   const [exelData, setExcelData] = useRecoilState(excelState2);
   const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
-  const [dataState, setDataState] = useRecoilState(data2State);
-  const stateI = useRecoilValue(pdfStateI);
+  const [data2State, setData2State] = useRecoilState(data2StateAtom);
+  const pdfState = useRecoilValue(pdfStateAtom);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -77,16 +77,16 @@ function DataSecond() {
   ]); // initialize the state with an empty array
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("data2ImgHandler");
       html2canvas(input).then((canvas) => {
         let data2 = canvas.toDataURL("image/png");
         setData2Img(data2);
-        setDataState(true);
+        setData2State(true);
       });
     }
-  }, [stateI]);
-  // console.log(dataState);
+  }, [pdfState]);
+  // console.log(data2State);
 
   // http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?statCd=US&startDate=202201&endDate=202203
   useEffect(() => {

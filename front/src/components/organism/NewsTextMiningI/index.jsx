@@ -5,21 +5,28 @@ import Code from "../../../assets/Code.json";
 import NewsI from "../../molecules/newsTextMiningI/NewsI";
 import TextMiningI from "../../molecules/newsTextMiningI/TextMiningI";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { textMiningImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import {
+  textMiningImgAtom,
+  pdfStateAtom,
+  textMiningStateAtom,
+} from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 
 function NewsTextMiningI() {
-  const stateI = useRecoilValue(pdfStateI);
+  const pdfState = useRecoilValue(pdfStateAtom);
+  const [textMiningState, setTextMiningState] =
+    useRecoilState(textMiningStateAtom);
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("textMiningImgHadler");
       html2canvas(input).then((canvas) => {
         const textMining = canvas.toDataURL("image/png");
         setTextMiningImg(textMining);
+        setTextMiningState(true);
       });
     }
-  }, [stateI]);
+  }, [pdfState]);
 
   const params = useParams();
 

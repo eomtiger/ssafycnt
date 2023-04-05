@@ -6,7 +6,7 @@ import { AvatarCell } from "../../molecules/dataThird/Table";
 import axios from "axios";
 import codeName from "../../../assets/nationNameToCode.json";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { data3ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import { data3ImgAtom, pdfStateAtom } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 import { excelStateI3 } from "../../../states/Excel";
 
@@ -17,17 +17,17 @@ function DataThirdI(props) {
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
   const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
-  const stateI = useRecoilValue(pdfStateI);
+  const pdfState = useRecoilValue(pdfStateAtom);
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("data3ImgHandler");
       html2canvas(input).then((canvas) => {
         let data3 = canvas.toDataURL("image/png");
         setData3Img(data3);
       });
     }
-  }, [stateI]);
+  }, [pdfState]);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },

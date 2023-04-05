@@ -12,8 +12,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { excelState1 } from "../../../states/Excel";
 import {
   data1ImgAtom,
-  pdfStateI,
-  data1State,
+  pdfStateAtom,
+  data1StateAtom,
   preventClickAtom,
 } from "../../../states/recoilPdfState";
 
@@ -21,22 +21,22 @@ function Nation() {
   const params = useParams();
   const [excelData, setExcelData] = useRecoilState(excelState1);
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
-  const [dataState, setDataState] = useRecoilState(data1State);
+  const [data1State, setData1State] = useRecoilState(data1StateAtom);
   const preventClick = useRecoilValue(preventClickAtom);
-  const stateI = useRecoilValue(pdfStateI);
+  const pdfState = useRecoilValue(pdfStateAtom);
 
   useEffect(() => {
-    if (stateI === true) {
+    if (pdfState === true) {
       const input = document.getElementById("data1ImgHandler");
       html2canvas(input).then((canvas) => {
         let data1 = canvas.toDataURL("image/png");
         setData1Img(data1);
-        setDataState(true);
+        setData1State(true);
         // console.log("Item Data1 Done");
       });
     }
-  }, [stateI]);
-  // console.log(dataState);
+  }, [pdfState]);
+  // console.log(data1State);
 
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
@@ -69,6 +69,7 @@ function Nation() {
           <div className="z-0 hidden">
             <WorldMap />
           </div>
+          {/* <div className="">PDF DOWNLOADING ...</div> */}
           <DataFirst data1={data} />
           <DataSecond />
           <DataThird />

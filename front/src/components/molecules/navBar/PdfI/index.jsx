@@ -9,7 +9,7 @@ import {
   data2ImgAtom,
   data3ImgAtom,
   textMiningImgAtom,
-  pdfStateI,
+  pdfStateAtom,
 } from "../../../../states/recoilPdfState";
 
 function PdfI() {
@@ -17,9 +17,9 @@ function PdfI() {
   const data2Img = useRecoilValue(data2ImgAtom);
   const data3Img = useRecoilValue(data3ImgAtom);
   const textMiningImg = useRecoilValue(textMiningImgAtom);
-  const [stateI, setStateI] = useRecoilState(pdfStateI);
+  const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
   setTimeout(() => {
-    setStateI(true);
+    setPdfState(true);
     // console.log("Finish");
   }, 10000);
   // console.log(data1Img);
@@ -52,12 +52,12 @@ function PdfI() {
 
   return (
     <>
-      {stateI === false ? (
-        <button onClick={downloadPdf} disabled={!stateI}>
+      {pdfState === false ? (
+        <button onClick={downloadPdf} disabled={!pdfState}>
           <img src={pdf} className="grayscale w-10 h-10 mr-5" />
         </button>
       ) : (
-        <button onClick={downloadPdf} disabled={!stateI}>
+        <button onClick={downloadPdf} disabled={!pdfState}>
           <img src={pdf} className="w-10 h-10 mr-5" />
         </button>
       )}
