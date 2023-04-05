@@ -18,30 +18,31 @@ import {
 } from "../../../../states/recoilPdfState";
 
 function Pdf() {
+  // buttonState를 이용하여 화면 Rendering 시작 5초 후에 Button 활성화
   const [buttonState, setButtonState] = useState(false);
   const data1Img = useRecoilValue(data1ImgAtom);
   const data2Img = useRecoilValue(data2ImgAtom);
   const data3Img = useRecoilValue(data3ImgAtom);
   const textMiningImg = useRecoilValue(textMiningImgAtom);
+
+  // pdfStateAtom을 이용하여 pdfState가 true일 경우에만 화면 Image를 Capture
+  const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
+  // console.log(pdfState)
+
+  // data1StateAtom, data2StateAtom, data3StateAtom, textMiningStateAtom을 이용하여 Rendering 이후 Capture한 화면의 Image 경로를 저장하고 상태를 변경
   const [data1State, setData1State] = useRecoilState(data1StateAtom);
   const [data2State, setData2State] = useRecoilState(data2StateAtom);
   const [data3State, setData3State] = useRecoilState(data3StateAtom);
   const [textMiningState, setTextMiningState] =
     useRecoilState(textMiningStateAtom);
-  const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
+
+  // preventClickAtom을 이용하여 화면 Capture Image 경로 저장 시 NavBar와 WorldMap의 Clcik을 방지
   const [preventClick, setPreventClick] = useRecoilState(preventClickAtom);
-
-  // setTimeout(() => {
-
-  //   // console.log("Finish");
-  // }, 10000);
-  // console.log(data1Img);
-  // console.log(data2Img);
-  // console.log(data3Img);
-  // console.log(textMiningImg)
 
   const params = useParams();
 
+  // params 변경 시 ButtonState를 false로 변경 => Button 비활성화
+  // setTiemout 이용하여 5초 후 Button 활성화
   useEffect(() => {
     setButtonState(false);
     setTimeout(() => {
@@ -55,12 +56,17 @@ function Pdf() {
   const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.nationCode}`;
 
+  // downloadPdf 함수에 Click 방지
+  // PdfState를 true로 변경함으로 화면 Capture를 시작
   const downloadPdf = () => {
     setPreventClick(true);
     setPdfState(true);
   };
   // console.log(pdfState);
 
+  // Capture를 진행하는 4개의 Componenet에서 Image 경로를 저장
+  // PDP에 Image와 Text로 구성 후 Download 실행
+  // Download 실행 후, Capture State를 false로 변경함으로써 params가 변경되었을시, 다시 Download Process를 실행할 수 있도록 상태 변경
   useEffect(() => {
     if (
       data1State === true &&
