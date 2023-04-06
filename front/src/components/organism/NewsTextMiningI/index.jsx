@@ -5,19 +5,29 @@ import Code from "../../../assets/Code.json";
 import NewsI from "../../molecules/newsTextMiningI/NewsI";
 import TextMiningI from "../../molecules/newsTextMiningI/TextMiningI";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { textMiningImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import {
+  textMiningImgAtom,
+  pdfStateAtom,
+  textMiningStateAtom,
+} from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 
 function NewsTextMiningI() {
-  const stateI = useRecoilValue(pdfStateI);
+  const [textMiningImg, setTextMiningImg] = useRecoilState(textMiningImgAtom);
+  const pdfState = useRecoilValue(pdfStateAtom);
+  const [textMiningState, setTextMiningState] =
+    useRecoilState(textMiningStateAtom);
 
   useEffect(() => {
-    const input = document.getElementById("textMiningImgHadler");
-    html2canvas(input).then((canvas) => {
-      const textMining = canvas.toDataURL("image/png");
-      setTextMiningImg(textMining);
-    });
-  }, [stateI]);
+    if (pdfState === true) {
+      const input = document.getElementById("textMiningImgHadler");
+      html2canvas(input).then((canvas) => {
+        const textMining = canvas.toDataURL("image/png");
+        setTextMiningImg(textMining);
+        setTextMiningState(true);
+      });
+    }
+  }, [pdfState]);
 
   const params = useParams();
 
@@ -136,8 +146,6 @@ function NewsTextMiningI() {
     "&endDate=" +
     endDate;
   // console.log(textMiningUrl);
-
-  const [textMiningImg, setTextMiningImg] = useRecoilState(textMiningImgAtom);
 
   useEffect(() => {
     axios.get(newsUrlSearch).then((response) => setNewsData(response.data));
