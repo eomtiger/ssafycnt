@@ -12,7 +12,7 @@ import {
   data3StateAtom,
 } from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
-import { excelStateI3 } from "../../../states/Excel";
+import { excelStateI3, excelDisabled } from "../../../states/Excel";
 
 function DataThirdI(props) {
   const [exportImportState, setExportImportState] = useState(true);
@@ -23,7 +23,7 @@ function DataThirdI(props) {
   const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
   const [data3State, setData3State] = useRecoilState(data3StateAtom);
   const pdfState = useRecoilValue(pdfStateAtom);
-
+  const [disable, setDisable] = useRecoilState(excelDisabled);
   // 이 코드가 안돌아감
   // 이유가 뭐지...?
   // 한번 더 저장하면 돌아감.
@@ -86,7 +86,7 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      if (num != 100) {
+      if (num != 100 && num != 50) {
         data["importDetail"][objKey]["impdlrRatio"] =
           num[0] + "." + num[1].slice(0, 1);
       }
@@ -99,7 +99,7 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      if (a != 100) {
+      if (a != 100 && a != 50) {
         data["importDetail"][objKey]["impwgtRatio"] =
           a[0] + "." + a[1].slice(0, 1);
       }
@@ -136,7 +136,7 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      if (num != 100) {
+      if (num != 100 && num != 50) {
         data["exportDetail"][objKey]["expdlrRatio"] =
           num[0] + "." + num[1].slice(0, 1);
       }
@@ -149,7 +149,7 @@ function DataThirdI(props) {
         .toString()
         .split(".");
 
-      if (a != 100) {
+      if (a != 100 && a != 50) {
         data["exportDetail"][objKey]["expwgtRatio"] =
           a[0] + "." + a[1].slice(0, 1);
       }
@@ -190,6 +190,7 @@ function DataThirdI(props) {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
+        setDisable(false);
       })
       .catch((error) => {
         console.log(error);

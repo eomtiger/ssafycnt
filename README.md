@@ -33,32 +33,33 @@
 # 배포 주소 : [🚢싸피물산](https://ssafycnt.site) : https://ssafycnt.site
 <br />
 
-## 🔨 주요 기술
+## 🔨 [주요 기술](https://www.notion.so/ba70fea1d3b8444aa13af51b2b13cded)
 ![주요 기술](./assets/%EA%B8%B0%EC%88%A0%EC%8A%A4%ED%83%9D.png)
 
 <br />
 
+## 🎫 ERD
 ![erd](./assets/ERD.png)
 
 <br />
 
 ### 🍏 [API 명세서](https://www.notion.so/API-831823b4daed49329c68bbb85ae15100)
-![API](./assets/API.png)
+![API](./assets/apilist1.png)
+![API](./assets/apilist2.png)
 
 <br />
 
-### 🎇 아키텍쳐
+### 🎇 [아키텍쳐](https://www.notion.so/12ae9a24969c4f8aa632d843bbe71a23)
 ![시스템 아키텍쳐](./assets/systemArchitecture.png)
 
 <br />
 
-# 📜 프로젝트 결과물
+# 📜 [프로젝트 결과물](https://www.notion.so/SSAFY-CNT-22a58c4cdc1244f4abadfcf9f101f808)
 
-![](./assets/home1.png)
-![](./assets/home2.png)
-![](./assets/home3.png)
-![](./assets/home4.png)
-![](./assets/home5.png)
+![](./assets/service4.png)
+![](./assets/service3.png)
+![](./assets/service2.png)
+![](./assets/service1.png)
 
 <br />
 
