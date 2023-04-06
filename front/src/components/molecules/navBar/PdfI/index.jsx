@@ -82,7 +82,7 @@ function PdfI() {
       data3State === true &&
       textMiningState === true
     ) {
-      const pdfHead = `Report for "${params.nationCode}" from ${durationList[0].startY}.${durationList[0].startM} to ${durationList[0].endY}.${durationList[0].endM}`;
+      const pdfHead = `Report for "${params.hsCode}" from ${durationList[0].startY}.${durationList[0].startM} to ${durationList[0].endY}.${durationList[0].endM}`;
       const pdfData1 = `1. Export & Import Proportion`;
       const data1Comment = `  - The following graphs illustrate the current status of exports and imports between Korea and "${
         params.nationCode
@@ -103,7 +103,7 @@ function PdfI() {
       const pdfPage1 = "- 1 -";
       const data2Comment = `  - The graphs below show the top 5 items for exports and imports listed in descending order,\n
      with units in millions of dollars.`;
-      const pdfData3 = `3. Detail Statistics about "${params.nationCode}"`;
+      const pdfData3 = `3. Detail Statistics about "${params.hsCode}"`;
       const textMining = `4. TextMining`;
       const pdfPage2 = "- 2 -";
       // PDF File 생성
