@@ -50,6 +50,11 @@ const preventClickAtom = atom({
   default: false,
 });
 
+// const pdfData1CommentAtom = atom({
+//   key: "pdfData1CommentAtom",
+//   default: [],
+// });
+
 export {
   data1ImgAtom,
   data2ImgAtom,
