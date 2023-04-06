@@ -90,8 +90,8 @@ function DataSecond() {
   // console.log(data2State);
 
   // http://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?statCd=US&startDate=202201&endDate=202203
-  useEffect(() => {
-    axios
+  useEffect(async () => {
+    await axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/tworow?" +
           "statCd=" +

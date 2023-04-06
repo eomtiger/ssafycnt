@@ -91,9 +91,14 @@ function NewsTextMining() {
   const [textData, setTextData] = useState([]);
   // console.log(textData);
 
-  useEffect(() => {
-    axios.get(newsUrl).then((response) => setNewsData(response.data));
-    axios.get(textMiningUrl).then((response) => {
+  useEffect(async () => {
+    await axios.get(newsUrl).then((response) => {
+      setNewsData(response.data);
+    });
+  }, [params]);
+
+  useEffect(async () => {
+    await axios.get(textMiningUrl).then((response) => {
       setTextData(response.data);
     });
   }, [params]);
