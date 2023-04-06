@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { excelState2 } from "../../../states/Excel";
+import { excelState2, excelDisabled } from "../../../states/Excel";
 import html2canvas from "html2canvas";
 import {
   data2ImgAtom,
@@ -75,6 +75,7 @@ function DataSecond() {
     "전세계",
     {},
   ]); // initialize the state with an empty array
+  const [disable, setDisable] = useRecoilState(excelDisabled);
 
   useEffect(() => {
     if (pdfState === true) {
@@ -120,6 +121,7 @@ function DataSecond() {
           firstExportData,
         ]);
         setExcelData(response.data);
+        // setDisable(false);
       })
       .catch((error) => {
         console.log(error);
