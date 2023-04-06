@@ -17,6 +17,7 @@ import {
   pdfData1CommentAtom,
 } from "../../../states/recoilPdfState";
 import { excelStateI1 } from "../../../states/Excel";
+import Footer from "../../organism/Footer/index"
 
 function Item() {
   const params = useParams();
@@ -95,6 +96,7 @@ function Item() {
           <DataSecondI />
           <DataThirdI />
           <NewsTextMiningI />
+          <Footer/>
         </div>
       )}
       {/* <div className="z-30 sticky top-0">
