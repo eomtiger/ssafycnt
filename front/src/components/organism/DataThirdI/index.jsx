@@ -6,7 +6,11 @@ import { AvatarCell } from "../../molecules/dataThird/Table";
 import axios from "axios";
 import codeName from "../../../assets/nationNameToCode.json";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { data3ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import {
+  data3ImgAtom,
+  pdfStateAtom,
+  data3StateAtom,
+} from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 import { excelStateI3 } from "../../../states/Excel";
 
@@ -17,15 +21,29 @@ function DataThirdI(props) {
   const duration = params.duration;
   const [isLoading, setIsLoading] = useState(true);
   const [data3Img, setData3Img] = useRecoilState(data3ImgAtom);
-  const stateI = useRecoilValue(pdfStateI);
+  const [data3State, setData3State] = useRecoilState(data3StateAtom);
+  const pdfState = useRecoilValue(pdfStateAtom);
+
+  // 이 코드가 안돌아감
+  // 이유가 뭐지...?
+  // 한번 더 저장하면 돌아감.
+  useEffect(() => {
+    if (pdfState === true) {
+      const input = document.getElementById("data3ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data3 = canvas.toDataURL("image/png");
+        setData3Img(data3);
+      });
+    }
+  }, [pdfState]);
 
   useEffect(() => {
-    const input = document.getElementById("data3ImgHandler");
-    html2canvas(input).then((canvas) => {
-      let data3 = canvas.toDataURL("image/png");
-      setData3Img(data3);
-    });
-  }, [stateI]);
+    if (pdfState === true) {
+      setData3State(true);
+    }
+  }, [data3Img]);
+  // console.log(pdfState);
+  // console.log(data3State);
 
   const exColumns = useMemo(() => [
     { accessor: "ranking", Header: "순위" },

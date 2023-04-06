@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { data2ImgAtom, pdfStateI } from "../../../states/recoilPdfState";
+import {
+  data2ImgAtom,
+  pdfStateAtom,
+  data2StateAtom,
+} from "../../../states/recoilPdfState";
 import html2canvas from "html2canvas";
 import { excelStateI2 } from "../../../states/Excel";
 
@@ -58,7 +62,8 @@ import { excelStateI2 } from "../../../states/Excel";
 function DataSecondI() {
   const [excelData, setExcelData] = useRecoilState(excelStateI2);
   const [data2Img, setData2Img] = useRecoilState(data2ImgAtom);
-  const stateI = useRecoilValue(pdfStateI);
+  const [data2State, setData2State] = useRecoilState(data2StateAtom);
+  const pdfState = useRecoilValue(pdfStateAtom);
   const params = useParams();
   const [currentState, changeState] = useState([
     0,
@@ -73,12 +78,15 @@ function DataSecondI() {
   let nationConnection;
 
   useEffect(() => {
-    const input = document.getElementById("data2ImgHandler");
-    html2canvas(input).then((canvas) => {
-      let data2 = canvas.toDataURL("image/png");
-      setData2Img(data2);
-    });
-  }, [stateI]);
+    if (pdfState === true) {
+      const input = document.getElementById("data2ImgHandler");
+      html2canvas(input).then((canvas) => {
+        let data2 = canvas.toDataURL("image/png");
+        setData2Img(data2);
+        setData2State(true);
+      });
+    }
+  }, [pdfState]);
 
   useEffect(() => {
     axios
