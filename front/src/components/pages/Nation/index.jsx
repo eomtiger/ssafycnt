@@ -17,6 +17,7 @@ import {
   preventClickAtom,
   pdfData1CommentAtom,
 } from "../../../states/recoilPdfState";
+import Footer from "../../organism/Footer/index"
 
 function Nation() {
   const params = useParams();
@@ -96,7 +97,8 @@ function Nation() {
           <DataFirst data1={data} />
           <DataSecond />
           <DataThird />
-          <NewsTextMining />
+            <NewsTextMining />
+            <Footer/>
         </div>
       )}
     </>
