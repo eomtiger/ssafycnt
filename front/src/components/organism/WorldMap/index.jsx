@@ -63,7 +63,6 @@ function WorldMap() {
       alert("Data Loading ...");
     }
   }, [a, worldMapNewsTextMining]);
-
   console.log(worldMapClick, worldMapNewsTextMining);
 
   const options = {
