@@ -84,7 +84,7 @@ function DataThird() {
         .toString()
         .split(".");
 
-      if (num != 100) {
+      if (num != 100 && num != 50) {
         data["importDetail"][objKey]["impdlrRatio"] =
           num[0] + "." + num[1].slice(0, 1);
       }
@@ -97,7 +97,7 @@ function DataThird() {
         .toString()
         .split(".");
 
-      if (a != 100) {
+      if (a != 100 && a != 50) {
         data["importDetail"][objKey]["impwgtRatio"] =
           a[0] + "." + a[1].slice(0, 1);
       }
@@ -133,7 +133,7 @@ function DataThird() {
         .toString()
         .split(".");
 
-      if (num != 100) {
+      if (num != 100 && num != 50) {
         data["exportDetail"][objKey]["expdlrRatio"] =
           num[0] + "." + num[1].slice(0, 1);
       }
@@ -146,7 +146,7 @@ function DataThird() {
         .toString()
         .split(".");
 
-      if (a != 100) {
+      if (a != 100 && a != 50) {
         data["exportDetail"][objKey]["expwgtRatio"] =
           a[0] + "." + a[1].slice(0, 1);
       }
@@ -182,11 +182,12 @@ function DataThird() {
         imDataHandler(response.data);
         setIsLoading(false);
         setExcelData(response.data);
+        setDisable(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [duration]);
+  }, [params]);
 
   const exportImportStateHandler = () => {
     setExportImportState(!exportImportState);
