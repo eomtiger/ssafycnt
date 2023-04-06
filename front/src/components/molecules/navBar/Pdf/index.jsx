@@ -50,16 +50,18 @@ function Pdf() {
     setButtonState(false);
     setTimeout(() => {
       setButtonState(true);
-    }, 5000);
+    }, 7500);
   }, [params]);
 
   const pdfHead = `Nation : ${params.nationCode}, Duration : ${params.duration}`;
   const pdfData1 = `1. Export & Import Proportion`;
+  // const data1Comment = `Total Money Supply $`
   const pdfData2 = `2. Export & Import TOP5 Country`;
   const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.nationCode}`;
   const textMining = `4. TextMining`;
   const pdfPage2 = "- 2 -";
+
   // downloadPdf 함수에 Click 방지
   // PdfState를 true로 변경함으로 화면 Capture를 시작
   const downloadPdf = () => {

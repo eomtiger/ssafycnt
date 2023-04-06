@@ -7,6 +7,7 @@ import SixCode from "../../../../assets/SixCode.json";
 import magnifier1 from "../../../../assets/magnifier1.png";
 import { useRecoilState } from "recoil";
 import { pdfStateAtom } from "../../../../states/recoilPdfState";
+import { excelDisabled } from "../../../../states/Excel";
 
 const customStyles = {
   content: {
@@ -35,6 +36,7 @@ const styles = {
 function ItemSelector() {
   const [pdfState, setPdfState] = useRecoilState(pdfStateAtom);
   const params = useParams();
+  const [disable, setDisable] = useRecoilState(excelDisabled);
 
   // hsCode 정제
   const sixDigitCode = [];
@@ -220,6 +222,7 @@ function ItemSelector() {
               onClick={() => {
                 closeModal();
                 setPdfState(false);
+                setDisable(true);
                 navigate(
                   "/item/" + codeCoulmn.slice(0, 6) + "/" + params.duration
                 );

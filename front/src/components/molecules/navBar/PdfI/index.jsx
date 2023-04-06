@@ -49,11 +49,24 @@ function PdfI() {
 
   const params = useParams();
 
+  for (let i = 0; i < params.duration.length; i++) {
+    const duration =
+      params.duration.substring(0, 4) +
+      "." +
+      params.duration.substring(4, 6) +
+      "-" +
+      params.duration.substring(7, 11) +
+      "." +
+      params.duration.substring(11, 13);
+    console.log(duration);
+  }
+  // const duration = params.duration;
+
   useEffect(() => {
     setButtonState(false);
     setTimeout(() => {
       setButtonState(true);
-    }, 5000);
+    }, 7500);
   }, [params]);
 
   const pdfHead = `HsCode : ${params.hsCode}, Duration : ${params.duration}`;
@@ -61,6 +74,8 @@ function PdfI() {
   const pdfData2 = `2. Export & Import TOP5 Country`;
   const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.hsCode}`;
+  const textMining = `4. TextMining`;
+  const pdfPage2 = "- 2 -";
 
   // downloadPdf 함수에 Click 방지
   // PdfState를 true로 변경함으로 화면 Capture를 시작
@@ -83,14 +98,16 @@ function PdfI() {
       const pdf = new jsPDF();
       pdf.text(pdfHead, 10, 10);
       pdf.text(pdfData1, 10, 30);
-      pdf.addImage(data1Img, "JPEG", 0, 45, 200, 80);
+      pdf.addImage(data1Img, "JPEG", 0, 35, 200, 80);
       pdf.text(pdfData2, 10, 160);
-      pdf.addImage(data2Img, "JPEG", 0, 175, 200, 80);
+      pdf.addImage(data2Img, "JPEG", 0, 165, 200, 80);
       pdf.text(pdfPage1, 100, 290);
       pdf.addPage("a4");
-      pdf.text(pdfData3, 10, 30);
-      pdf.addImage(data3Img, "JPEG", 5, 35, 200, 150);
-      pdf.addImage(textMiningImg, "JPEG", 10, 180, 100, 100);
+      pdf.text(pdfData3, 10, 15);
+      pdf.addImage(data3Img, "JPEG", 5, 20, 200, 150);
+      pdf.text(textMining, 10, 190);
+      pdf.addImage(textMiningImg, "JPEG", 50, 190, 110, 90);
+      pdf.text(pdfPage2, 100, 290);
       pdf.save(`Report_${params.hsCode}_${params.duration}`);
       setPdfState(false);
       setData1State(false);
