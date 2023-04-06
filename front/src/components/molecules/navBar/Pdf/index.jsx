@@ -55,7 +55,8 @@ function Pdf() {
   const pdfData2 = `2. Export & Import TOP5 Country`;
   const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.nationCode}`;
-
+  const textMining = `4. TextMining`;
+  const pdfPage2 = "- 2 -";
   // downloadPdf 함수에 Click 방지
   // PdfState를 true로 변경함으로 화면 Capture를 시작
   const downloadPdf = () => {
@@ -82,9 +83,11 @@ function Pdf() {
       pdf.addImage(data2Img, "JPEG", 0, 175, 200, 80);
       pdf.text(pdfPage1, 100, 290);
       pdf.addPage("a4");
-      pdf.text(pdfData3, 10, 30);
-      pdf.addImage(data3Img, "JPEG", 5, 35, 200, 150);
-      pdf.addImage(textMiningImg, "JPEG", 10, 180, 100, 100);
+      pdf.text(pdfData3, 10, 15);
+      pdf.addImage(data3Img, "JPEG", 5, 20, 200, 150);
+      pdf.text(textMining, 10, 190);
+      pdf.addImage(textMiningImg, "JPEG", 50, 190, 110, 90);
+      pdf.text(pdfPage2, 100, 290);
       pdf.save(`Report_${params.nationCode}_${params.duration}`);
       setPdfState(false);
       setData1State(false);
