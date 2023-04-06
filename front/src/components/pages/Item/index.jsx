@@ -62,7 +62,6 @@ function Item() {
 
   return (
     <>
-      {console.log("왜 계속 렌더링 됨?")}
       {preventClick === true ? (
         <div>
           <div className="z-30 sticky top-0 hidden">
