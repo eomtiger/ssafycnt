@@ -49,18 +49,14 @@ function PdfI() {
 
   const params = useParams();
 
-  for (let i = 0; i < params.duration.length; i++) {
-    const duration =
-      params.duration.substring(0, 4) +
-      "." +
-      params.duration.substring(4, 6) +
-      "-" +
-      params.duration.substring(7, 11) +
-      "." +
-      params.duration.substring(11, 13);
-    console.log(duration);
-  }
-  // const duration = params.duration;
+  // PDF 작성에 필요한 durationList 생성
+  const durationList = [];
+  durationList.push({
+    startY: params.duration.substring(0, 4),
+    startM: params.duration.substring(4, 6),
+    endY: params.duration.substring(7, 11),
+    endM: params.duration.substring(11, 13),
+  });
 
   useEffect(() => {
     setButtonState(false);
