@@ -15,6 +15,7 @@ import {
   data3StateAtom,
   textMiningStateAtom,
   preventClickAtom,
+  pdfData1CommentAtom,
 } from "../../../../states/recoilPdfState";
 
 function Pdf() {
@@ -42,7 +43,20 @@ function Pdf() {
   // preventClickAtom을 이용하여 화면 Capture Image 경로 저장 시 NavBar와 WorldMap의 Clcik을 방지
   const [preventClick, setPreventClick] = useRecoilState(preventClickAtom);
 
+  // 상태관리가 이뤄진 pdfData1CommentAtom을 사용해 PDF 내용 구성
+  const pdfData1Comment = useRecoilValue(pdfData1CommentAtom);
+  // console.log(pdfData1Comment.impdlrSum);
+
   const params = useParams();
+
+  // PDF 작성에 필요한 durationList 생성
+  const durationList = [];
+  durationList.push({
+    startY: params.duration.substring(0, 4),
+    startM: params.duration.substring(4, 6),
+    endY: params.duration.substring(7, 11),
+    endM: params.duration.substring(11, 13),
+  });
 
   // params 변경 시 ButtonState를 false로 변경 => Button 비활성화
   // setTiemout 이용하여 5초 후 Button 활성화
@@ -53,9 +67,10 @@ function Pdf() {
     }, 7500);
   }, [params]);
 
-  const pdfHead = `Nation : ${params.nationCode}, Duration : ${params.duration}`;
+  // const pdfHead = `Nation : ${params.nationCode}, Duration : ${params.duration}`;
+  const pdfHead = `Report for "${params.nationCode}" from ${durationList[0].startY}.${durationList[0].startM} to ${durationList[0].endY}.${durationList[0].endM}`;
   const pdfData1 = `1. Export & Import Proportion`;
-  // const data1Comment = `Total Money Supply $`
+  // const data1Comment = `Total Money Supply : ${pdfData1Comment.impdlrSum}`;
   const pdfData2 = `2. Export & Import TOP5 Country`;
   const pdfPage1 = "- 1 -";
   const pdfData3 = `3. Detail Statistics about ${params.nationCode}`;

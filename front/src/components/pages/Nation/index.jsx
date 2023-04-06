@@ -15,6 +15,7 @@ import {
   pdfStateAtom,
   data1StateAtom,
   preventClickAtom,
+  pdfData1CommentAtom,
 } from "../../../states/recoilPdfState";
 
 function Nation() {
@@ -22,6 +23,12 @@ function Nation() {
   const [excelData, setExcelData] = useRecoilState(excelState1);
   const [data1Img, setData1Img] = useRecoilState(data1ImgAtom);
   const [data1State, setData1State] = useRecoilState(data1StateAtom);
+
+  // pdfData1CommentAtom을 이용하여 Data1의 정보를 상태관리
+  const [pdfData1Comment, setPdfData1Comment] =
+    useRecoilState(pdfData1CommentAtom);
+  // console.log(pdfData1Comment);
+
   const pdfState = useRecoilValue(pdfStateAtom);
   const preventClick = useRecoilValue(preventClickAtom);
 
@@ -56,8 +63,10 @@ function Nation() {
           params.duration.substring(7, 13)
       )
       .then((response) => {
+        // console.log(response.data);
         setData(response.data);
         setExcelData(response.data);
+        setPdfData1Comment(response.data);
       });
   }, [params]);
 
