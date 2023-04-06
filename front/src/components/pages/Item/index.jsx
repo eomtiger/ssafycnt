@@ -62,10 +62,11 @@ function Item() {
 
   return (
     <>
+      {console.log("왜 계속 렌더링 됨?")}
       {preventClick === true ? (
-        <>
+        <div>
           <div className="z-30 sticky top-0 hidden">
-            <NavBarI />
+            <NavBarI apiData={data} />
           </div>
           <div className="z-0 hidden">
             <WorldMapI />
@@ -74,14 +75,14 @@ function Item() {
           <DataSecondI />
           <DataThirdI />
           <NewsTextMiningI />
-        </>
+        </div>
       ) : (
         <div>
           <div className="z-30 sticky top-0">
             <NavBarI />
           </div>
           <div className="z-0">
-            <WorldMapI />
+            <WorldMapI apiData={data} />
           </div>
           <DataFirstI data1={data} />
           <DataSecondI />
