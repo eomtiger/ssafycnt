@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import jsPDF from "jspdf";
-// import html2canvas from "html2canvas";
 import pdf from "../../../../assets/pdf.svg";
 import { useRecoilValue, useRecoilState } from "recoil";
 import {
@@ -15,6 +14,7 @@ import {
   data3StateAtom,
   textMiningStateAtom,
   preventClickAtom,
+  pdfData1CommentAtom,
 } from "../../../../states/recoilPdfState";
 
 function PdfI() {
@@ -42,10 +42,9 @@ function PdfI() {
   // preventClickAtom을 이용하여 화면 Capture Image 경로 저장 시 NavBar와 WorldMap의 Clcik을 방지
   const [preventClick, setPreventClick] = useRecoilState(preventClickAtom);
 
-  // setTimeout(() => {
-  //   setPdfState(true);
-  //   // console.log("Finish");
-  // }, 10000);
+  // 상태관리가 이뤄진 pdfData1CommentAtom을 사용해 PDF 내용 구성
+  const pdfData1Comment = useRecoilValue(pdfData1CommentAtom);
+  // console.log(pdfData1Comment);
 
   const params = useParams();
 
@@ -65,14 +64,6 @@ function PdfI() {
     }, 7500);
   }, [params]);
 
-  const pdfHead = `HsCode : ${params.hsCode}, Duration : ${params.duration}`;
-  const pdfData1 = `1. Export & Import Proportion`;
-  const pdfData2 = `2. Export & Import TOP5 Country`;
-  const pdfPage1 = "- 1 -";
-  const pdfData3 = `3. Detail Statistics about ${params.hsCode}`;
-  const textMining = `4. TextMining`;
-  const pdfPage2 = "- 2 -";
-
   // downloadPdf 함수에 Click 방지
   // PdfState를 true로 변경함으로 화면 Capture를 시작
   const downloadPdf = () => {
@@ -91,19 +82,61 @@ function PdfI() {
       data3State === true &&
       textMiningState === true
     ) {
+      const pdfHead = `Report for "${params.nationCode}" from ${durationList[0].startY}.${durationList[0].startM} to ${durationList[0].endY}.${durationList[0].endM}`;
+      const pdfData1 = `1. Export & Import Proportion`;
+      const data1Comment = `  - The following graphs illustrate the current status of exports and imports between Korea and "${
+        params.nationCode
+      }",\n
+    presenting both the monetary value and weight proportion of each item.\n
+  - The total amount of exports is ${pdfData1Comment.expdlrSum
+    .toString()
+    .replace(
+      /\B(?=(\d{3})+(?!\d))/g,
+      ","
+    )}$, the total amount of imports is ${pdfData1Comment.impdlrSum
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$,\n
+    and the balance of trade is ${pdfData1Comment.balpaymentsDlr
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$.`;
+      const pdfData2 = `2. Export & Import TOP5 Country`;
+      const pdfPage1 = "- 1 -";
+      const data2Comment = `  - The graphs below show the top 5 items for exports and imports listed in descending order,\n
+     with units in millions of dollars.`;
+      const pdfData3 = `3. Detail Statistics about "${params.nationCode}"`;
+      const textMining = `4. TextMining`;
+      const pdfPage2 = "- 2 -";
+      // PDF File 생성
       const pdf = new jsPDF();
-      pdf.text(pdfHead, 10, 10);
+      // Head
+      pdf.setFontSize(20);
+      pdf.text(pdfHead, 10, 15);
+      // Data1
+      pdf.setFontSize(15);
       pdf.text(pdfData1, 10, 30);
       pdf.addImage(data1Img, "JPEG", 0, 35, 200, 80);
+      pdf.setFontSize(10);
+      pdf.text(data1Comment, 17, 120);
+      // Data2
+      pdf.setFontSize(15);
       pdf.text(pdfData2, 10, 160);
       pdf.addImage(data2Img, "JPEG", 0, 165, 200, 80);
+      pdf.setFontSize(10);
+      pdf.text(data2Comment, 17, 255);
+      // Pagination
       pdf.text(pdfPage1, 100, 290);
       pdf.addPage("a4");
+      // Data3
+      pdf.setFontSize(15);
       pdf.text(pdfData3, 10, 15);
       pdf.addImage(data3Img, "JPEG", 5, 20, 200, 150);
+      // TextMinig
+      pdf.setFontSize(15);
       pdf.text(textMining, 10, 190);
-      pdf.addImage(textMiningImg, "JPEG", 50, 190, 110, 90);
+      pdf.addImage(textMiningImg, "JPEG", 50, 195, 110, 90);
+      // Pagination
       pdf.text(pdfPage2, 100, 290);
+      // PDF Save
       pdf.save(`Report_${params.hsCode}_${params.duration}`);
       setPdfState(false);
       setData1State(false);
