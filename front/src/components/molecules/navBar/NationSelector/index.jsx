@@ -83,7 +83,7 @@ function NationSelector() {
 
   return (
     <div className="font-mun">
-      <button onClick={openModal} className="text-2xl inline-flex">
+      <button onClick={openModal} className="text-2xl inline-flex hover:scale-125">
         국가
         <img src={magnifier1} className="w-8 h-8 ml-2" />
       </button>

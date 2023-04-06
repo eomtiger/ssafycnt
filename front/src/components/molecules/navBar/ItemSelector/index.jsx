@@ -180,7 +180,7 @@ function ItemSelector() {
 
   return (
     <div className="font-mun">
-      <button onClick={openModal} className="text-2xl inline-flex">
+      <button onClick={openModal} className="text-2xl inline-flex hover:scale-125">
         품목
         <img src={magnifier1} className="w-8 h-8 ml-2 mr-5" />
       </button>
