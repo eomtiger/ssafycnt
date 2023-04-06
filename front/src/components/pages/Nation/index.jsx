@@ -50,8 +50,8 @@ function Nation() {
 
   // 지도 & 데이터 1열 axios 요청
   const [data, setData] = useState([]);
-  useEffect(() => {
-    axios
+  useEffect(async () => {
+    await axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/onerow?" +
           "statCd=" +

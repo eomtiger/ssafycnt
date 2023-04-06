@@ -166,9 +166,9 @@ function DataThird() {
     setExData(temp);
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     setDisable(true);
-    axios
+    await axios
       .get(
         "https://ssafycnt.site:8000/ssafycnt-trade-service/api/trade/threerow?" +
           "startDate=" +
