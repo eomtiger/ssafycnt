@@ -33,15 +33,10 @@ function DataThirdI(props) {
       html2canvas(input).then((canvas) => {
         let data3 = canvas.toDataURL("image/png");
         setData3Img(data3);
+        setData3State(true);
       });
     }
   }, [pdfState]);
-
-  useEffect(() => {
-    if (pdfState === true) {
-      setData3State(true);
-    }
-  }, [data3Img]);
   // console.log(pdfState);
   // console.log(data3State);
 
