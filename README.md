@@ -33,17 +33,13 @@
 
 <br />
 
-# 배포 주소 : [🚢싸피물산](https://ssafycnt.site) : https://ssafycnt.site
-
-<br />
-
-### 🚀 배포 주소
+# 🚀 배포 주소 : [🚢싸피물산](https://ssafycnt.site) https://ssafycnt.site
 
 <br />
 
 ### 🎫 ERD
 
-![erd](./assets/samulERD.png)
+![erd](./assets/ERD.png)
 
 ####
 
@@ -63,14 +59,18 @@
 <br />
 
 ### 🎇 서비스 아키텍쳐
-
+![](./assets/systemArchitecture.png)
 ####
 
 <br />
 
 ## 📜 프로젝트 결과물
 
-### 메인 페이지
+![](./assets/home1.png)
+![](./assets/home2.png)
+![](./assets/home3.png)
+![](./assets/home4.png)
+![](./assets/home5.png)
 
 <br />
 
