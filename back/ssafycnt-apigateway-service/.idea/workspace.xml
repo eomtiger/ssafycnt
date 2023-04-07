@@ -5,11 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a6f5957-1b05-4d67-9b79-3efc053bda98" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/SsafycntUserServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/resources/bootstrap-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/test/java/com/ssafy/ssafycntuserservice/SsafycntUserServiceApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/controller/GraphController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/controller/GraphController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/ItemGraphService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-trade-service/src/main/java/com/ssafy/ssafycnttradeservice/service/ItemGraphService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/jpa/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/jpa/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/security/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/service/UserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/vo/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/vo/RequestLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/vo/RequestUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/vo/RequestUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/vo/ResponseOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/vo/ResponseOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssafycnt-user-service/src/main/java/com/ssafy/ssafycntuserservice/vo/ResponseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssafycnt-user-service_copy/src/main/java/com/ssafy/ssafycntuserservice/vo/ResponseUser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
